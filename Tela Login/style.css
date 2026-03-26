@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background-color: #e9f1f2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 950px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.back-button {
+    background: #f8fbfc;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;  
+    height: 40px; 
+}
+
+.icon img {
+    width: 100%;    
+    height: auto;   
+    object-fit: contain; 
+}
+
+
+.login-card {
+    background: #f8fbfc;
+    border-radius: 50px; 
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.image-side {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0px; 
+
+}
+
+.image-side img {
+    width: 100%; 
+    height: auto;
+    object-fit: contain; 
+}
+
+.form-side {
+    flex: 1.2;
+    padding: 50px 70px;
+    text-align: center;
+}
+
+.form-side h2 {
+    margin-bottom: 35px;
+    letter-spacing: 2px;
+    color: #0d1b1e;
+    font-size: 22px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #aebfc2;
+    border-radius: 30px;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+    font-size: 13px;
+}
+
+.entrar-button {
+    background-color: #041619; 
+    color: white;
+    border: none;
+    padding: 14px 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.entrar-button:hover {
+    background-color: #0a2d33;
+    transform: scale(1.02);
+}
+
+.footer-links {
+    margin-top: 25px;
+    font-size: 13px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-links .forgot {
+    display: block;
+    margin-bottom: 10px;
+}
+
