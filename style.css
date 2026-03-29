@@ -1,46 +1,57 @@
-*{
-margin: 0;
+* {
+    margin: 0;
 }
-body{
-background-color:#E8F1F2}
-.cabecalho{
-    flex:3;
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #E8F1F2;
+    overflow-x: hidden;
+}
+
+.cabecalho {
+    flex: 3;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 5%;         
-    width: 100vw;  
+    padding: 10px 5%;
+    width: 100vw;
     box-sizing: border-box;
     background-color: #ffffff;
 }
 
 .menu {
     flex: 2;
-  display: flex;
-  list-style: none;
-  gap: 30px;                 /* Espaço fixo entre os links do menu */
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  justify-content: center;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    justify-content: center;
 }
 
 
 
-.fonte{
-font-size:24px;
-text-decoration: none;
-color: inherit;
-font-family: 'Poppins', sans-serif;
+.fonte {
+    font-size: 24px;
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Poppins', sans-serif;
 
 }
 
-.logo{
+.logo {
     flex: 1;
     font-size: 32px;
     font-weight: bold;
-    display: inline-flex}
-.logopng{
+    display: inline-flex
+}
+
+.logopng {
     justify-content: center;
     width: 42px;
 }
@@ -51,38 +62,252 @@ font-family: 'Poppins', sans-serif;
     gap: 15px;
     height: 40px;
 }
-.cadastre{
-letter-spacing: -0.3px;
-background-color: #001A23;
-color: white;
-padding-inline: 35px ;
-border-radius: 10px;
+
+.cadastre {
+    letter-spacing: -0.3px;
+    background-color: #001A23;
+    color: white;
+    padding-inline: 35px;
+    border-radius: 10px;
 }
 
-.login{
-letter-spacing: -0.3px;
-padding-inline: 35px ;
-border: 2px solid #001A23;
-background: #E8F1F2;
-border-radius: 10px;
+.login {
+    letter-spacing: -0.3px;
+    padding-inline: 35px;
+    border: 2px solid #001A23;
+    background: #E8F1F2;
+    border-radius: 10px;
 
 }
 
 
-.cadastre:hover{
-background-color: #E8F1F2;
-color:#001A23;
-transform: scale(1.05);
+.cadastre:hover {
+    background-color: #E8F1F2;
+    color: #001A23;
+    transform: scale(1.05);
     transition: all 0.3s ease;
     cursor: pointer;
 
 }
-.login:hover{
-background-color: #001A23;
-color:#E8F1F2;
-transform: scale(1.05);
+
+.login:hover {
+    background-color: #001A23;
+    color: #E8F1F2;
+    transform: scale(1.05);
     transition: all 0.3s ease;
     cursor: pointer;
 }
-footer{
-background-color: #001A23;}
+
+footer {
+    background-color: #001A23;
+}
+
+.fundo_inicial {
+    background-image: url("img/bannerInicial.svg");
+    background-size: cover;
+    background-position: bottom;
+    height: 70dvh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_sobre_nos_principal{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10dvh;
+}
+
+#sobre-nos {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+}
+
+.container_logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    margin-top: 10dvh;
+}
+
+.logo_inicial {
+    width: 100px;
+}
+
+.conteudo_inicial {
+    color: white;
+    text-align: center;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudo_inicial h1 {
+    color: #B3EFB2;
+    font-size: 50px;
+}
+
+
+.conteudo_inicial p {
+    margin-top: 10dvh;
+    text-align: center;
+    max-width: 80%;
+}
+
+.container_textos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    /* background-color: red; */
+    margin-top: 10dvh;
+}
+
+.mini_titulo_sobre_nos {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.titulo_sobre_nos {
+    font-size: 45px;
+    color: #001A23;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.container_conteudo_sobre_nos {
+    color: #001A23;
+
+}
+
+.frase_sobre_nos{
+    font-size: 20px;
+}
+
+.container_imagem_sobre_nos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container_imagem_sobre_nos img {
+
+    border-radius: 30px;
+    height: 80%;
+
+}
+
+.container_conteudo_sobre_nos p {
+    line-height: 1.5;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+
+}
+
+.card_sobre_nos {
+    background-color: #001A23;
+    width: 100%;
+    height: 200px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.titulo_card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    font-size: 50px;
+    line-height: 1.0;
+    color: #001A23;
+    height: 200px;
+    text-shadow: 
+     -1px -1px 0 #B3EFB2,  
+       1px -1px 0 #B3EFB2,
+      -1px  1px 0 #B3EFB2,
+       1px  1px 0 #B3EFB2;;
+    font-weight: lighter;
+    font-family: poppins, sans-serif;
+}
+.logo_card_sobre_nos{
+    width: 200px;
+    height: 200px;
+    
+}
+.container_conteudo_card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+    color: #B3EFB2;
+}
+
+.frase_card{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: justify;
+    font-family: 'Poppins', sans-serif;
+}
+
+.conteudo_card{
+    font-size: 16px;
+    text-align: justify;
+    font-family: 'Poppins', sans-serif;
+}
+
+#como-funciona{
+        background-color: green;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 90%;
+        margin-top: 10dvh;
+        height: 100dvh;
+}
+
+#contato {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+    margin-top: 10dvh;
+    height: 100dvh;   
+    
+}
+
+#simulador{
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+    margin-top: 10dvh;
+    height: 100dvh;
+}
