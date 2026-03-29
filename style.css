@@ -68,7 +68,7 @@ body {
     background-color: #001A23;
     color: white;
     padding-inline: 35px;
-    border-radius: 10px;
+
 }
 
 .login {
@@ -76,8 +76,6 @@ body {
     padding-inline: 35px;
     border: 2px solid #001A23;
     background: #E8F1F2;
-    border-radius: 10px;
-
 }
 
 
@@ -288,16 +286,93 @@ main {
 }
 
 #contato {
-    background-color: red;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    gap: 40px; 
+    width: 90%;
+    margin-top: 10dvh;
+    height: auto;
+}
+.container_conteudo_cont_foto {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 20px;
+    width: 48%; 
+}
+.opcoes_contato {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    width: 48%;
+}
+
+.cards_contato {
+    background-color: #001A23; 
+    border-radius: 25px; 
+    padding: 40px 30px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    width: 90%;
-    margin-top: 10dvh;
-    height: 100dvh;   
-    
+    gap: 25px; 
+    flex: 1; /
+}
+
+.titulo_card_contato {
+    color: #00d084; 
+    font-size: 35px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.p_contato {
+    color: #E8F1F2;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+}
+
+.botao_fale_conosco {
+    background-color: transparent; 
+    color: #00d084; 
+    border: 2px solid #00d084; 
+    border-radius: 50px; 
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    margin-top: 10px;
+}
+
+.botao_fale_conosco:hover {
+    background-color: #00d084;
+    color: #001A23;
+    transform: scale(1.05);
+}
+
+.fale_conosco_h1{
+color: #001A23;
+align-self: center;
+font-size: 45px;
+font-weight: bold;
+font-family: 'Poppins',sans-serif;
+}
+.fale_conosco_frase{
+
+line-height: 1.5;
+font-size: 17px;
+font-family: 'Poppins',sans-serif;
+}
+
+
+.fotoPlanta2 {
+    width: 100%;
+    object-fit: cover;
 }
 
 #simulador{
