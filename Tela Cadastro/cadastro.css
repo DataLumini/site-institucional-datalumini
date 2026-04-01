@@ -69,11 +69,15 @@ body {
 }
 
 .image-side {
-    flex: 1.5;
+    
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-end;
     padding-left: 0px; 
+    padding-right: 0px;
+    width: 600px;
+    align-items: center;
+    margin-right: 0px;
 
 }
 
@@ -81,12 +85,13 @@ body {
     width: 100%; 
     height: auto;
     object-fit: contain; 
+    rotate: 180deg;
 }
 
 .form-side {
-    flex: 1.2;
     padding: 50px 70px;
     text-align: center;
+    width: 700px;
 }
 
 .form-side h2 {
@@ -94,6 +99,7 @@ body {
     letter-spacing: 2px;
     color: #0d1b1e;
     font-size: 22px;
+    
 }
 
 .input-group {
@@ -109,7 +115,7 @@ body {
 }
 
 .input-group input {
-    width: 100%;
+    width: 250px;
     padding: 12px 20px;
     border: 1px solid #aebfc2;
     border-radius: 30px;
@@ -157,4 +163,10 @@ body {
 .footer-links .forgot {
     display: block;
     margin-bottom: 10px;
+}
+
+.form-grid{
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
 }
