@@ -5,6 +5,11 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
+a{
+    text-decoration: none;
+    padding: 10px;
+}   
+
 body {
     background-color: #e9f1f2; 
     display: flex;

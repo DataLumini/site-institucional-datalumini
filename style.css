@@ -3,6 +3,12 @@
 }
 
 
+a {
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -81,20 +87,24 @@ body {
 
 .cadastre:hover {
     background-color: #E8F1F2;
-    color: #001A23;
     transform: scale(1.05);
     transition: all 0.3s ease;
     cursor: pointer;
+}
 
+.cadastre:hover a {
+    color: #001A23;
 }
 
 .login:hover {
     background-color: #001A23;
-    color: #E8F1F2;
     transform: scale(1.05);
     transition: all 0.3s ease;
     cursor: pointer;
+    color: #E8F1F2;
 }
+
+
 
 footer {
     background-color: #001A23;
