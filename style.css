@@ -1,12 +1,8 @@
+
 * {
     margin: 0;
-}
-
-
-a {
-    text-decoration: none;
-    padding: 10px;
-    color: white;
+    padding: 0;
+    box-sizing: border-box; 
 }
 
 html {
@@ -16,80 +12,81 @@ html {
 body {
     background-color: #E8F1F2;
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 .cabecalho {
-    flex: 3;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 5%;
-    width: 100vw;
-    box-sizing: border-box;
+    width: 100%;
     background-color: #ffffff;
-}
-
-.menu {
-    flex: 2;
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    justify-content: center;
-}
-
-
-
-.fonte {
-    font-size: 24px;
-    text-decoration: none;
-    color: inherit;
-    font-family: 'Poppins', sans-serif;
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
-    flex: 1;
-    font-size: 32px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
     font-weight: bold;
-    display: inline-flex
 }
 
 .logopng {
-    justify-content: center;
-    width: 42px;
+    width: 40px;
+    margin-left: 10px;
 }
 
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.fonte {
+    font-size: 1rem;
+    color: #001A23;
+}
 
 .botoes {
     display: flex;
-    gap: 15px;
-    height: 40px;
+    gap: 10px;
+}
+
+.cadastre, .login {
+    padding: 8px 20px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
 .cadastre {
-    letter-spacing: -0.3px;
     background-color: #001A23;
     color: white;
-    padding-inline: 35px;
-
+    border: none;
 }
 
 .login {
-    letter-spacing: -0.3px;
-    padding-inline: 35px;
     border: 2px solid #001A23;
-    background: #E8F1F2;
+    background: transparent;
 }
-
 
 .cadastre:hover {
     background-color: #E8F1F2;
-    transform: scale(1.05);
+    transform: scale(1.04);
     transition: all 0.3s ease;
     cursor: pointer;
+    border: 2px #001A23 solid;
 }
 
 .cadastre:hover a {
@@ -104,21 +101,24 @@ body {
     color: #E8F1F2;
 }
 
-
-
-footer {
-    background-color: #001A23;
-}
-
 .fundo_inicial {
     background-image: url("img/bannerInicial.svg");
-    background-size: cover;
-    background-position: bottom;
-    height: 70dvh;
+
+    background-size: cover; 
+
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+    
+
+    min-height: 80dvh; 
+    height: auto; 
+    
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 
+    padding: 60px 20px 150px 20px; 
 }
 
 main {
@@ -128,10 +128,21 @@ main {
     justify-content: center;
 }
 
-.container_sobre_nos_principal{
+.container_sobre_nos_principal {
     display: flex;
     flex-direction: row;
+    align-items: flex-end; 
+    justify-content: space-between;
+    gap: 40px;
     margin-bottom: 10dvh;
+    width: 100%;
+}
+
+.container_sobre_nos {
+    flex: 1.5; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 #sobre-nos {
@@ -140,23 +151,24 @@ main {
     width: 90%;
 
 }
-
 .container_logo {
     display: flex;
     align-items: center;
     gap: 10px;
     color: white;
-    margin-top: 10dvh;
+    margin-top: 5dvh;
 }
 
 .logo_inicial {
-    width: 100px;
+    width: 15vw; 
+    max-width: 100px; 
+    min-width: 60px;
 }
 
 .conteudo_inicial {
     color: white;
     text-align: center;
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,23 +176,23 @@ main {
 
 .conteudo_inicial h1 {
     color: #B3EFB2;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px); 
+    line-height: 1.2;
 }
 
-
 .conteudo_inicial p {
-    margin-top: 10dvh;
+    margin-top: 5dvh;
     text-align: center;
-    max-width: 80%;
+    max-width: 800px;
+    font-size: clamp(14px, 1vw, 30px);
 }
 
 .container_textos {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     width: 100%;
-    /* background-color: red; */
-    margin-top: 10dvh;
+    margin-top: 5dvh;
 }
 
 .mini_titulo_sobre_nos {
@@ -206,18 +218,18 @@ main {
 }
 
 .container_imagem_sobre_nos {
+    flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 55%;
-    font-family: 'Poppins', sans-serif;
+    justify-content: flex-end; 
+    align-items: flex-end;
 }
 
 .container_imagem_sobre_nos img {
-
     border-radius: 30px;
-    height: 80%;
-
+    width: 100%;
+    max-height: 400px; 
+    object-fit: cover;
+    display: block;
 }
 
 .container_conteudo_sobre_nos p {
@@ -232,7 +244,7 @@ main {
     background-color: #001A23;
     width: 100%;
     height: auto; 
-    padding: 60px 80px; /* Aumentei o padding para deixar o card mais "gordinho" */
+    padding: 60px 80px;
     border-radius: 20px;
     display: flex;
     flex-direction: row;
@@ -298,36 +310,42 @@ main {
     display: flex;
     flex-direction: row; 
     justify-content: space-between; 
-    gap: 40px; 
+    align-items: stretch;
+    gap: 30px; 
     width: 90%;
-    margin-top: 10dvh;
+    margin: 10dvh auto;
     height: auto;
 }
 .container_conteudo_cont_foto {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    gap: 20px;
-    width: 48%; 
-}
-.opcoes_contato {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 30px;
-    width: 48%;
+}
+.opcoes_contato {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .cards_contato {
     background-color: #001A23; 
     border-radius: 25px; 
-    padding: 40px 30px; 
+    padding: 25px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 25px; 
-    flex: 1; /
+    text-align: center;
+    flex: 1;
+}
+
+.fotoPlanta2 {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 25px;
 }
 
 .titulo_card_contato {
