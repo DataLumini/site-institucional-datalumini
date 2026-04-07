@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="script-simulador.js"></script>
+
 </head>
 <link rel="stylesheet" href="style.css">
 
@@ -125,12 +127,46 @@
     </section>
 
     <section id="simulador">
-      <h1>Seção do simulador</h1>
+      <div class="container-simulador">
+        <div class="container-simulador-titulo">
+                <h1>Simulador Financeiro:
+                    <span class="italic">Arabidopsis thaliana</span>
+                </h1>
+                <h2>Sensor de iluminação da Arabidopsis thaliana</h2>
+        </div>
+
+        <div class="content-simulador">
+            <div class="content-right-group">
+                <h1>Quanto de prejuizo?</h1>
+                <div class="content-right-row">
+                    <label for="id_horasLigado">Horas de iluminação por dia:</label>
+                    <input type="number" id="id_horasLigado" placeholder="Ex: 20" min="0" max="24">
+                </div>
+                <div class="content-right-row">
+                    <label for="id_kwhGasto">Consumo total mensal (kWh):</label>
+                    <input type="number" id="id_kwhGasto" placeholder="Ex: 4500" min="0">
+                </div>
+                <div class="content-right-row">
+                    <label for="id_precoKWh">Preço da tarifa (R$/kWh):</label>
+                    <input type="number" id="id_precoKWh" step="0.01" placeholder="Ex: 0.90" min="0">
+                </div>
+                <div class="content-right-row">
+                    <label for="id_numCameras">Número de Câmaras de Cultivo:</label>
+                    <input type="number" id="id_numCameras" placeholder="Ex: 50" min="0">
+                </div>
+
+                <button onclick="calcularSimulacao()"
+                    style="margin-top: 15px; padding: 10px 20px; cursor: pointer;">Calcular Impacto</button>
+            </div>
+            <div id="id_mensagem"></div>
+        </div>
+    </div>
     </section>
   </main>
 
   <footer>
-
+    <p class="rodape">© 2024 DATALUMINI. Todos os direitos reservados.</p>
+    <p class="rodape">Desenvolvido por <a href="#" target="_blank">DATALUMINI</a></p>
   </footer>
 </body>
 

@@ -1,8 +1,7 @@
-
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 html {
@@ -62,7 +61,8 @@ a {
     gap: 10px;
 }
 
-.cadastre, .login {
+.cadastre,
+.login {
     padding: 8px 20px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
@@ -104,21 +104,21 @@ a {
 .fundo_inicial {
     background-image: url("img/bannerInicial.svg");
 
-    background-size: cover; 
+    background-size: cover;
 
-    background-position: center bottom; 
+    background-position: center bottom;
     background-repeat: no-repeat;
-    
 
-    min-height: 80dvh; 
-    height: auto; 
-    
+
+    min-height: 80dvh;
+    height: auto;
+
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    padding: 60px 20px 150px 20px; 
+    padding: 60px 20px 150px 20px;
 }
 
 main {
@@ -131,7 +131,7 @@ main {
 .container_sobre_nos_principal {
     display: flex;
     flex-direction: row;
-    align-items: flex-end; 
+    align-items: flex-end;
     justify-content: space-between;
     gap: 40px;
     margin-bottom: 10dvh;
@@ -139,7 +139,7 @@ main {
 }
 
 .container_sobre_nos {
-    flex: 1.5; 
+    flex: 1.5;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -151,6 +151,7 @@ main {
     width: 90%;
 
 }
+
 .container_logo {
     display: flex;
     align-items: center;
@@ -160,8 +161,8 @@ main {
 }
 
 .logo_inicial {
-    width: 15vw; 
-    max-width: 100px; 
+    width: 15vw;
+    max-width: 100px;
     min-width: 60px;
 }
 
@@ -176,7 +177,7 @@ main {
 
 .conteudo_inicial h1 {
     color: #B3EFB2;
-    font-size: clamp(28px, 5vw, 50px); 
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.2;
 }
 
@@ -213,21 +214,21 @@ main {
 
 }
 
-.frase_sobre_nos{
+.frase_sobre_nos {
     font-size: 20px;
 }
 
 .container_imagem_sobre_nos {
     flex: 1;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     align-items: flex-end;
 }
 
 .container_imagem_sobre_nos img {
     border-radius: 30px;
     width: 100%;
-    max-height: 400px; 
+    max-height: 400px;
     object-fit: cover;
     display: block;
 }
@@ -243,14 +244,14 @@ main {
 .card_sobre_nos {
     background-color: #001A23;
     width: 100%;
-    height: auto; 
+    height: auto;
     padding: 60px 80px;
     border-radius: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .titulo_card {
@@ -259,69 +260,72 @@ main {
     font-size: 55px;
     line-height: 1;
     font-family: 'Poppins', sans-serif;
-    font-weight: 800; 
-    text-transform: uppercase; 
-    color: transparent; 
-    -webkit-text-stroke: 1.5px #B3EFB2; 
+    font-weight: 800;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #B3EFB2;
 }
 
 .logo_card_sobre_nos {
     width: 200px;
     height: auto;
 }
+
 .container_conteudo_card {
     display: flex;
     flex-direction: column;
-    gap: 10px; 
+    gap: 10px;
     width: 35%;
 }
 
 .frase_card {
-    color: #B3EFB2; 
-    font-weight: 700; 
-    font-size: 20px; 
-    text-align: left; 
+    color: #B3EFB2;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: left;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
 }
 
 .conteudo_card {
-    color: #E8F1F2; 
+    color: #E8F1F2;
     font-size: 16px;
     font-weight: 400;
-    text-align: left; 
+    text-align: left;
     font-family: 'Poppins', sans-serif;
     line-height: 1.5;
 }
 
-#como-funciona{
-        background-color: green;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        width: 90%;
-        margin-top: 10dvh;
-        height: 100dvh;
+#como-funciona {
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+    margin-top: 10dvh;
+    height: 100dvh;
 }
 
 #contato {
     display: flex;
-    flex-direction: row; 
-    justify-content: space-between; 
+    flex-direction: row;
+    justify-content: space-between;
     align-items: stretch;
-    gap: 30px; 
+    gap: 30px;
     width: 90%;
     margin: 10dvh auto;
     height: auto;
 }
+
 .container_conteudo_cont_foto {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .opcoes_contato {
     flex: 1;
     display: flex;
@@ -330,8 +334,8 @@ main {
 }
 
 .cards_contato {
-    background-color: #001A23; 
-    border-radius: 25px; 
+    background-color: #001A23;
+    border-radius: 25px;
     padding: 25px 20px;
     display: flex;
     flex-direction: column;
@@ -349,7 +353,7 @@ main {
 }
 
 .titulo_card_contato {
-    color: #00d084; 
+    color: #00d084;
     font-size: 35px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -363,16 +367,16 @@ main {
 }
 
 .botao_fale_conosco {
-    background-color: transparent; 
-    color: #00d084; 
-    border: 2px solid #00d084; 
-    border-radius: 50px; 
+    background-color: transparent;
+    color: #00d084;
+    border: 2px solid #00d084;
+    border-radius: 50px;
     padding: 12px 30px;
     font-size: 16px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
     margin-top: 10px;
 }
 
@@ -382,18 +386,19 @@ main {
     transform: scale(1.05);
 }
 
-.fale_conosco_h1{
-color: #001A23;
-align-self: center;
-font-size: 45px;
-font-weight: bold;
-font-family: 'Poppins',sans-serif;
+.fale_conosco_h1 {
+    color: #001A23;
+    align-self: center;
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
 }
-.fale_conosco_frase{
 
-line-height: 1.5;
-font-size: 17px;
-font-family: 'Poppins',sans-serif;
+.fale_conosco_frase {
+
+    line-height: 1.5;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -402,14 +407,198 @@ font-family: 'Poppins',sans-serif;
     object-fit: cover;
 }
 
-#simulador{
-    background-color: blue;
+#simulador {
+    background-color: #001A23;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
+    min-height: 80dvh;
+    max-height: 100%;
+    width: 90%;
+    margin-bottom: 5%;
+    padding: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-simulador-titulo {
+    margin-bottom: 5%;
+    color: white;
+    text-align: center;
+}
+
+.container-simulador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-simulador {
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F1F2;
+    width: 80%;
+    min-height: 20%;
+    max-height: 30%;
+    align-items: center;
+    padding: 60px;
+    border-radius: 20px;
+    align-content: center;
+}
+
+.content-simulador h1 {
+    font-size: 40px;
+}
+
+.content-right-group {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+}
+
+.content-right-row {
+    display: flex;
+    flex-direction: column;
+
+}
+.content-right-row label{
+    text-align: justify;
+}
+.content-right-row input {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    border: 1px #c9c9c9 solid;
+    border-radius: 8px;
+    width: 100%;
+    align-self: center;
+    outline: none;
+}
+
+.content-right-row input:focus {
+    border: 1px #001A23 solid;
+    transition: all 0.9s;
+}
+
+.content-right-group button {
+    background-color: #001A23;
+    color: white;
+    font-size: 20px;
+    padding: 30px;
+    width: 100%;
+    align-self: center;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+}
+.content-right-group button:hover{
+    background-color: #00455e;
+    transition: all 0.5s;
+    transform: scale(1.03);
+}
+hr {
+    margin-top: 30px;
+}
+
+#id_mensagem {
+    margin: 5%;
+    width: 100%;
+    max-width: 760px;
+    padding: 1.5rem 1.5rem;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, );
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    line-height: 1.6;
+    min-height: 150px;
+}
+
+.destaque-verde {
+    color: #1e8d3f;
+    font-weight: 700;
+}
+
+.destaque-vermelho {
+    color: #c42828;
+    font-weight: 700;
+}
+
+.content-right-button {
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    width: 95%;
+    height: 5vh;
+    gap: 0.4rem;
+    padding-bottom: 1rem;
+}
+
+.content-right-button button {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    padding: 0.7rem 2rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.262);
+    border-radius: 0.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.1em;
+}
+
+.content-right-button button:hover {
+    background-color: #B3EFB2;
+}
+
+.content-right-res {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 45%;
     width: 90%;
-    margin-top: 10dvh;
-    height: 100dvh;
+    gap: 0.3em;
+    border-top: 1px solid rgba(0, 0, 0, 0.243);
+    border-radius: 0.1rem;
+}
+
+.content-right-res h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+
+.alerta-card {
+    background-color: #fff3f3;
+    border-left: 5px solid #d9534f;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.sucesso-card {
+    background-color: #f4fdf4;
+    border-left: 5px solid #5cb85c;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+ul.impacto-lista {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+ul.impacto-lista li {
+    margin-bottom: 8px;
+}
+
+footer {
+    height: 30dvh;
+    background-color: #001A23;
+    color: white;
 }
