@@ -102,7 +102,7 @@ a {
 }
 
 .fundo_inicial {
-    background-image: url("img/bannerInicial.svg");
+    background-image: url("/img/bannerInicial.svg");
 
     background-size: cover;
 
