@@ -296,18 +296,58 @@ main {
     line-height: 1.5;
 }
 
-#como-funciona {
-    background-color: green;
+.como-funciona {
+    background-color:#E8F1F2;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 90%;
+    width: 100%;
     margin-top: 10dvh;
     height: 100dvh;
 }
 
+.como-funciona .foto{
+    background-color: #00d084;
+    width: 35%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.como-funciona .texto{
+    background-color: #00d084;
+    width: 55%;
+    min-height: 90%;
+    padding-top: 120px;
+    padding: 50px;
+}
+
+.como-funciona .texto h1{
+    margin-bottom: 20px;
+}
+
+.topicos-como-funciona{
+    padding: 50px;
+    width: 90%;
+    min-height: 85%;
+    background-color: #1e8d3f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.topicos-como-funciona p{
+    border-bottom: 1px solid black;
+}
+
+.topicos-como-funciona span{
+    border:none;
+    margin-right: 20px;
+    
+}
 #contato {
     display: flex;
     flex-direction: row;
