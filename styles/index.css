@@ -308,7 +308,7 @@ main {
 }
 
 .como-funciona .foto{
-    background-color: #00d084;
+    background-color: #E8F1F2;
     width: 35%;
     min-height: 100%;
     display: flex;
@@ -317,37 +317,69 @@ main {
 }
 
 .como-funciona .texto{
-    background-color: #00d084;
+    background-color: #E8F1F2;
     width: 55%;
     min-height: 90%;
     padding-top: 120px;
-    padding: 50px;
+    padding: 40px;
 }
 
 .como-funciona .texto h1{
     margin-bottom: 20px;
 }
 
+.como-funciona .texto h3{
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
 .topicos-como-funciona{
-    padding: 50px;
     width: 90%;
     min-height: 85%;
-    background-color: #1e8d3f;
+    background-color: #E8F1F2;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    padding: 20px 50px;
 }
+
 
 .topicos-como-funciona p{
     border-bottom: 1px solid black;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+.texto-topicos-como-funciona:last-of-type p {
+    border-bottom: none;
 }
 
 .topicos-como-funciona span{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     border:none;
+    min-width: 30px;
     margin-right: 20px;
+    font-size: 20px;
+    margin-right: 0;
+    text-align: right; 
     
 }
+
+.texto-topicos-como-funciona{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+
 #contato {
     display: flex;
     flex-direction: row;
@@ -356,7 +388,7 @@ main {
     gap: 30px;
     width: 90%;
     margin: 10dvh auto;
-    height: auto;
+    height: 100%;
 }
 
 .container_conteudo_cont_foto {
