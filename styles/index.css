@@ -15,6 +15,10 @@ body {
     width: 100%;
 }
 
+section {
+    min-height: 65dvh;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -297,54 +301,69 @@ main {
 }
 
 #como-funciona {
-    background-color:#E8F1F2;
+    background-color: #E8F1F2;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 5dvh;
     width: 100%;
-    height: 200vh;
+    min-height: 100dvh;
+    margin: 5dvh 0;
+    padding-top: 5dvh;  
+    
 }
 
-#como-funciona .foto{
+#como-funciona .foto {
     background-color: #E8F1F2;
     width: 35%;
-    min-height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#como-funciona .texto{
-    background-color: #E8F1F2;
-    width: 55%;
-    max-height: 80%;
-    padding-top: 120px;
-    padding: 40px;
+#como-funciona .foto img {
+    width: 100%;
+    height: 80%;
+    border-radius: 20px;
+
 }
 
-#como-funciona .texto h1{
+.texto {
+    background-color: #E8F1F2;
+    width: 55%;
+    min-height: 80dvh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+#como-funciona .texto h1 {
     margin-bottom: 20px;
 }
 
-#como-funciona .texto h3{
+#como-funciona .texto h3 {
     margin-bottom: 20px;
     font-weight: 500;
 }
 
-.topicos-como-funciona{
+.topicos-como-funciona {
     width: 90%;
-    min-height: 90%;
+    min-height: 90dvh;
+    height: auto;
     background-color: #E8F1F2;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 30px;
-    padding: 20px 50px;
 }
 
 
-.topicos-como-funciona p{
+.topicos-como-funciona p {
     border-bottom: 1px solid black;
     padding-left: 10px;
     padding-bottom: 10px;
@@ -354,27 +373,27 @@ main {
     box-sizing: border-box;
 }
 
-.texto .topicos-como-funciona img{
-    width: 30dvw;
+.topicos-como-funciona img {
+    width: 80%;
 }
 
 .texto-topicos-como-funciona:last-of-type p {
     border-bottom: none;
 }
 
-.topicos-como-funciona span{
+.topicos-como-funciona span {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    border:none;
+    border: none;
     min-width: 30px;
     margin-right: 20px;
     font-size: 20px;
     margin-right: 0;
-    text-align: right; 
-    
+    text-align: right;
+
 }
 
-.texto-topicos-como-funciona{
+.texto-topicos-como-funciona {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -539,9 +558,11 @@ main {
     flex-direction: column;
 
 }
-.content-right-row label{
+
+.content-right-row label {
     text-align: justify;
 }
+
 .content-right-row input {
     background-color: white;
     padding: 10px;
@@ -569,11 +590,13 @@ main {
     border: none;
     font-weight: 700;
 }
-.content-right-group button:hover{
+
+.content-right-group button:hover {
     background-color: #00455e;
     transition: all 0.5s;
     transform: scale(1.03);
 }
+
 hr {
     margin-top: 30px;
 }
@@ -766,7 +789,7 @@ footer {
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }

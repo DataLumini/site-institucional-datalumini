@@ -29,34 +29,35 @@
             <div class="form-side">
                 <h2>LOGIN</h2>
 
-                <form>
+                <form id="formulario">
                     <div class="input-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" placeholder="Digite seu e-mail de login:">
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group password-container-icon">
                         <label for="pass">Senha:</label>
                         <input type="password" id="pass" placeholder="Digite sua senha:">
+                        <button type="button" id="password_icon" aria-label="Mostrar ou ocultar senha" onclick="mostrarSenha()"></button>
                     </div>
 
                     <div class="options">
                         <input type="checkbox" id="check">
                         <label for="check">Mantenha-me conectado</label>
                     </div>
-
-                    <button type="submit" class="entrar-button">ENTRAR</button>
                 </form>
+                <div id="erros"></div>
 
+                <button class="entrar-button" onclick="entrar()">ENTRAR</button>
                 <div class="footer-links">
-                    <a href="#" class="forgot">Esqueci a senha</a>
-                    <p>Não tem login ainda? <a
-                            href="/TelaCadastro.html"><strong>Cadastre-se!</strong></a></p>
+                    <p>Não tem login ainda?<a href="./TelaCadastro.html"><strong>Cadastre-se!</strong></a></p>
                 </div>
             </div>
         </main>
     </div>
 
 </body>
+
+<script src="./js/script-login.js"></script>
 
 </html>

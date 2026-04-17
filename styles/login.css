@@ -105,6 +105,10 @@ body {
     margin-bottom: 18px;
 }
 
+.password-container-icon {
+    position: relative;
+}
+
 .input-group label {
     font-weight: bold;
     display: block;
@@ -120,6 +124,24 @@ body {
     background: transparent;
     outline: none;
     font-size: 14px;
+}
+
+.password-container-icon input {
+    padding-right: 50px;
+}
+
+
+#password_icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 14px;
+    top: 30px;
+    cursor: pointer;
+    border: none;   
+    background: url(../img/olhoOff.svg);
+    background-size: cover;
+    background-position: center;        
 }
 
 .options {
@@ -161,4 +183,10 @@ body {
 .footer-links .forgot {
     display: block;
     margin-bottom: 10px;
+}
+
+#erros {
+    color: red;
+    margin: 15px;
+    font-size: 14px;
 }
