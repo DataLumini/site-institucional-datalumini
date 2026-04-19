@@ -1,0 +1,60 @@
+body{
+background-color: #f4f4f4;
+margin:0px;
+font-family: 'Poppins', sans-serif;
+display: flex;
+
+}
+
+header{
+background-color: white;
+display: flex;
+flex-direction: column;
+height: 100dvh;
+width: 10%;
+align-items: center;
+font-weight: 700;
+}
+
+.logo_container{
+    margin-top: 20px;
+display: flex;
+align-items: center;
+}
+
+.assets{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.div_hr{
+    margin: 5px;
+}
+
+.indicadores canvas{
+    background-color: white;
+    box-shadow: rgba(17, 12, 46, 0.09) 0px 23px 100px 0px;
+    width: 23%;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100dvw;
+    height: 100dvh;
+    margin: 40px;
+}
+.indicadores{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dash{
+}
+
+
+canvas{
+border-radius: 20px ;
+}
