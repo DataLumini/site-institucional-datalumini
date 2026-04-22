@@ -6,7 +6,7 @@
     <link rel="stylesheet" href=".\styles\dash.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Document</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -27,18 +27,88 @@
 
         <div class="dash">
         <div class="indicadores">
-            <canvas></canvas>
-            <canvas></canvas>
-            <canvas></canvas>
-            <canvas></canvas>
+            <div class="indicador1">
+                <h3> STATUS DO SENSOR </h3>
+                <h1>Ativo</h1>
+            </div>
+            <div class="indicador2">
+                <h3>LUMINOSIDADE MÉDIA <span class="unidade_de_medida">/mÊs</span></h3>
+                <h1><span class="bold_indicador">200</span>µmol/m²/s</h1>
+            </div>
+            <div class="indicador3">
+                <h3>HORAS EM EXPOSIÇÃO  A LUZ<span class="unidade_de_medida">/dia</span></h3>
+                <h1><span class="bold_indicador">15</span>horas</h1>
+            </div>
+            <div class="indicador4">
+                <h3>ALERTAS DE ILUMINAÇÃO FORA DO EIXO<span class="unidade_de_medida">/dia</span></h3>
+                <h1><span class="bold_indicador">3</span></h1>
+            </div>
         </div>
         <div class="graficos">
-            <canvas></canvas>
-            <canvas></canvas>
-            <canvas></canvas>
-            <canvas></canvas>
+            <div class="esquerda">
+            <h1>Grafico 1</h1>
+            <canvas id="grafico1"></canvas>
+            <H1>Grafico 2</H1>
+            <canvas id="grafico2"></canvas>
+            </div>
+            <div class="direita">
+            <H1>Grafico 3</H1>
+            <canvas id="grafico3"></canvas>
+            <H1>Grafico 4</H1>
+            <canvas id="grafico4"></canvas>
+            </div>
         </div>
         </div>
     </main>
 </body>
 </html>
+
+<script>
+  const ctx = document.getElementById('grafico1');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+ 
+<script>
+  const ctx2 = document.getElementById('grafico2');
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
