@@ -53,48 +53,115 @@
                             <p class="titulo">Estufa A</p>
                             <img src="./img/icons/correto.svg" alt="" class="logo_correto">
                         </div>
-                            <ul class="lista_info">
-                                <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
-                                <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
-                                <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
-                            </ul>
+                        <ul class="lista_info">
+                            <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
+                        </ul>
+                    </div>
+                    <div class="container_info">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa A</p>
+                            <img src="./img/icons/correto.svg" alt="" class="logo_correto">
                         </div>
-                        <div class="container_info">
-                            <div class="container_logo_status">
-                                <p class="titulo">Estufa A</p>
-                                <img src="./img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info">
-                                <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
-                                <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
-                                <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
-                            </ul>
+                        <ul class="lista_info">
+                            <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
+                        </ul>
+                    </div>
+                    <div class="container_info_alerta">
+                        <div class="container_logo_status">
+                            <p class="titulo_alerta">Estufa A</p>
+                            <img src="./img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
                         </div>
-                        <div class="container_info_alerta">
-                            <div class="container_logo_status">
-                                <p class="titulo_alerta">Estufa A</p>
-                                <img src="./img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                            </div>
-                            <ul class="lista_info_alerta">
-                                <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
-                                <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
-                                <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
-                            </ul>
+                        <ul class="lista_info_alerta">
+                            <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
+                        </ul>
+                    </div>
+                    <div class="container_info">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa A</p>
+                            <img src="./img/icons/correto.svg" alt="" class="logo_correto">
                         </div>
-                        <div class="container_info">
-                            <div class="container_logo_status">
-                                <p class="titulo">Estufa A</p>
-                                <img src="./img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info">
-                                <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
-                                <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
-                                <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
-                            </ul>
-                        </div>
+                        <ul class="lista_info">
+                            <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h horas de sol</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container_graficos_linha">
+            <div class="container_do_grafico">
+                <p class="titulo_grafico">Comparativo de PPFD por Estufa</p>
+                <canvas id="grafico_estufas"></canvas>
+            </div>
+            <div class="container_do_grafico">
+                <p class="titulo_grafico">Potência de Iluminação por Estufa</p>
+                <canvas id="grafico_potencia"></canvas>
+            </div>
+        </div>
+        <div class="container_graficos_linha">
+            <div class="container_do_grafico">
+                <p class="titulo_grafico">Evolução do PPFD Médio (Últimos 7 dias)</p>
+                <canvas id="grafico_evolucao"></canvas>
+            </div>
+        </div>
     </main>
 
 </body>
+
+<script>
+    let valores_maximo = [200, 200, 200, 200];
+    let valores_minimo = [100, 100, 100, 100];
+    let valores_atual = [150, 160, 223, 165];
+
+    const grafico_estufas = document.getElementById('grafico_estufas');
+
+    new Chart(grafico_estufas, {
+        data: {
+            labels: ['Estufa A', 'Estufa B', 'Estufa C', 'Estufa D'],
+            datasets: [
+                {
+                    type: 'bar',
+                    label: 'PPFD Médio',
+                    data: valores_atual,
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    barPercentage: 0.3,      
+                    categoryPercentage: 1, 
+                    borderWidth: 1
+
+                },
+                {
+                    type: 'line',
+                    label: 'Limite Máximo (200)',
+                    data: valores_maximo,
+                    borderColor: 'red',
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false,
+                },
+                {
+                    type: 'line',
+                    label: 'Limite Mínimo (100)',
+                    data: valores_minimo,
+                    borderColor: 'blue',
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false,
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
