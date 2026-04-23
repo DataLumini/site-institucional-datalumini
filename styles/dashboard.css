@@ -46,9 +46,84 @@ li a:hover {
     width: 80px;
 }
 
+header{
+    width: 100%;
+    height: 200px;
+    background-color: #FFF;
+    margin-left: 23px;
+}
+
+header h1{
+    margin-top: 8px;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+
+header h2{
+    margin-top: 6px;
+    font-weight: 100;
+    color: #334d4d ;
+}
+
+header button{
+    background-color: #00C950;
+    color: #FFF;
+    width: 4vw;
+    height: 3vh;
+    border-radius: 15px;
+    border: none;
+    font-weight:400;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.filtro_estufas{
+    width: 90%;
+    height: 10vh;
+    padding: 15px;
+    border-radius: 20px;
+    margin-left: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filtro_estufa .title{
+    display: flex;
+    flex-direction: column;
+}
+
+.title span{
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.filtro_estufas button{
+    width: fit-content;
+    padding: 10px;
+    height: 35px;
+    margin-top: 16px;
+    background-color: #D1FAE5;
+    color: #065F46;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+.filtro_estufas button:active{
+    background-color:#3B82F6;
+    color: #FFF;
+}
+
+.filtro_estufas button.alerta{
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
 main {
     margin-left: 12dvw;
-    width: 80dvw;
+    width: 80%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -58,23 +133,29 @@ main {
 #container_kpi {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: row;
     width: 85dvw;
 }
 
+
+
 #container_estufas,
 #container_lum_media,
 #container_potencia_media {
-    border: #E5E7EB solid 2px;
-    width: 29%;
-    height: 250px;
+    width: 20%;
+    height: 150px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     border-radius: 15px;
+    padding: 30px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-left: 20px;
 }
 
 #container_estufas p,
@@ -114,7 +195,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 20px;
     border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-left: 20px;
 }
 
 #container_bloco_status {
@@ -127,7 +211,7 @@ main {
 .container_info {
     border: #B9F8CF solid 2px;
     background-color: #F0FDF4;
-    width: 20%;
+    width: 15%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -166,7 +250,7 @@ main {
 .container_info_alerta {
     background-color: #FFFBEB;
     border: solid #FEE685 2px;
-    width: 20%;
+    width: 15%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -218,4 +302,20 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.container_graficos_linha{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-left: 20px;
+}
+
+.container_do_grafico{
+    width: 40%;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    font-weight: 600;
+    font-size: 25px;
 }
