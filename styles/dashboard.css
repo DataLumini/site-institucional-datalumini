@@ -80,11 +80,11 @@ header button{
 
 .filtro_estufas{
     width: 90%;
-    height: 10vh;
+    height: 12vh;
     padding: 15px;
     border-radius: 20px;
     margin-left: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .filtro_estufa .title{
@@ -154,7 +154,7 @@ main {
     padding: 30px;
     padding-bottom: 20px;
     font-size: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     margin-left: 20px;
 }
 
@@ -197,7 +197,7 @@ main {
     gap: 20px;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     margin-left: 20px;
 }
 
@@ -314,8 +314,56 @@ main {
 .container_do_grafico{
     width: 40%;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     padding: 20px;
     font-weight: 600;
     font-size: 25px;
+}
+
+
+.container_do_grafico_linha{
+    width: 90%;
+    max-height: 100vh;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.container_controle{
+    width: 90%;
+    height: 30vh;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.container_controle .controle{
+    width: 45%;
+    height: 90%;
+    padding: 15px 8px 8px 15px;
+    border: #B9F8CF solid 2px;
+    background-color: #F0FDF4;
+    color: #065F46;
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+.container_controle .controle_alerta{
+    width: 45%;
+    height: 90%;
+    padding: 15px 8px 8px 15px;
+    color: #92400E;
+    background-color: #FFFBEB;
+    border: solid #FEE685 2px;
+    border-radius: 20px;
+}
+
+.container_controle h4{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
