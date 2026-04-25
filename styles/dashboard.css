@@ -141,9 +141,9 @@ main {
 
 
 #container_estufas,
-#container_lum_media,
 #container_potencia_media,
-#container_icon_alerta {
+#container_icon_alerta,
+#container_lum_media {
     width: 20%;
     height: 150px;
     display: flex;
@@ -161,8 +161,9 @@ main {
 
 #container_estufas p,
 #container_lum_media p,
-#container_potencia_media p ,
-#container_icon_alerta p{
+#container_potencia_media p,
+#container_icon_alerta p,
+#container_lum_media p {
     font-size: 24px;
     font-weight: bold;
     margin: 0;
@@ -207,7 +208,7 @@ main {
 }
 
 #container_status {
-    width: 85dvw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -222,6 +223,7 @@ main {
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+    width: 100%;
 }
 
 .container_info {

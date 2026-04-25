@@ -7,7 +7,12 @@
     <link rel="stylesheet" href=".\styles\dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+<<<<<<< HEAD:dashboard.html
     <title>Controle de Estufas</title>
+=======
+    <link rel="shortcut icon" href="./img/logo.ico" type="image/x-icon">    
+    <title>Dashboard Sensor</title>
+>>>>>>> dbdb90b35fa31fa22e407f86ffd91a9a339d9b4e:dashboardEstufa.html
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -20,9 +25,9 @@
                     <img src="./img/logoverde2.svg" alt="" id="texto_logo">
                 </a>
             </li>
-            <li><a href="#">Estufas</a></li>
-            <li><a href="#">Sensores</a></li>
-            <li><a href="#">Sair</a></li>
+            <li><a href="./dashboardEstufa.html">Estufas</a></li>
+            <li><a href="./dashboardSensor.html">Sensores</a></li>
+            <li><a href="./index.html">Sair</a></li>
         </ul>
     </div>
     <main>
@@ -48,17 +53,12 @@
             <div id="container_estufas">
                 <img src="./img/icons/planta.svg" alt="">
                 <p>4/5</p>
-                <span>Estufas Ativas</span>
+                <span>Estufas Ótimas</span>
             </div>
             <div id="container_lum_media">
                 <img src="./img/icons/raio.svg" alt="">
                 <p>155 PPFD</p>
                 <span>PPFD Média</span>
-            </div>
-            <div id="container_potencia_media">
-                <img src="./img/icons/grafico.svg" alt="">
-                <p>80%</p>
-                <span>Potência Média</span>
             </div>
         </div>
         <div>
@@ -72,8 +72,7 @@
                         </div>
                         <ul class="lista_info">
                             <li><img src="./img/icons/raio.svg" alt=""> 165 PPFD</li>
-                            <li><img src="./img/icons/grafico.svg" alt=""> 85% Potência</li>
-                            <li><img src="./img/icons/relogio.svg" alt=""> 16h ativas</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h com iluminação</li>
                         </ul>
                     </div>
                     <div class="container_info">
@@ -83,8 +82,7 @@
                         </div>
                         <ul class="lista_info">
                             <li><img src="./img/icons/raio.svg" alt=""> 178 PPFD</li>
-                            <li><img src="./img/icons/grafico.svg" alt=""> 82% Potência</li>
-                            <li><img src="./img/icons/relogio.svg" alt=""> 16h ativas</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h com iluminação</li>
                         </ul>
                     </div>
                     <div class="container_info_alerta">
@@ -94,8 +92,7 @@
                         </div>
                         <ul class="lista_info_alerta">
                             <li><img src="./img/icons/raio.svg" alt=""> 85 PPFD</li>
-                            <li><img src="./img/icons/grafico.svg" alt=""> 65% Potência</li>
-                            <li><img src="./img/icons/relogio.svg" alt=""> 14h ativas</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 14h com iluminação</li>
                         </ul>
                     </div>
                     <div class="container_info">
@@ -105,8 +102,7 @@
                         </div>
                         <ul class="lista_info">
                             <li><img src="./img/icons/raio.svg" alt=""> 192 PPFD</li>
-                            <li><img src="./img/icons/grafico.svg" alt=""> 88% Potência</li>
-                            <li><img src="./img/icons/relogio.svg" alt=""> 16h ativas</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h com iluminação</li>
                         </ul>
                     </div>
                     <div class="container_info">
@@ -116,8 +112,7 @@
                         </div>
                         <ul class="lista_info">
                             <li><img src="./img/icons/raio.svg" alt=""> 155 PPFD</li>
-                            <li><img src="./img/icons/grafico.svg" alt=""> 8% Potência</li>
-                            <li><img src="./img/icons/relogio.svg" alt=""> 16h ativas</li>
+                            <li><img src="./img/icons/relogio.svg" alt=""> 16h com iluminação</li>
                         </ul>
                     </div>
                 </div>
@@ -129,8 +124,8 @@
                 <canvas id="grafico_estufas"></canvas>
             </div>
             <div class="container_do_grafico">
-                <p class="titulo_grafico">Potência de Iluminação por Estufa</p>
-                <canvas id="grafico_potencia"></canvas>
+                <p class="titulo_grafico">Tempo de Iluminação por Estufa</p>
+                <canvas id="grafico_tempo"></canvas>
             </div>
         </div>
         <div class="container_graficos_linha">
@@ -146,7 +141,7 @@
             </div>
             <div class="controle_alerta">
                 <h4><img src="img/icons/alerta.png">  Atenção: Estufa C</h4>
-                <p>PPFD abaixo do limite mínimo (85 PPFD) com apenas 65% de potência. Aumentar potência para 80-85% para atingir mínimo de 100 PPFD necessário.</p>
+                <p>PPFD abaixo do limite mínimo (85 PPFD). Ajustar a iluminação para atingir o mínimo de 100 PPFD necessário.</p>
             </div>
         </div>
     </main>
@@ -154,9 +149,19 @@
 </body>
 
 <script>
-    let valores_maximo = [200, 200, 200, 200, 200,200,200];
-    let valores_minimo = [100, 100, 100, 100, 100,100,100];
+    let valores_maximo = [200, 200, 200, 200, 200, 200, 200];
+    let valores_minimo = [100, 100, 100, 100, 100, 100, 100];
     let valores_atual = [165, 178, 85, 192, 155];
+
+    let cores_barras_ppfd = [];
+    for (let i = 0; i < valores_atual.length; i++) {
+        const ppfd = valores_atual[i];
+        if (ppfd >= 100 && ppfd <= 200) {
+            cores_barras_ppfd.push('#ff9900');
+        } else {
+            cores_barras_ppfd.push('#dc3545');
+        }
+    }
 
     const grafico_estufas = document.getElementById('grafico_estufas');
 
@@ -169,13 +174,17 @@
                     type: 'bar',
                     label: 'PPFD Médio',
                     data: valores_atual,
+<<<<<<< HEAD:dashboard.html
                     backgroundColor: '#ff9900',
                     borderRadius: 5,
+=======
+                    backgroundColor: cores_barras_ppfd, 
+                    borderRadius: 10,
+>>>>>>> dbdb90b35fa31fa22e407f86ffd91a9a339d9b4e:dashboardEstufa.html
                     barPercentage: 0.3,
                     categoryPercentage: 1,
                     borderWidth: 1,
                     order: 2
-
                 },
                 {
                     type: 'line',
@@ -218,20 +227,36 @@
         }
     });
 
+    const grafico_tempo = document.getElementById('grafico_tempo');
 
-    const grafico_potencia = document.getElementById('grafico_potencia');
+    let valores_tempo = [16, 16, 14, 16, 16]; 
 
-    let valores_potencia = [85, 82, 65, 88, 84];
+    let cores_barras_tempo = [];
+    for (let i = 0; i < valores_tempo.length; i++) {
+        const tempo = valores_tempo[i];
+        if (tempo >= 16) {
+            cores_barras_tempo.push('#0066ff');
+        } else {
+            cores_barras_tempo.push('#dc3545');
+        }
+    }
 
-    new Chart(grafico_potencia, {
+    new Chart(grafico_tempo, {
         type: 'bar',
         data: {
             labels: ['Estufa A', 'Estufa B', 'Estufa C', 'Estufa D', 'Estufa E'],
             datasets: [{
+<<<<<<< HEAD:dashboard.html
                 label: 'Potência',
                 data: valores_potencia,
                 backgroundColor: '#0066ff',
                 borderRadius: 5,
+=======
+                label: 'Tempo de Iluminação (Horas)',
+                data: valores_tempo,
+                backgroundColor: cores_barras_tempo, 
+                borderRadius: 10,
+>>>>>>> dbdb90b35fa31fa22e407f86ffd91a9a339d9b4e:dashboardEstufa.html
             }]
         },
         options: {
@@ -239,7 +264,11 @@
             scales: {
                 x: {
                     min: 0,
-                    max: 100
+                    max: 24,
+                    title: {
+                        display: true,
+                        text: 'Horas (h)'
+                    }
                 }
             },
             plugins: {
@@ -251,7 +280,7 @@
     });
 
     const grafico_evolucao = document.getElementById('grafico_evolucao');
-    let valores = [160,180,170,160,180,170,170]
+    let valores = [160, 180, 170, 160, 180, 170, 170]
 
     new Chart(grafico_evolucao, {
         type: 'line',
@@ -268,7 +297,6 @@
                     categoryPercentage: 1,
                     order: 2,
                     pointRadius: 0
-
                 },
                 {
                     type: 'line',
@@ -311,5 +339,5 @@
         }
     });
 
-
 </script>
+</html>
