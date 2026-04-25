@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensor</title>
     <link rel="stylesheet" href="styles/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
+
 <body>
     <div id="menu">
         <ul>
@@ -51,23 +55,158 @@
             </div>
         </div>
         <div class="graficos_sensor">
-            <div>
+            <div class="box_grafico">
+                <h3>Distribuição do Tempo Luz no Dia</h3>
                 <canvas id="grafico_pizza"></canvas>
             </div>
-            <div>
+            <div class="box_grafico">
+                <h3>Variação da Luminosidade (Últimas 11h)</h3>
                 <canvas id="grafico_sensor_linha"></canvas>
             </div>
         </div>
         <div class="container_controle">
             <div class="controle">
-                <h4><img src="img/icons/info.png">Controle Otimizado</h4>
-                <p>4 das 5 estufas estão operando dentro da faixa ideal (100-200 PPFD) para Arabidopsis thaliana. Sistema mantendo condições ideais para desenvolvimento das plantas.</p>
+                <h4><img src="img/icons/Icon (3).png">Sensor Operacional</h4>
+                <p>O sensor está ativo e monitorando corretamente a luminosidade. Tempo de exposição à luz: 16 horas por dia.</p>
             </div>
             <div class="controle_alerta">
-                <h4><img src="img/icons/alerta.png">  Atenção: Estufa C</h4>
-                <p>PPFD abaixo do limite mínimo (85 PPFD) com apenas 65% de potência. Aumentar potência para 80-85% para atingir mínimo de 100 PPFD necessário.</p>
+                <h4><img src="img/icons/alerta-triangular.png"> Alertas Registrados</h4>
+                <p>3 alertas de iluminação fora do eixo ideal foram registrados hoje. Verifique os horários de pico de variação.</p>
             </div>
         </div>
     </main>
 </body>
+<script>
+    const grafico_pizza = document.getElementById('grafico_pizza');
+
+    new Chart(grafico_pizza, {
+        type: 'pie',
+        data: {
+            labels: ['Tempo com exposição à luz', 'Tempo sem exposição à luz'],
+            datasets: [
+                {
+                    type: 'pie',
+                    data: [16, 8],
+                    backgroundColor: ['#ffcc00', ' #000099']
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        pointStyle: 'circle',
+                        padding: 15,
+                        boxWidth: 10,
+                        boxHeight: 10
+                    }
+                },
+                datalabels: {
+                    color: '#333',
+                    font: {
+                        weight: 'bold',
+                        size: 18
+                    },
+                    formatter: (value) => value + 'h',
+                    anchor: 'end',
+                    align: 'end',
+                    offset: 10,
+                    clip: false
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    })
+
+    const grafico_sensor_linha = document.getElementById('grafico_sensor_linha');
+    let valores = [180, 190, 200, 210, 230, 220, 200, 180, 190, 200, 190]
+    let valores_maximo = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
+    let valores_minimo = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+
+    new Chart(grafico_sensor_linha, {
+        type: 'line',
+        data: {
+            labels: ['1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h'],
+            datasets: [
+                {
+                    label: 'PPFD',
+                    data: valores,
+                    borderColor: '#3b82f6',
+                    backgroundColor: '#3b82f6',
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderWidth: 2,
+                    order: 2
+
+                },
+                {
+                    type: 'line',
+                    label: 'Limite Máximo (200)',
+                    data: valores_maximo,
+                    borderColor: 'red',
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    borderWidth: 2,
+                    order: 1
+                },
+                {
+                    type: 'line',
+                    label: 'Limite Mínimo (100)',
+                    data: valores_minimo,
+                    borderColor: 'green',
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    borderWidth: 2,
+                    order: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            layout: {
+                padding: 10
+            },
+
+            scales: {
+                y: {
+                    min: 0,
+                    max: 400,
+                    ticks: {
+                        stepSize: 100
+                    },
+                    title: {
+                        display: true,
+                        text: 'PPFD'
+                    },
+                    grid: {
+                        borderDash: [4, 4] // 👈 pontilhado no eixo Y
+                    }
+                },
+
+                x: {
+                    grid: {
+                        borderDash: [4, 4] // 👈 pontilhado no eixo X
+                    }
+                }
+            },
+
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+</script>
+
 </html>
