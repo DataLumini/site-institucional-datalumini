@@ -48,7 +48,7 @@ li a:hover {
 
 header{
     width: 100%;
-    height: 200px;
+    height: 150px;
     background-color: #FFF;
     margin-left: 23px;
 }
@@ -142,13 +142,14 @@ main {
 
 #container_estufas,
 #container_lum_media,
-#container_potencia_media {
+#container_potencia_media,
+#container_icon_alerta {
     width: 20%;
     height: 150px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 15px;
     border-radius: 15px;
     padding: 30px;
@@ -160,7 +161,8 @@ main {
 
 #container_estufas p,
 #container_lum_media p,
-#container_potencia_media p {
+#container_potencia_media p ,
+#container_icon_alerta p{
     font-size: 24px;
     font-weight: bold;
     margin: 0;
@@ -188,6 +190,20 @@ main {
     padding: 5px;
     border-radius: 10px;
     background-color: #2B7FFF;
+}
+
+#container_icon_alerta img {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color:  #ff0000;
+}
+
+#medida{
+    margin-top: none;
+    font-size: 20px;
+    color:#527a7a;
 }
 
 #container_status {
@@ -332,8 +348,9 @@ main {
 }
 
 .container_controle{
-    width: 90%;
-    height: 30vh;
+    margin-top: 40px;
+    width: fit-content;
+    height: 10vh;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -342,7 +359,7 @@ main {
 
 .container_controle .controle{
     width: 45%;
-    height: 90%;
+    height: fit-content;
     padding: 15px 8px 8px 15px;
     border: #B9F8CF solid 2px;
     background-color: #F0FDF4;
@@ -353,8 +370,8 @@ main {
 
 .container_controle .controle_alerta{
     width: 45%;
-    height: 90%;
-    padding: 15px 8px 8px 15px;
+    height: fit-content;
+    padding: 15px 8px 8px 40px;
     color: #92400E;
     background-color: #FFFBEB;
     border: solid #FEE685 2px;
@@ -366,4 +383,30 @@ main {
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
+}
+
+.graficos_sensor{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    background-color: #FFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin: 20px;
+    border-radius: 20px;
+}
+
+#grafico_pizza{
+    margin-left: 50px;
+    margin-top: 50px;
+    width: 35vw;
+    height: 40vh;
+    background-color: #00C950;
+}
+
+#grafico_sensor_linha{
+    margin-left: 50px;
+    margin-top: 50px;
+    width: 35vw;
+    height: 40vh;
+    background-color: #c7da1e;
 }
