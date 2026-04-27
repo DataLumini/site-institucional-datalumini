@@ -30,38 +30,40 @@
                 <div class="form-grid">
                     <div id="primeira_parte_form">
                         <div class="input-group">
-                            <label>Nome Completo:</label>
-                            <input type="text" placeholder="Digite seu nome">
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" placeholder="Digite seu nome">
                         </div>
                         <div class="input-group">
-                            <label>E-mail:</label>
-                            <input type="email" placeholder="Digite seu e-mail">
-                        </div>
+                            <label for=email>E-mail:</label>
+                            <input type="email" id="email" placeholder="Digite seu e-mail">
+                        </div> 
                         <div class="input-group">
-                            <label>CPF:</label>
-                            <input type="text" placeholder="Digite seu CPF">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" id="cpf" placeholder="Digite seu CPF">
                         </div>
                     </div>
                     <div id="segunda_parte_form">
                         <div class="input-group">
-                            <label>Empresa Associada:</label>
-                            <input type="text" placeholder="Selecione sua empresa">
+                            <label for="empresa">Empresa Associada:</label>
+                            <input type="text" id="empresa" placeholder="Selecione sua empresa">
                         </div>
                         <div class="input-group">
-                            <label>Senha:</label>
-                            <input type="password" placeholder="Crie sua senha">
+                            <label for="pass">Senha:</label>
+                            <input type="password" id="senha" placeholder="Crie sua senha">
+                            
                         </div>
 
                         <div class="input-group">
-                            <label>Confirme sua senha:</label>
-                            <input type="password" placeholder="Confirme sua senha">
+                            <label for:pass2>Confirme sua senha:</label>
+                            <input type="password" id="senha2" placeholder="Confirme sua senha">
+                            
                         </div>
                     </div>
 
 
                 </div>
 
-                <button class="entrar-button">CADASTRAR-SE</button>
+                <button class="entrar-button" onclick="cadastrar(email.value, senha.value, senha2.value, nome.value, cpf.value)">CADASTRAR-SE</button>
 
                 <div class="footer-links">
                     <a href="./TelaLogin.html">Já tem conta? <strong>Faça login</strong></a>
@@ -75,8 +77,15 @@
 
         </div>
 
+        <div id="erros"></div>
+
     </div>
 
 </body>
+<script src="./js/script-auth.js"></script>
 
 </html>
+
+
+
+

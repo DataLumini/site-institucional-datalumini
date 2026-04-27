@@ -38,7 +38,8 @@
                     <div class="input-group password-container-icon">
                         <label for="pass">Senha:</label>
                         <input type="password" id="pass" placeholder="Digite sua senha:">
-                        <button type="button" id="password_icon" aria-label="Mostrar ou ocultar senha" onclick="mostrarSenha()"></button>
+                        <button type="button" id="password_icon" aria-label="Mostrar ou ocultar senha"
+                            onclick="mostrarSenha()"></button>
                     </div>
 
                     <div class="options">
@@ -48,7 +49,7 @@
                 </form>
                 <div id="erros"></div>
 
-                <button class="entrar-button" onclick="entrar()">ENTRAR</button>
+                <button class="entrar-button" onclick="entrar(email.value, pass.value)"><a href="./dashboardEstufa.html"></a>ENTRAR</button>
                 <div class="footer-links">
                     <p>Não tem login ainda?<a href="./TelaCadastro.html"><strong>Cadastre-se!</strong></a></p>
                 </div>
@@ -58,6 +59,19 @@
 
 </body>
 
-<script src="./js/script-login.js"></script>
+<script src="./js/script-auth.js"></script>
+<script>
+
+    function mostrarSenha() {
+        if (pass.type == "password") {
+            pass.type = "text";
+            password_icon.style.backgroundImage = "url('./img/olhoOn.svg')";
+        } else {
+            pass.type = "password";
+            password_icon.style.backgroundImage = "url('./img/olhoOff.svg')";
+        }
+    }
+
+</script>
 
 </html>
