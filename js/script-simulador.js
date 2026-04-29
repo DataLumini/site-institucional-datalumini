@@ -32,6 +32,7 @@
                     <div class="alerta-card">
                         <h3 class="destaque-vermelho">Alerta Crítico: Risco de Perda Total</h3>
                         <p>A <i>Arabidopsis thaliana</i> precisa de luz para sobreviver. Sem iluminação, a amostra morrerá em dias e a pesquisa será <b>totalmente perdida</b>.</p>
+                        <p><i>De acordo com os dados da Embrapa, a ausência de iluminação compromete completamente o ciclo de desenvolvimento das plantas.</i></p>
                         <ul class="impacto-lista">
                             <li><b>Prejuízo Científico Imediato:</b> <span class="destaque-vermelho">${formatBRL(perdaCicloCientifico)}</span> perdidos (6 meses de bolsas e reagentes nas ${numCameras} câmaras).</li>
                             <li><b>Ação necessária:</b> Ative a iluminação imediatamente.</li>
@@ -44,6 +45,7 @@
                     <div class="alerta-card">
                         <h3 class="destaque-vermelho">Alerta: Risco de Perda do Experimento</h3>
                         <p>O ideal são <b>16 horas</b> diárias. Com apenas <b>${horasLigado}h</b>, a planta sofre estresse metabólico e retardo no desenvolvimento, invalidando os dados da pesquisa.</p>
+                        <p><i>De acordo com dados da Embrapa, a Arabidopsis thaliana requer 16 horas de iluminação diária para manter o fotoperiodismo correto e desenvolvimento adequado.</i></p>
                         <ul class="impacto-lista">
                             <li><b>Desperdício Científico Estimado:</b> <span class="destaque-vermelho">${formatBRL(perdaCicloCientifico)}</span> (bolsas e reagentes importados) em risco nas ${numCameras} câmaras.</li>
                             <li><b>Custo de Retrabalho:</b> <span class="destaque-vermelho">${formatBRL(custoRetrabalho)}</span> adicionais para reiniciar ensaios e limpar equipamentos.</li>
@@ -57,6 +59,7 @@
                     <div class="sucesso-card">
                         <h3 class="destaque-verde">Eficiência Máxima Alcançada</h3>
                         <p>Seu laboratório fornece exatamente <b>16 horas</b> de luz, o padrão-ouro para o ciclo perfeito da <i>Arabidopsis thaliana</i>.</p>
+                        <p><i>De acordo com os dados técnicos da Embrapa, essa configuração atende aos padrões internacionais para o cultivo controlado desta espécie.</i></p>
                         <ul class="impacto-lista">
                             <li><b>Zero Custo Fantasma:</b> Você não está desperdiçando energia elétrica.</li>
                             <li><b>Zero Desperdício Científico:</b> Sua pesquisa está protegida contra falhas de estresse luminoso.</li>
@@ -73,6 +76,7 @@
                 id_mensagem.innerHTML = `
                     <div class="alerta-card">
                         <h3 class="destaque-vermelho">Alerta: Custo Fantasma Detectado</h3>
+                        <p><i>De acordo com os estudos da Embrapa, fotoperíodos superiores a 16 horas favorecem o aparecimento de anomalias fisiológicas e reduzem a qualidade dos dados experimentais.</i></p>
                         <p>O uso de <b>${horasLigado}h</b> de luz ultrapassa o ideal de 16h. Esse excesso causa estresse oxidativo e floração precoce nas plantas, além de gerar custos desnecessários que impactam o orçamento do projeto.</p>
                         <ul class="impacto-lista">
                             <li><b>Desperdício de Energia (Custo Fantasma):</b> <span class="destaque-vermelho">${formatBRL(custoFantasmaAnual)}</span> perdidos por ano (<b>${(porcentagemDesperdicio * 100).toFixed(1)}%</b> da sua conta de energia).</li>

@@ -38,7 +38,7 @@ function entrar(ValorEmail, ValorSenha) {
             }
         }
         if (usuarioEncontrado) {
-            window.location.href = "../dashboard.html";
+            window.location.href = "../dashboardEstufa.html";
         } else {
             erros.innerHTML = `<p>Email ou senha incorretos. Tente novamente.</p>`;
             console.log(vetorUsuariosMocado)
@@ -51,18 +51,18 @@ function cadastrar(ValorEmail, ValorSenha, Valorsenha2, ValorNome, Valorcpf) {
     if (ValorEmail.trim() == "" || ValorSenha.trim() == "" || ValorNome.trim() == "" || Valorcpf.trim() == "" || Valorsenha2.trim() == "") {
         erros.innerHTML = `<p>Por favor, preencha todos os campos.</p>`;
         return
-        
-    } 
-    else if(!ValorEmail.includes("@")){
+
+    }
+    else if (!ValorEmail.includes("@")) {
         erros.innerHTML = `<p>erro no email</p>`
         return
     }
     else if (ValorEmail.length < 5 || ValorSenha.length < 5) {
         erros.innerHTML = `<p>O email e a senha devem conter pelo menos 5 caracteres.</p>`;
         return
-        
+
     }
-    else if ( Valorcpf.length < 11 || Valorcpf.length > 11) {
+    else if (Valorcpf.length < 11 || Valorcpf.length > 11) {
         erros.innerHTML = `<p>O seu CPF deve ter 11 numeros.</p>`;
         return
     }
@@ -80,8 +80,9 @@ function cadastrar(ValorEmail, ValorSenha, Valorsenha2, ValorNome, Valorcpf) {
         }
     }
 
-    
-    let usuarioCadastrar = {email: ValorEmail, senha: ValorSenha};
+
+    let usuarioCadastrar = { email: ValorEmail, senha: ValorSenha };
     vetorUsuariosMocado.push(usuarioCadastrar);
-    console.log("foi")
+    window.location.href = "../TelaLogin.html";
+
 }

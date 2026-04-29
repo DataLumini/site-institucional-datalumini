@@ -5,13 +5,13 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
     padding: 10px;
-}   
+}
 
 body {
-    background-color: #e9f1f2; 
+    background-color: #e9f1f2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,35 +50,35 @@ body {
 
 
 .icon {
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;  
-    height: 40px; 
+    width: 40px;
+    height: 40px;
 }
 
 .icon img {
-    width: 100%;    
-    height: auto;   
-    object-fit: contain; 
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 
 .login-card {
     background: #f8fbfc;
-    border-radius: 5cqmax; 
+    border-radius: 5cqmax;
     display: flex;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 .image-side {
-    
+
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    padding-left: 0px; 
+    padding-left: 0px;
     padding-right: 0px;
     width: 600px;
     align-items: center;
@@ -87,9 +87,9 @@ body {
 }
 
 .image-side img {
-    width: 100%; 
+    width: 100%;
     height: auto;
-    object-fit: contain; 
+    object-fit: contain;
     rotate: 180deg;
 }
 
@@ -104,7 +104,7 @@ body {
     letter-spacing: 2px;
     color: #0d1b1e;
     font-size: 22px;
-    
+
 }
 
 .input-group {
@@ -139,7 +139,7 @@ body {
 }
 
 .entrar-button {
-    background-color: #041619; 
+    background-color: #041619;
     color: white;
     border: none;
     padding: 14px 60px;
@@ -170,8 +170,15 @@ body {
     margin-bottom: 10px;
 }
 
-.form-grid{
+.form-grid {
     display: flex;
     justify-content: space-around;
     gap: 50px;
+}
+
+
+#erros {
+    color: red;
+    margin: 15px;
+    font-size: 14px;
 }
