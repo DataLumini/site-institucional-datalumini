@@ -24,4 +24,9 @@ function cadastrar(razaoSocial, cnpj) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+function buscarPorNome(nome) {
+  var instrucaoSql = `SELECT * FROM empresa WHERE razao_social = '${nome}'`;
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, buscarPorNome};

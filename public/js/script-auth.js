@@ -38,7 +38,7 @@ function entrar(ValorEmail, ValorSenha) {
             }
         }
         if (usuarioEncontrado) {
-            window.location.href = "../dashboardEstufa.html";
+            window.location.href = "../telas/dashboardEstufa.html";
         } else {
             erros.innerHTML = `<p>Email ou senha incorretos. Tente novamente.</p>`;
             console.log(vetorUsuariosMocado)
@@ -83,6 +83,6 @@ function cadastrar(ValorEmail, ValorSenha, Valorsenha2, ValorNome, Valorcpf) {
 
     let usuarioCadastrar = { email: ValorEmail, senha: ValorSenha };
     vetorUsuariosMocado.push(usuarioCadastrar);
-    window.location.href = "../TelaLogin.html";
+    window.location.href = "../telas/telaLogin.html";
 
 }

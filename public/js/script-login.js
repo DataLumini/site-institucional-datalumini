@@ -41,7 +41,7 @@ function entrar() {
             }
         }
         if (usuarioEncontrado) {
-            window.location.href = "../dashboardEstufa.html";
+            window.location.href = "../telas/dashboardEstufa.html";
         } else {
             erros.innerHTML = `<p>Email ou senha incorretos. Tente novamente.</p>`;
         }
