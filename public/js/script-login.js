@@ -25,36 +25,87 @@ let vetorLoginMocado = [
     }
 ];
 
-function entrar() {
-    const ValorEmail = email.value;
-    const ValorSenha = pass.value;
 
-    if (ValorEmail.trim() == "" || ValorSenha.trim() == "") {
-        erros.innerHTML = `<p>Por favor, preencha todos os campos.</p>`;
-    } else if (ValorEmail.length < 5 || ValorSenha.length < 5) {
-        erros.innerHTML = `<p>O email e a senha devem conter pelo menos 5 caracteres.</p>`;
-    } else {
-        let usuarioEncontrado = false;
-        for (let i = 0; i < vetorLoginMocado.length; i++) {
-            if (vetorLoginMocado[i].email == ValorEmail && vetorLoginMocado[i].senha == ValorSenha) {
-                usuarioEncontrado = true;
+function entrar() {
+
+        var emailVar = email.value;
+        var senhaVar = pass.value;
+        var divErros = document.getElementById('erros'); 
+
+        if (emailVar == "" || senhaVar == "") {
+            divErros.innerHTML = "Preencha todos os campos para fazer login";
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                   // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboardEstufa.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                    divErros.innerHTML = texto; 
+
+                });
             }
-        }
-        if (usuarioEncontrado) {
-            window.location.href = "../telas/dashboardEstufa.html";
-        } else {
-            erros.innerHTML = `<p>Email ou senha incorretos. Tente novamente.</p>`;
-        }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
-}
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
 
 function mostrarSenha() {
-    if (pass.type == "password") {
-        pass.type = "text";
-        password_icon.style.backgroundImage = "url('./img/olhoOn.svg')";
+    var passInput = document.getElementById('pass');
+    var passwordIcon = document.getElementById('password_icon');
+
+    if (passInput.type == "password") {
+        passInput.type = "text";
+        passwordIcon.style.backgroundImage = "url('./img/olhoOn.svg')";
     } else {
-        pass.type = "password";
-        password_icon.style.backgroundImage = "url('./img/olhoOff.svg')";
+        passInput.type = "password";
+        passwordIcon.style.backgroundImage = "url('./img/olhoOff.svg')";
     }
+
 }
 

@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
+// var aquarioModel = require("../models/aquarioModel");
 var empresaModel = require("../models/empresaModel");
 
 function autenticar(req, res) {
@@ -21,7 +21,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
+                        /* aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
                             .then((resultadoAquarios) => {
                                 if (resultadoAquarios.length > 0) {
                                     res.json({
@@ -34,7 +34,17 @@ function autenticar(req, res) {
                                 } else {
                                     res.status(204).json({ aquarios: [] });
                                 }
-                            })
+                            }) */
+
+                        // RESPOSTA MOCKADA SÓ PARA LIBERAR O ACESSO:
+                        res.json({
+                            id: resultadoAutenticar[0].id,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            empresaId: resultadoAutenticar[0].empresaId,
+                            aquarios: []  
+                        });
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
