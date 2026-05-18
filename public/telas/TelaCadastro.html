@@ -15,7 +15,7 @@
     <div class="wrapper">
 
         <div class="header">
-            <button class="back-button"><a href="./index.html">←</a></button>
+            <button class="back-button"><a href="/telas/index.html">←</a></button>
             <div class="brand-name">Datalumini</div>
             <div class="icon">
                 <img src="../img/logo.png">
@@ -44,8 +44,8 @@
                     </div>
                     <div id="segunda_parte_form">
                         <div class="input-group">
-                            <label for="empresa">Empresa Associada:</label>
-                            <input type="text" id="empresa" placeholder="Selecione sua empresa">
+                            <label for="empresa">Nome da Empresa Associada:</label>
+                            <input type="text" id="empresa" placeholder="Digite o nome da sua empresa">
                         </div>
                         <div class="input-group">
                             <label for="pass">Senha:</label>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="input-group">
-                            <label for:pass2>Confirme sua senha:</label>
+                            <label for="pass2">Confirme sua senha:</label>
                             <input type="password" id="senha2" placeholder="Confirme sua senha">
 
                         </div>
@@ -65,7 +65,16 @@
                 <div id="erros"></div>
 
                 <button class="entrar-button"
-                    onclick="cadastrar(email.value, senha.value, senha2.value, nome.value, cpf.value)">CADASTRAR-SE</button>
+                    onclick="cadastrar(
+                        nome.value,
+                        email.value,
+                        cpf.value,
+                        empresa.value,  
+                        senha.value, 
+                        senha2.value
+                        )">
+                        CADASTRAR-SE
+                    </button>
 
                 <div class="footer-links">
                     <a href="./telaLogin.html">Já tem conta? <strong>Faça login</strong></a>

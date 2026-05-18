@@ -42,7 +42,7 @@ function autenticar(req, res) {
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
                             empresaId: resultadoAutenticar[0].empresaId,
-                            aquarios: []  
+                            aquarios: []
                         });
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -87,7 +87,8 @@ function cadastrar(req, res) {
         empresaModel.buscarPorNome(nomeEmpresa)
             .then((resultadoEmpresa) => {
                 if (resultadoEmpresa.length > 0) {
-                    var empresaId = resultadoEmpresa[0].id;
+                    console.log("Empresa encontrada: ", resultadoEmpresa[0]);
+                    var empresaId = resultadoEmpresa[0].idEmpresa;
                     usuarioModel.cadastrar(nome, email, cpf, empresaId, senha)
                         .then(
                             function (resultado) {
@@ -100,9 +101,15 @@ function cadastrar(req, res) {
                                     "\nHouve um erro ao realizar o cadastro! Erro: ",
                                     erro.sqlMessage
                                 );
-                                res.status(500).json(erro.sqlMessage);
+                                if (erro.sqlMessage.includes("Duplicate entry")) {
+                                    res.status(400).send("O email já está em uso. Por favor, escolha outro email.");
+                                } else {
+                                    res.status(500).json(erro.sqlMessage);
+                                }
                             }
                         );
+                } else {
+                    res.status(404).send("Empresa não encontrada. Verifique o nome informado.");
                 }
             }).catch((erro) => {
                 console.log(erro);
