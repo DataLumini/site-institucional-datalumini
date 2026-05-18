@@ -32,35 +32,19 @@
             <h1>Controle Ambiental - Arabidopsis thaliana</h1>
             <h2>Visão Macro das Estufas Laboratoriais</h2>
         </header>
-        <div class="filtro_estufas">
-            <div class="title">
-                <img src="../img/icons/Filtro.png">
-                <span>Filtrar por Estufa</span>
-            </div>
-            <button>Todas as estufas</button>
-            <button>Estufa A</button>
-            <button>Estufa B</button>
-            <button class="alerta">Estufa C</button>
-            <button>Estufa D</button>
-            <button>Estufa E</button>
-        </div>
-        <div id="container_kpi">
-
-            <div id="container_estufas">
-                <img src="../img/icons/planta.svg" alt="">
-                <p>4/5</p>
-                <span>Estufas Ótimas</span>
-            </div>
-            <div id="container_lum_media">
-                <img src="../img/icons/raio.svg" alt="">
-                <p>23,9% de coef. variação</p>
-                <span>Elevada variação </span>
-            </div>
-        </div>
-        <div>
-            <div id="container_status">
+ <div id="container_status">
                 <h2>Status das Estufas</h2>
                 <div id="container_bloco_status">
+                     <div class="container_info_alerta">
+                        <div class="container_logo_status">
+                            <p class="titulo_alerta">Estufa C</p>
+                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                        </div>
+                        <ul class="lista_info_alerta">
+                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
+                        </ul>
+                    </div>
                     <div class="container_info">
                         <div class="container_logo_status">
                             <p class="titulo">Estufa A</p>
@@ -81,16 +65,7 @@
                             <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
                         </ul>
                     </div>
-                    <div class="container_info_alerta">
-                        <div class="container_logo_status">
-                            <p class="titulo_alerta">Estufa C</p>
-                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                        </div>
-                        <ul class="lista_info_alerta">
-                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
-                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
-                        </ul>
-                    </div>
+                
                     <div class="container_info">
                         <div class="container_logo_status">
                             <p class="titulo">Estufa D</p>
@@ -114,6 +89,21 @@
                 </div>
             </div>
         </div>
+        <div id="container_kpi">
+
+            <div id="container_estufas">
+                <img src="../img/icons/planta.svg" alt="">
+                <p>4/5</p>
+                <span>Estufas Ótimas</span>
+            </div>
+            <div id="container_lum_media">
+                <img src="../img/icons/raio.svg" alt="">
+                <p>23,9% de coef. variação</p>
+                <span>Elevada variação </span>
+            </div>
+        </div>
+        <div>
+           
         <div class="container_graficos_linha">
             <div class="container_do_grafico">
                 <p class="titulo_grafico">Comparativo de PPFD por Estufa</p>
@@ -124,12 +114,7 @@
                 <canvas id="grafico_tempo"></canvas>
             </div>
         </div>
-        <div class="container_graficos_linha">
-            <div class="container_do_grafico_linha">
-                <p class="titulo_grafico">Evolução do PPFD Médio (Últimos 7 dias)</p>
-                <canvas id="grafico_evolucao"></canvas>
-            </div>
-        </div>
+ 
         <div class="container_controle">
             <div class="controle">
                 <h4><img src="../img/icons/info.png">Controle Otimizado</h4>
