@@ -5,7 +5,7 @@ var empresaModel = require("../models/empresaModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-
+    
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
