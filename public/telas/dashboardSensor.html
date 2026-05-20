@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="../styles/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-    <script src="../js/dash.js"></script>
 </head>
 
-<body onload="validarSessao()" >
+<body onload="validarsessao()">
     <div id="menu">
         <ul>
             <li>
@@ -36,8 +35,8 @@
 
             <div id="container_estufas">
                 <img src="../img/icons/monitoramento-icon.png" alt="">
-                <p>Ativo</p>
-                <span>Status do sensor</span>
+                <p>14</p>
+                <span>Alertas críticos</span>
             </div>
             <div id="container_lum_media">
                 <img src="../img/icons/raio.svg" alt="">
@@ -47,13 +46,8 @@
             </div>
             <div id="container_potencia_media">
                 <img src="../img/icons/relogio.png" alt="">
-                <p>16h</p>
-                <span>Horas em Exposição à Luz</span>
-            </div>
-            <div id="container_icon_alerta">
-                <img src="../img/icons/alerta-icon.png" alt="">
-                <p>3</p>
-                <span>Alertas Fora do Eixo</span>
+                <p>16</p>
+                <span>Total de sensores</span>
             </div>
         </div>
         <div class="graficos_sensor">
@@ -62,20 +56,227 @@
                 <canvas id="grafico_pizza"></canvas>
             </div>
             <div class="box_grafico">
-                <h3>Variação da Luminosidade (Últimas 11h)</h3>
+                <h3>Sensores da estufa</h3>
                 <canvas id="grafico_sensor_linha"></canvas>
             </div>
         </div>
-        <div class="container_controle">
-            <div class="controle">
-                <h4><img src="../img/icons/Icon (3).png">Sensor Operacional</h4>
-                <p>O sensor está ativo e monitorando corretamente a luminosidade. Tempo de exposição à luz: 16 horas por dia.</p>
+
+
+        <div>
+            <div id="container_status2">
+                <h2>  Setor Sul</h2>
+
+                    <div id="container_bloco_status2">
+                        <h2>estante 1</h2>
+<div id="estante">
+ <div class="container_info_alerta2">
+                        <div class="container_logo_status">
+                            <p class="titulo_alerta">Estufa C</p>
+                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                        </div>
+                        <ul class="lista_info_alerta">
+                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa A</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa B</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa D</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 192 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                </div>
+                
             </div>
-            <div class="controle_alerta">
-                <h4><img src="../img/icons/alerta-triangular.png"> Alertas Registrados</h4>
-                <p>3 alertas de iluminação fora do eixo ideal foram registrados hoje. Verifique os horários de pico de variação.</p>
+
+            
+                    <div id="container_bloco_status2">
+                        <h2>estante 1</h2>
+<div id="estante">
+ <div class="container_info_alerta2">
+                        <div class="container_logo_status">
+                            <p class="titulo_alerta">Estufa C</p>
+                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                        </div>
+                        <ul class="lista_info_alerta">
+                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa A</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa B</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa D</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 192 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            
+
+
         </div>
+        </div>
+</div>
+                 
+                
+                   <div id="container_status2">
+                <h2>  Setor norte</h2>
+
+                    <div id="container_bloco_status2">
+                        <h2>estante 1</h2>
+<div id="estante">
+ <div class="container_info_alerta2">
+                        <div class="container_logo_status">
+                            <p class="titulo_alerta">Estufa C</p>
+                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                        </div>
+                        <ul class="lista_info_alerta">
+                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa A</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa B</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa D</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 192 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<div id="estantes">
+            
+                    <div id="container_bloco_status2">
+                        <h2>estante 1</h2>
+<div id="estante">
+ <div class="container_info_alerta2">
+                        <div class="container_logo_status">
+                            <p class="titulo_alerta">Estufa C</p>
+                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                        </div>
+                        <ul class="lista_info_alerta">
+                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa A</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 165 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa B</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                
+                    <div class="container_info2">
+                        <div class="container_logo_status">
+                            <p class="titulo">Estufa D</p>
+                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                        </div>
+                        <ul class="lista_info">
+                            <li><img src="../img/icons/raio.svg" alt=""> 192 PPFD</li>
+                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+</div>
+
+        </div>
+</div>
+                 
+                
+       
     </main>
 </body>
 <script>
@@ -125,14 +326,14 @@
     })
 
     const grafico_sensor_linha = document.getElementById('grafico_sensor_linha');
-    let valores = [180, 190, 200, 210, 230, 220, 200, 180, 190, 200, 190]
-    let valores_maximo = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
-    let valores_minimo = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+    let valores = [180, 190, 200, 90, 70, 80, 100, 160, 180, 200, 190,180, 190, 170, 160, 140]
+    let valores_maximo = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200,200, 200, 200, 200, 200, 200, 200];
+    let valores_minimo = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,100, 100, 100, 100, 100, 100, 100];
 
     new Chart(grafico_sensor_linha, {
         type: 'line',
         data: {
-            labels: ['1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h'],
+            labels: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11','s12','s13','s14','s15','s16'],
             datasets: [
                 {
                     label: 'PPFD',
