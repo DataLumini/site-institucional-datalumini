@@ -8,11 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <title>Controle Estufas</title>
+    <script src="../js/validacao.js"></script>
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="validarsessao()">
+<body onload="validarSessao(), carregarDadosSensor()">
     <div id="menu">
         <ul>
             <li>
@@ -310,3 +311,17 @@
 
 </script>
 </html>
+
+<script>
+    function carregarDadosSensor(){
+        let idUsuario = sessionStorage.ID_USUARIO;
+        fetch(`/dashboard/listar/${idUsuario}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("Erro ao carregar dados do sensor:", error);
+            });
+    }
+</script>

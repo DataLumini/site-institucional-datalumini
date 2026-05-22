@@ -131,10 +131,10 @@ function mostrarSenha() {
 
     if (passInput.type == "password") {
         passInput.type = "text";
-        passwordIcon.style.backgroundImage = "url('./img/olhoOn.svg')";
+        passwordIcon.style.backgroundImage = "url('../img/olhoOn.svg')";
     } else {
         passInput.type = "password";
-        passwordIcon.style.backgroundImage = "url('./img/olhoOff.svg')";
+        passwordIcon.style.backgroundImage = "url('../img/olhoOff.svg')";
     }
 
 }
