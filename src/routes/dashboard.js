@@ -9,4 +9,7 @@ router.get("/listar/:idUsuario", function (req, res) {
     dashboardController.listar(req, res);
 })
 
+router.get("/listar/:idUsuario", function (req, res) {
+    dashboardController.listar(req, res);
+})
 module.exports = router;
