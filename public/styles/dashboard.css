@@ -401,47 +401,79 @@ main {
     margin-left: 20px;
 }
 
-.container_do_grafico{
-    width: 40%;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.secao-grafico-desvio {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
     padding: 20px;
-    font-weight: 600;
-    font-size: 25px;
-}
-
-
-.container_do_grafico_linha{
-    width: 90%;
-    max-height: 100vh;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    font-weight: 600;
-    font-size: 25px;
-}
-
-
-.graficos_sensor{
+    margin-left: 20px;
+    margin-bottom: 30px;
     width: 100%;
-    height: 50vh;
+    max-width: 1000px; 
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box; 
+}
+
+.cabecalho-grafico h2 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #111827;
+}
+
+.cabecalho-grafico p {
+    margin: 0 0 20px 0;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.legendas-desvio {
     display: flex;
-    background-color: #FFF;
-    padding: 20px;
-    gap: 20px;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-
-.box_grafico{
+.legenda-box {
     flex: 1;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    border-radius: 20px;
-    height: 100%;
-    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
 }
 
-.box_grafico canvas{
-    width: 80% !important;
-    height: 80% !important;
+.legenda-box .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.leg-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.leg-text strong {
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.leg-critico { background-color: #FEF2F2; border-color: #FCA5A5; color: #DC2626; }
+.leg-critico .dot { background-color: #DC2626; }
+
+.leg-baixo { background-color: #EFF6FF; border-color: #93C5FD; color: #2563EB; }
+.leg-baixo .dot { background-color: #2563EB; }
+
+.leg-ideal { background-color: #F0FDF4; border-color: #86EFAC; color: #16A34A; }
+.leg-ideal .dot { background-color: #16A34A; }
+
+.leg-alto { background-color: #FEFCE8; border-color: #FDE047; color: #D97706; }
+.leg-alto .dot { background-color: #D97706; }
+
+.container-canvas-desvio {
+    position: relative;
+    height: 300px;
+    width: 100%;
 }
