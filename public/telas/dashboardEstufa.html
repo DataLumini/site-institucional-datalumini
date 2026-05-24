@@ -157,17 +157,48 @@
         </div>
         
         <div>
-           
-        <div class="container_graficos_linha">
-            <div class="container_do_grafico">
-                <p class="titulo_grafico">Comparativo de PPFD por Estufa</p>
-                <canvas id="grafico_estufas"></canvas>
-            </div>
-            <div class="container_do_grafico">
-                <p class="titulo_grafico">Tempo de Iluminação por Estufa</p>
-                <canvas id="grafico_tempo"></canvas>
+
+            <div class="secao-grafico-desvio">
+    <div class="cabecalho-grafico">
+        <h2>Desvio Médio de PPFD por Estufa</h2>
+        <p>Visualização rápida de desempenho &bull; Faixa ideal: próximo de zero</p>
+    </div>
+
+    <div class="legendas-desvio">
+        <div class="legenda-box leg-critico">
+            <span class="dot"></span>
+            <div class="leg-text">
+                <strong>CRÍTICO</strong>
+                <span>Desvio &gt; 15 PPFD</span>
             </div>
         </div>
+        <div class="legenda-box leg-baixo">
+            <span class="dot"></span>
+            <div class="leg-text">
+                <strong>BAIXO</strong>
+                <span>-1 a -15 PPFD</span>
+            </div>
+        </div>
+        <div class="legenda-box leg-ideal">
+            <span class="dot"></span>
+            <div class="leg-text">
+                <strong>IDEAL</strong>
+                <span>0 PPFD</span>
+            </div>
+        </div>
+        <div class="legenda-box leg-alto">
+            <span class="dot"></span>
+            <div class="leg-text">
+                <strong>ALTO</strong>
+                <span>+1 a +15 PPFD</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-canvas-desvio">
+        <canvas id="grafico_desvio"></canvas>
+    </div>
+</div>
  
     </main>
 
