@@ -62,62 +62,98 @@
     </div>
 </div> 
 
- <div id="container_status">
-                <h2>Status das Estufas</h2>
-                <div id="container_bloco_status">
-                     <div class="container_info_alerta">
-                        <div class="container_logo_status">
-                            <p class="titulo_alerta">Estufa C</p>
-                            <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                        </div>
-                        <ul class="lista_info_alerta">
-                            <li><img src="../img/icons/raio.svg" alt=""> 85 PPFD</li>
-                            <li><img src="../img/icons/relogio.svg" alt=""> 14h com iluminação</li>
-                        </ul>
-                    </div>
-                    <div class="container_info">
-                        <div class="container_logo_status">
-                            <p class="titulo">Estufa A</p>
-                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                        </div>
-                        <ul class="lista_info">
-                            <li><img src="../img/icons/raio.svg" alt=""> 165 PPFD</li>
-                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
-                        </ul>
-                    </div>
-                    <div class="container_info">
-                        <div class="container_logo_status">
-                            <p class="titulo">Estufa B</p>
-                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                        </div>
-                        <ul class="lista_info">
-                            <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
-                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
-                        </ul>
-                    </div>
-                
-                    <div class="container_info">
-                        <div class="container_logo_status">
-                            <p class="titulo">Estufa D</p>
-                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                        </div>
-                        <ul class="lista_info">
-                            <li><img src="../img/icons/raio.svg" alt=""> 192 PPFD</li>
-                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
-                        </ul>
-                    </div>
-                    <div class="container_info">
-                        <div class="container_logo_status">
-                            <p class="titulo">Estufa E</p>
-                            <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                        </div>
-                        <ul class="lista_info">
-                            <li><img src="../img/icons/raio.svg" alt=""> 155 PPFD</li>
-                            <li><img src="../img/icons/relogio.svg" alt=""> 16h com iluminação</li>
-                        </ul>
-                    </div>
+<div class="secao-estufas-detalhe">
+    <div class="cabecalho-estufas">
+        <h2>Estufas</h2>
+        <span>Ordenado por prioridade (críticas primeiro)</span>
+    </div>
+    
+    <div class="lista-cards-estufa">
+        <div class="card-estufa critico">
+            <div class="card-header">
+                <div class="titulos">
+                    <h3>Estufa C</h3>
+                    <p>Crítico</p>
+                </div>
+                <img src="../img/icons/alerta.png" alt="Alerta"> 
+            </div>
+            <div class="card-body">
+                <div class="linha-dado">
+                    <span>Total de Alertas</span>
+                    <strong class="texto-vermelho">10</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Setores Críticos</span>
+                    <strong class="texto-vermelho">2</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Total de Setores</span>
+                    <strong>2</strong>
                 </div>
             </div>
+            <div class="card-footer">
+                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
+                <a href="#">Ver detalhes</a>
+            </div>
+        </div>
+
+        <div class="card-estufa ativo">
+            <div class="card-header">
+                <div class="titulos">
+                    <h3>Estufa A</h3>
+                    <p>Ativo</p>
+                </div>
+                <img src="../img/icons/correto.svg" alt="Correto">
+            </div>
+            <div class="card-body">
+                <div class="linha-dado">
+                    <span>Total de Alertas</span>
+                    <strong class="texto-vermelho">6</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Setores Críticos</span>
+                    <strong class="texto-vermelho">1</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Total de Setores</span>
+                    <strong>2</strong>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
+                <a href="#">Ver detalhes</a>
+            </div>
+        </div>
+
+        <div class="card-estufa ativo">
+            <div class="card-header">
+                <div class="titulos">
+                    <h3>Estufa B</h3>
+                    <p>Ativo</p>
+                </div>
+                <img src="../img/icons/correto.svg" alt="Correto">
+            </div>
+            <div class="card-body">
+                <div class="linha-dado">
+                    <span>Total de Alertas</span>
+                    <strong class="texto-laranja">3</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Setores Críticos</span>
+                    <strong class="texto-verde">0</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Total de Setores</span>
+                    <strong>2</strong>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
+                <a href="#">Ver detalhes</a>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
         
         <div>
