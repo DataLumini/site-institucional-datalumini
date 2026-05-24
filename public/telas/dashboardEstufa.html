@@ -19,7 +19,6 @@
             <li>
                 <a href="#">
                     <img src="../img/logoVerde.png" alt="" id="logo">
-                    <img src="../img/logoverde2.svg" alt="" id="texto_logo">
                 </a>
             </li>
             <li><a href="./dashboardEstufa.html">Estufas</a></li>
@@ -28,11 +27,41 @@
         </ul>
     </div>
     <main>
-        <header>
-            <div><button>Ativo</button> <span><img src="../img/icons/Icon.png"></span></div>
-            <h1>Controle Ambiental - Arabidopsis thaliana</h1>
-            <h2>Visão Macro das Estufas Laboratoriais</h2>
-        </header>
+<header class="cabecalho-principal">
+    <div class="status-sistema">
+        <span class="badge-ativo">Sistema Ativo</span> 
+        <img src="../img/icons/Icon.png" alt="Ícone de gráfico" class="icone-tendencia">
+    </div>
+    <h1>Controle Ambiental - Arabidopsis thaliana</h1>
+    <h2>Visão Geral das Estufas</h2>
+</header>
+
+<div class="container_kpi_topo">
+    <div class="kpi_card">
+        <div class="kpi_icon kpi_red">
+            <img src="../img/aviso1.png" alt="Crítico"> 
+        </div>
+        <p class="kpi_valor">1</p>
+        <span class="kpi_label">Estufas Críticas</span>
+    </div>
+    
+    <div class="kpi_card">
+        <div class="kpi_icon kpi_orange">
+            <img src="../img/aviso2.png" alt="Aviso">
+        </div>
+        <p class="kpi_valor">19</p>
+        <span class="kpi_label">Total de Alertas</span>
+    </div>
+    
+    <div class="kpi_card">
+        <div class="kpi_icon kpi_green">
+            <img src="../img/aviso3.png" alt="Planta">
+        </div>
+        <p class="kpi_valor">2/3</p>
+        <span class="kpi_label">Estufas Ativas</span>
+    </div>
+</div> 
+
  <div id="container_status">
                 <h2>Status das Estufas</h2>
                 <div id="container_bloco_status">
@@ -90,19 +119,7 @@
                 </div>
             </div>
         </div>
-        <div id="container_kpi">
-
-            <div id="container_estufas">
-                <img src="../img/icons/planta.svg" alt="">
-                <p>4/5</p>
-                <span>Estufas Ótimas</span>
-            </div>
-            <div id="container_lum_media">
-                <img src="../img/icons/raio.svg" alt="">
-                <p>23,9% de coef. variação</p>
-                <span>Elevada variação </span>
-            </div>
-        </div>
+        
         <div>
            
         <div class="container_graficos_linha">
