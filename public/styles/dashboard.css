@@ -421,43 +421,6 @@ main {
     font-size: 25px;
 }
 
-.container_controle{
-    margin-top: 40px;
-    width: fit-content;
-    height: 10vh;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.container_controle .controle{
-    width: 45%;
-    height: fit-content;
-    padding: 15px 8px 8px 15px;
-    border: #B9F8CF solid 2px;
-    background-color: #F0FDF4;
-    color: #065F46;
-    margin-left: 20px;
-    border-radius: 20px;
-}
-
-.container_controle .controle_alerta{
-    width: 45%;
-    height: fit-content;
-    padding: 15px 8px 8px 40px;
-    color: #92400E;
-    background-color: #FFFBEB;
-    border: solid #FEE685 2px;
-    border-radius: 20px;
-}
-
-.container_controle h4{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-}
 
 .graficos_sensor{
     width: 100%;
