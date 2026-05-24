@@ -9,7 +9,7 @@
         rel="stylesheet">
     <title>Controle Estufas</title>
     <script src="../js/validacao.js"></script>
-    <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">    
+    <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -27,232 +27,243 @@
         </ul>
     </div>
     <main>
-<header class="cabecalho-principal">
-    <div class="status-sistema">
-        <span class="badge-ativo">Sistema Ativo</span> 
-        <img src="../img/icons/Icon.png" alt="Ícone de gráfico" class="icone-tendencia">
-    </div>
-    <h1>Controle Ambiental - Arabidopsis thaliana</h1>
-    <h2>Visão Geral das Estufas</h2>
-</header>
-
-<div class="container_kpi_topo">
-    <div class="kpi_card">
-        <div class="kpi_icon kpi_red">
-            <img src="../img/aviso1.png" alt="Crítico"> 
-        </div>
-        <p class="kpi_valor">1</p>
-        <span class="kpi_label">Estufas Críticas</span>
-    </div>
-    
-    <div class="kpi_card">
-        <div class="kpi_icon kpi_orange">
-            <img src="../img/aviso2.png" alt="Aviso">
-        </div>
-        <p class="kpi_valor">19</p>
-        <span class="kpi_label">Total de Alertas</span>
-    </div>
-    
-    <div class="kpi_card">
-        <div class="kpi_icon kpi_green">
-            <img src="../img/aviso3.png" alt="Planta">
-        </div>
-        <p class="kpi_valor">2/3</p>
-        <span class="kpi_label">Estufas Ativas</span>
-    </div>
-</div> 
-
-<div class="secao-estufas-detalhe">
-    <div class="cabecalho-estufas">
-        <h2>Estufas</h2>
-        <span>Ordenado por prioridade (críticas primeiro)</span>
-    </div>
-    
-    <div class="lista-cards-estufa">
-        <div class="card-estufa critico">
-            <div class="card-header">
-                <div class="titulos">
-                    <h3>Estufa C</h3>
-                    <p>Crítico</p>
-                </div>
-                <img src="../img/icons/alerta.png" alt="Alerta"> 
+        <header class="cabecalho-principal">
+            <div class="status-sistema">
+                <span class="badge-ativo">Sistema Ativo</span>
+                <img src="../img/icons/Icon.png" alt="Ícone de gráfico" class="icone-tendencia">
             </div>
-            <div class="card-body">
-                <div class="linha-dado">
-                    <span>Total de Alertas</span>
-                    <strong class="texto-vermelho">10</strong>
+            <h1>Controle Ambiental - Arabidopsis thaliana</h1>
+            <h2>Visão Geral das Estufas</h2>
+        </header>
+
+        <div class="container_kpi_topo">
+            <div class="kpi_card">
+                <div class="kpi_icon kpi_red">
+                    <img src="../img/aviso1.png" alt="Crítico">
                 </div>
-                <div class="linha-dado">
-                    <span>Setores Críticos</span>
-                    <strong class="texto-vermelho">2</strong>
-                </div>
-                <div class="linha-dado">
-                    <span>Total de Setores</span>
-                    <strong>2</strong>
-                </div>
+                <p class="kpi_valor">1</p>
+                <span class="kpi_label">Estufas Críticas</span>
             </div>
-            <div class="card-footer">
-                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                <a href="#">Ver detalhes</a>
+
+            <div class="kpi_card">
+                <div class="kpi_icon kpi_orange">
+                    <img src="../img/aviso2.png" alt="Aviso">
+                </div>
+                <p class="kpi_valor">19</p>
+                <span class="kpi_label">Total de Alertas</span>
+            </div>
+
+            <div class="kpi_card">
+                <div class="kpi_icon kpi_green">
+                    <img src="../img/aviso3.png" alt="Planta">
+                </div>
+                <p class="kpi_valor">2/3</p>
+                <span class="kpi_label">Estufas Ativas</span>
             </div>
         </div>
 
-        <div class="card-estufa ativo">
-            <div class="card-header">
-                <div class="titulos">
-                    <h3>Estufa A</h3>
-                    <p>Ativo</p>
-                </div>
-                <img src="../img/icons/correto.svg" alt="Correto">
+        <div class="secao-estufas-detalhe">
+            <div class="cabecalho-estufas">
+                <h2>Estufas</h2>
+                <span>Ordenado por prioridade (críticas primeiro)</span>
             </div>
-            <div class="card-body">
-                <div class="linha-dado">
-                    <span>Total de Alertas</span>
-                    <strong class="texto-vermelho">6</strong>
+
+            <div class="lista-cards-estufa">
+                <div class="card-estufa critico">
+                    <div class="card-header">
+                        <div class="titulos">
+                            <h3>Estufa C</h3>
+                            <p>Crítico</p>
+                        </div>
+                        <img src="../img/icons/alerta.png" alt="Alerta">
+                    </div>
+                    <div class="card-body">
+                        <div class="linha-dado">
+                            <span>Total de Alertas</span>
+                            <strong class="texto-vermelho">10</strong>
+                        </div>
+                        <div class="linha-dado">
+                            <span>Setores Críticos</span>
+                            <strong class="texto-vermelho">2</strong>
+                        </div>
+                        <div class="linha-dado">
+                            <span>Total de Setores</span>
+                            <strong>2</strong>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
+                        <a href="#">Ver detalhes</a>
+                    </div>
                 </div>
-                <div class="linha-dado">
-                    <span>Setores Críticos</span>
-                    <strong class="texto-vermelho">1</strong>
+
+                <div class="card-estufa ativo">
+                    <div class="card-header">
+                        <div class="titulos">
+                            <h3>Estufa A</h3>
+                            <p>Ativo</p>
+                        </div>
+                        <img src="../img/icons/correto.svg" alt="Correto">
+                    </div>
+                    <div class="card-body">
+                        <div class="linha-dado">
+                            <span>Total de Alertas</span>
+                            <strong class="texto-vermelho">6</strong>
+                        </div>
+                        <div class="linha-dado">
+                            <span>Setores Críticos</span>
+                            <strong class="texto-vermelho">1</strong>
+                        </div>
+                        <div class="linha-dado">
+                            <span>Total de Setores</span>
+                            <strong>2</strong>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
+                        <a href="#">Ver detalhes</a>
+                    </div>
                 </div>
-                <div class="linha-dado">
-                    <span>Total de Setores</span>
-                    <strong>2</strong>
+
+                <div class="card-estufa ativo">
+                    <div class="card-header">
+                        <div class="titulos">
+                            <h3>Estufa B</h3>
+                            <p>Ativo</p>
+                        </div>
+                        <img src="../img/icons/correto.svg" alt="Correto">
+                    </div>
+                    <div class="card-body">
+                        <div class="linha-dado">
+                            <span>Total de Alertas</span>
+                            <strong class="texto-laranja">3</strong>
+                        </div>
+                        <div class="linha-dado">
+                            <span>Setores Críticos</span>
+                            <strong class="texto-verde">0</strong>
+                        </div>
+                        <div class="linha-dado">
+                            <span>Total de Setores</span>
+                            <strong>2</strong>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
+                        <a href="#">Ver detalhes</a>
+                    </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                <a href="#">Ver detalhes</a>
-            </div>
+        </div>
         </div>
 
-        <div class="card-estufa ativo">
-            <div class="card-header">
-                <div class="titulos">
-                    <h3>Estufa B</h3>
-                    <p>Ativo</p>
-                </div>
-                <img src="../img/icons/correto.svg" alt="Correto">
-            </div>
-            <div class="card-body">
-                <div class="linha-dado">
-                    <span>Total de Alertas</span>
-                    <strong class="texto-laranja">3</strong>
-                </div>
-                <div class="linha-dado">
-                    <span>Setores Críticos</span>
-                    <strong class="texto-verde">0</strong>
-                </div>
-                <div class="linha-dado">
-                    <span>Total de Setores</span>
-                    <strong>2</strong>
-                </div>
-            </div>
-            <div class="card-footer">
-                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                <a href="#">Ver detalhes</a>
-            </div>
-        </div>
-    </div>
-</div>
-        </div>
-        
         <div>
 
             <div class="secao-grafico-desvio">
-    <div class="cabecalho-grafico">
-        <h2>Desvio Médio de PPFD por Estufa</h2>
-        <p>Visualização rápida de desempenho &bull; Faixa ideal: próximo de zero</p>
-    </div>
+                <div class="cabecalho-grafico">
+                    <h2>Desvio Médio de PPFD por Estufa</h2>
+                    <p>Visualização rápida de desempenho &bull; Faixa ideal: próximo de zero</p>
+                </div>
 
-    <div class="legendas-desvio">
-        <div class="legenda-box leg-critico">
-            <span class="dot"></span>
-            <div class="leg-text">
-                <strong>CRÍTICO</strong>
-                <span>Desvio &gt; 15 PPFD</span>
-            </div>
-        </div>
-        <div class="legenda-box leg-baixo">
-            <span class="dot"></span>
-            <div class="leg-text">
-                <strong>BAIXO</strong>
-                <span>-1 a -15 PPFD</span>
-            </div>
-        </div>
-        <div class="legenda-box leg-ideal">
-            <span class="dot"></span>
-            <div class="leg-text">
-                <strong>IDEAL</strong>
-                <span>0 PPFD</span>
-            </div>
-        </div>
-        <div class="legenda-box leg-alto">
-            <span class="dot"></span>
-            <div class="leg-text">
-                <strong>ALTO</strong>
-                <span>+1 a +15 PPFD</span>
-            </div>
-        </div>
-    </div>
+                <div class="legendas-desvio">
+                    <div class="legenda-box leg-critico">
+                        <span class="dot"></span>
+                        <div class="leg-text">
+                            <strong>CRÍTICO</strong>
+                            <span>Desvio &gt; 15 PPFD</span>
+                        </div>
+                    </div>
+                    <div class="legenda-box leg-baixo">
+                        <span class="dot"></span>
+                        <div class="leg-text">
+                            <strong>BAIXO</strong>
+                            <span>-1 a -15 PPFD</span>
+                        </div>
+                    </div>
+                    <div class="legenda-box leg-ideal">
+                        <span class="dot"></span>
+                        <div class="leg-text">
+                            <strong>IDEAL</strong>
+                            <span>0 PPFD</span>
+                        </div>
+                    </div>
+                    <div class="legenda-box leg-alto">
+                        <span class="dot"></span>
+                        <div class="leg-text">
+                            <strong>ALTO</strong>
+                            <span>+1 a +15 PPFD</span>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="container-canvas-desvio">
-        <canvas id="grafico_desvio"></canvas>
-    </div>
-</div>
- 
+                <div class="container-canvas-desvio">
+                    <canvas id="grafico_desvio"></canvas>
+                </div>
+            </div>
+
     </main>
 
 </body>
 
 <script>
-    let valores_maximo = [200, 200, 200, 200, 200, 200, 200];
-    let valores_minimo = [100, 100, 100, 100, 100, 100, 100];
-    let valores_atual = [165, 178, 85, 192, 155];
+    const ctx_desvio = document.getElementById('grafico_desvio').getContext('2d');
 
-    let cores_barras_ppfd = [];
-    for (let i = 0; i < valores_atual.length; i++) {
-        const ppfd = valores_atual[i];
-        if (ppfd >= 100 && ppfd <= 200) {
-            cores_barras_ppfd.push('#ff9900');
-        } else {
-            cores_barras_ppfd.push('#dc3545');
-        }
-    }
+    const nomes_estufas = ['Estufa A', 'Estufa B', 'Estufa C'];
+    const valores_desvio = [12, 20, -4];
 
-    const grafico_estufas = document.getElementById('grafico_estufas');
+    let cores_barras = valores_desvio.map(valor => {
+        if (valor > 15 || valor < -15) return '#DC2626';
+        if (valor > 0 && valor <= 15) return '#D97706';
+        if (valor < 0 && valor >= -15) return '#2563EB';
+        return '#10B981';
+    });
 
-    new Chart(grafico_estufas, {
+    const linha_superior = [15, 15, 15];
+    const linha_zero = [0, 0, 0];
+    const linha_inferior = [-15, -15, -15];
+
+    new Chart(ctx_desvio, {
         type: 'bar',
         data: {
-            labels: ['Estufa A', 'Estufa B', 'Estufa C', 'Estufa D', 'Estufa E'],
+            labels: nomes_estufas,
             datasets: [
                 {
                     type: 'bar',
-                    label: 'PPFD a cada 5 minutos',
-                    data: valores_atual,
-                    backgroundColor: cores_barras_ppfd, 
-                    borderRadius: 10,
-                    barPercentage: 0.3,
-                    categoryPercentage: 1,
-                    borderWidth: 1,
+                    label: 'Desvio Atual',
+                    data: valores_desvio,
+                    backgroundColor: cores_barras,
+                    borderRadius: 5,
+                    barPercentage: 0.15,
+                    order: 3
+                },
+                {
+                    type: 'line',
+                    label: 'Limite Superior (+15)',
+                    data: linha_superior,
+                    borderColor: '#DC2626',
+                    borderDash: [4, 4],
+                    borderWidth: 1.5,
+                    pointRadius: 0,
+                    fill: false,
+                    order: 1
+                },
+                {
+                    type: 'line',
+                    label: 'Linha Ideal (0)',
+                    data: linha_zero,
+                    borderColor: '#10B981',
+                    borderDash: [4, 4],
+                    borderWidth: 1.5,
+                    pointRadius: 0,
+                    fill: false,
                     order: 2
                 },
                 {
                     type: 'line',
-                    label: 'Limite Máximo (200)',
-                    data: valores_maximo,
-                    borderColor: 'red',
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    fill: false,
-                    order: 1
-                },
-                {
-                    type: 'line',
-                    label: 'Limite Mínimo (100)',
-                    data: valores_minimo,
-                    borderColor: 'green',
-                    borderDash: [5, 5],
+                    label: 'Limite Inferior (-15)',
+                    data: linha_inferior,
+                    borderColor: '#DC2626',
+                    borderDash: [4, 4],
+                    borderWidth: 1.5,
                     pointRadius: 0,
                     fill: false,
                     order: 1
@@ -260,119 +271,27 @@
             ]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
-                    min: 0,
-                    max: 250,
+                    min: -30,
+                    max: 30,
+                    ticks: {
+                        stepSize: 15
+                    },
                     title: {
                         display: true,
-                        text: 'PPFD'
+                        text: 'Desvio PPFD',
+                        font: { weight: 'bold' }
+                    },
+                    grid: {
+                        color: '#F3F4F6'
                     }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-
-    const grafico_tempo = document.getElementById('grafico_tempo');
-
-    let valores_tempo = [16, 16, 14, 16, 16]; 
-
-    let cores_barras_tempo = [];
-    for (let i = 0; i < valores_tempo.length; i++) {
-        const tempo = valores_tempo[i];
-        if (tempo >= 16) {
-            cores_barras_tempo.push('#0066ff');
-        } else {
-            cores_barras_tempo.push('#dc3545');
-        }
-    }
-
-    new Chart(grafico_tempo, {
-        type: 'bar',
-        data: {
-            labels: ['Estufa A', 'Estufa B', 'Estufa C', 'Estufa D', 'Estufa E'],
-            datasets: [{
-                label: 'Tempo de Iluminação (Horas)',
-                data: valores_tempo,
-                backgroundColor: cores_barras_tempo, 
-                borderRadius: 10,
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            scales: {
+                },
                 x: {
-                    min: 0,
-                    max: 24,
-                    title: {
-                        display: true,
-                        text: 'Horas (h)'
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-
-    const grafico_evolucao = document.getElementById('grafico_evolucao');
-    let valores = [160, 180, 170, 160, 180, 170, 170]
-
-    new Chart(grafico_evolucao, {
-        type: 'line',
-        data: {
-            labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-            datasets: [
-                {
-                    type: 'line',
-                    label: 'PPFD',
-                    data: valores,
-                    borderColor: 'blue',
-                    borderWidth: 3,
-                    barPercentage: 0.3,
-                    categoryPercentage: 1,
-                    order: 2,
-                    pointRadius: 0
-                },
-                {
-                    type: 'line',
-                    label: 'Limite Máximo (200)',
-                    data: valores_maximo,
-                    borderColor: 'red',
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    fill: false,
-                    order: 1
-                },
-                {
-                    type: 'line',
-                    label: 'Limite Mínimo (100)',
-                    data: valores_minimo,
-                    borderColor: 'green',
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    fill: false,
-                    order: 1
-                }
-            ]
-        },
-        options: {
-            scales: {
-                y: {
-                    min: 80,
-                    max: 210,
-                    title: {
-                        display: true,
-                        text: 'PPFD'
-                    }
+                    grid: { display: false },
+                    ticks: { font: { weight: 'bold' } }
                 }
             },
             plugins: {
@@ -384,10 +303,11 @@
     });
 
 </script>
+
 </html>
 
 <script>
-    function carregarDadosSensor(){
+    function carregarDadosSensor() {
         let idUsuario = sessionStorage.ID_USUARIO;
         fetch(`/dashboard/listar/${idUsuario}`)
             .then(response => response.json())
