@@ -42,10 +42,6 @@ li a:hover {
     width: 50px;
 }
 
-#texto_logo {
-    height: 50px;
-    width: 80px;
-}
 
 .cabecalho-principal {
     width: 100%;
@@ -139,49 +135,6 @@ li a:hover {
     font-weight: 500;
 }
 
-.filtro_estufas{
-    width: 90%;
-    height: 12vh;
-    padding: 15px;
-    border-radius: 20px;
-    margin-left: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.filtro_estufa .title{
-    display: flex;
-    flex-direction: column;
-}
-
-.title span{
-    font-weight: bold;
-    font-size: 23px;
-}
-
-.filtro_estufas button{
-    width: fit-content;
-    padding: 10px;
-    height: 35px;
-    margin-top: 16px;
-    background-color: #D1FAE5;
-    color: #065F46;
-    font-weight: 500;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-
-}
-
-.filtro_estufas button:active{
-    background-color:#3B82F6;
-    color: #FFF;
-}
-
-.filtro_estufas button.alerta{
-    background-color: #FEF3C7;
-    color: #92400E;
-}
-
 main {
     margin-left: 12dvw;
     width: 80%;
@@ -191,83 +144,7 @@ main {
     gap: 20px;
 }
 
-#container_kpi {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    width: 85dvw;
-}
-
-
-
-#container_estufas,
-#container_potencia_media,
-#container_icon_alerta,
-#container_lum_media {
-    width: 20%;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 15px;
-    border-radius: 15px;
-    padding: 30px;
-    padding-bottom: 20px;
-    font-size: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    margin-left: 20px;
-}
-
-#container_estufas p,
-#container_lum_media p,
-#container_potencia_media p,
-#container_icon_alerta p,
-#container_lum_media p {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-}
-
-#container_estufas img {
-    height: 30px;
-    width: 30px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #00C950;
-}
-
-#container_lum_media img {
-    height: 30px;
-    width: 30px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #FE9A00;
-}
-
-#container_potencia_media img {
-    height: 30px;
-    width: 30px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #2B7FFF;
-}
-
-#container_icon_alerta img {
-    height: 30px;
-    width: 30px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color:  #ff0000;
-}
-
-#medida{
-    margin-top: none;
-    font-size: 20px;
-    color:#527a7a;
-}
-
+ 
 .secao-estufas-detalhe {
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
@@ -394,86 +271,3 @@ main {
     text-decoration: underline;
 }
 
-.container_graficos_linha{
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    margin-left: 20px;
-}
-
-.secao-grafico-desvio {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    padding: 20px;
-    margin-left: 20px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 1000px; 
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box; 
-}
-
-.cabecalho-grafico h2 {
-    margin: 0 0 5px 0;
-    font-size: 18px;
-    color: #111827;
-}
-
-.cabecalho-grafico p {
-    margin: 0 0 20px 0;
-    font-size: 12px;
-    color: #6B7280;
-}
-
-.legendas-desvio {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.legenda-box {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: 1px solid transparent;
-}
-
-.legenda-box .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-top: 5px;
-}
-
-.leg-text {
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-}
-
-.leg-text strong {
-    font-size: 11px;
-    text-transform: uppercase;
-}
-
-.leg-critico { background-color: #FEF2F2; border-color: #FCA5A5; color: #DC2626; }
-.leg-critico .dot { background-color: #DC2626; }
-
-.leg-baixo { background-color: #EFF6FF; border-color: #93C5FD; color: #2563EB; }
-.leg-baixo .dot { background-color: #2563EB; }
-
-.leg-ideal { background-color: #F0FDF4; border-color: #86EFAC; color: #16A34A; }
-.leg-ideal .dot { background-color: #16A34A; }
-
-.leg-alto { background-color: #FEFCE8; border-color: #FDE047; color: #D97706; }
-.leg-alto .dot { background-color: #D97706; }
-
-.container-canvas-desvio {
-    position: relative;
-    height: 300px;
-    width: 100%;
-}
