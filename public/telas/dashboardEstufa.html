@@ -4,268 +4,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/dashboard.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <title>Controle Estufas</title>
-    <script src="../js/validacao.js"></script>
+    <title>Controle Sensor</title>
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="../js/validacao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 
-<body onload="validarSessao(), carregarDadosSensor()">
+<body onload="validarSessao(), carregarDadosEstufa()">
     <div id="menu">
         <ul>
             <li>
                 <a href="#">
                     <img src="../img/logoVerde.png" alt="" id="logo">
+                    <img src="../img/logoverde2.svg" alt="" id="texto_logo">
                 </a>
             </li>
-            <li><a href="./dashboardEstufa.html">Estufas</a></li>
-            <li><a href="./dashboardSensor.html">Sensores</a></li>
+            <li><a href="./dashboardPrincipal.html">Visão Geral</a></li>
+            <li><a href="./dashboardEstufa.html">Estufa</a></li>
             <li><a href="./index.html">Sair</a></li>
         </ul>
     </div>
     <main>
-        <header class="cabecalho-principal">
-            <div class="status-sistema">
-                <span class="badge-ativo">Sistema Ativo</span>
-                <img src="../img/icons/Icon.png" alt="Ícone de gráfico" class="icone-tendencia">
-            </div>
-            <h1>Controle Ambiental - Arabidopsis thaliana</h1>
-            <h2>Visão Geral das Estufas</h2>
+        <header>
+            <div><button>Ativo</button> <span><img src="../img/icons/moritoramento.png"></span></div>
+            <h1>Sensor 1 - Monitoramento de Luminosidade</h1>
+            <h2>Última atualização 22/04 às 13:09</h2>
         </header>
+        <div id="container_kpi">
 
-        <div class="container_kpi_topo">
-            <div class="kpi_card">
-                <div class="kpi_icon kpi_red">
-                    <img src="../img/aviso1.png" alt="Crítico">
-                </div>
-                <p class="kpi_valor">1</p>
-                <span class="kpi_label">Estufas Críticas</span>
+            <div id="container_estufas">
+                <img src="../img/icons/monitoramento-icon.png" alt="">
+                <p>5</p>
+                <span>Alertas críticos</span>
             </div>
-
-            <div class="kpi_card">
-                <div class="kpi_icon kpi_orange">
-                    <img src="../img/aviso2.png" alt="Aviso">
-                </div>
-                <p class="kpi_valor">19</p>
-                <span class="kpi_label">Total de Alertas</span>
+            <div id="container_lum_media">
+                <img src="../img/icons/raio.svg" alt="">
+                <p>7,6% de coef. variação</p>
+                <span></span>
+                <span id="medida">variação ideal</span>
             </div>
-
-            <div class="kpi_card">
-                <div class="kpi_icon kpi_green">
-                    <img src="../img/aviso3.png" alt="Planta">
-                </div>
-                <p class="kpi_valor">2/3</p>
-                <span class="kpi_label">Estufas Ativas</span>
+            <div id="container_potencia_media">
+                <img src="../img/icons/relogio.png" alt="">
+                <p>16</p>
+                <span>Total de sensores</span>
+            </div>
+        </div>
+        <div class="graficos_sensor">
+            <div class="box_grafico">
+                <h3>Distribuição do Tempo Luz no Dia</h3>
+                <canvas id="grafico_pizza"></canvas>
+            </div>
+            <div class="box_grafico">
+                <h3>Sensores da estufa</h3>
+                <canvas id="grafico_sensor_linha"></canvas>
             </div>
         </div>
 
-        <div class="secao-estufas-detalhe">
-            <div class="cabecalho-estufas">
-                <h2>Estufas</h2>
-                <span>Ordenado por prioridade (críticas primeiro)</span>
-            </div>
-
-            <div class="lista-cards-estufa">
-                <div class="card-estufa critico">
-                    <div class="card-header">
-                        <div class="titulos">
-                            <h3>Estufa C</h3>
-                            <p>Crítico</p>
-                        </div>
-                        <img src="../img/icons/alerta.png" alt="Alerta">
-                    </div>
-                    <div class="card-body">
-                        <div class="linha-dado">
-                            <span>Total de Alertas</span>
-                            <strong class="texto-vermelho">10</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Setores Críticos</span>
-                            <strong class="texto-vermelho">2</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Total de Setores</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="#">Ver detalhes</a>
-                    </div>
-                </div>
-
-                <div class="card-estufa ativo">
-                    <div class="card-header">
-                        <div class="titulos">
-                            <h3>Estufa A</h3>
-                            <p>Ativo</p>
-                        </div>
-                        <img src="../img/icons/correto.svg" alt="Correto">
-                    </div>
-                    <div class="card-body">
-                        <div class="linha-dado">
-                            <span>Total de Alertas</span>
-                            <strong class="texto-vermelho">6</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Setores Críticos</span>
-                            <strong class="texto-vermelho">1</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Total de Setores</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="#">Ver detalhes</a>
-                    </div>
-                </div>
-
-                <div class="card-estufa ativo">
-                    <div class="card-header">
-                        <div class="titulos">
-                            <h3>Estufa B</h3>
-                            <p>Ativo</p>
-                        </div>
-                        <img src="../img/icons/correto.svg" alt="Correto">
-                    </div>
-                    <div class="card-body">
-                        <div class="linha-dado">
-                            <span>Total de Alertas</span>
-                            <strong class="texto-laranja">3</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Setores Críticos</span>
-                            <strong class="texto-verde">0</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Total de Setores</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="#">Ver detalhes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
 
         <div>
+            <div id="container_status2">
+                <h2> Setor Sul</h2>
 
-            <div class="secao-grafico-desvio">
-                <div class="cabecalho-grafico">
-                    <h2>Desvio Médio de PPFD por Estufa</h2>
-                    <p>Visualização rápida de desempenho &bull; Faixa ideal: próximo de zero</p>
-                </div>
+                <div class="container_bloco">
+                    <div id="container_bloco_status2">
+                        <h2>estante 1</h2>
+                        <div id="estante">
+                            <div class="container_info_alerta2">
+                                <div class="container_logo_status">
+                                    <p class="titulo_alerta">Prateleira 1</p>
+                                    <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 90 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #1</li>
+                                    </ul>
 
-                <div class="legendas-desvio">
-                    <div class="legenda-box leg-critico">
-                        <span class="dot"></span>
-                        <div class="leg-text">
-                            <strong>CRÍTICO</strong>
-                            <span>Desvio &gt; 15 PPFD</span>
-                        </div>
-                    </div>
-                    <div class="legenda-box leg-baixo">
-                        <span class="dot"></span>
-                        <div class="leg-text">
-                            <strong>BAIXO</strong>
-                            <span>-1 a -15 PPFD</span>
-                        </div>
-                    </div>
-                    <div class="legenda-box leg-ideal">
-                        <span class="dot"></span>
-                        <div class="leg-text">
-                            <strong>IDEAL</strong>
-                            <span>0 PPFD</span>
-                        </div>
-                    </div>
-                    <div class="legenda-box leg-alto">
-                        <span class="dot"></span>
-                        <div class="leg-text">
-                            <strong>ALTO</strong>
-                            <span>+1 a +15 PPFD</span>
-                        </div>
-                    </div>
-                </div>
+                                </ul>
+                            </div>
+                            <div class="container_info2">
+                                <div class="container_logo_status">
+                                    <p class="titulo">Prateleira 2</p>
+                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 165 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #2</li>
+                                    </ul>
 
-                <div class="container-canvas-desvio">
-                    <canvas id="grafico_desvio"></canvas>
+                                </ul>
+                            </div>
+                            <div class="container_info2">
+                                <div class="container_logo_status">
+                                    <p class="titulo">Prateleira 3</p>
+                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt=""> Sensor #3</li>
+                                    </ul>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="container_info2">
+                                <div class="container_logo_status">
+                                    <p class="titulo">prateleira 4</p>
+                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 192 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #4</li>
+                                    </ul>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="container_bloco_status2">
+                        <h2>estante 2</h2>
+                        <div id="estante">
+                            <div class="container_info_alerta2">
+                                <div class="container_logo_status">
+                                    <p class="titulo_alerta">Prateleira 1</p>
+                                    <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 240 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt=""> Sensor #1</li>
+                                    </ul>
+                                    
+                                </ul>
+                            </div>
+                            <div class="container_info2">
+                                <div class="container_logo_status">
+                                    <p class="titulo">Prateleira 2</p>
+                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 105 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt=""> Sensor #6</li>
+                                    </ul>
+                                    
+                                </ul>
+                            </div>
+                            <div class="container_info2">
+                                <div class="container_logo_status">
+                                    <p class="titulo">Prateleira 3</p>
+                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 157 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #7</li>
+                                    </ul>
+
+                                </ul>
+                            </div>
+
+                            <div class="container_info_alerta2">
+                                <div class="container_logo_status">
+                                    <p class="titulo">Prateleira 4</p>
+                                    <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                                </div>
+                                <ul class="lista_info2">
+                                    <li><img src="../img/icons/raio.svg" alt=""> 91 PPFD</li>
+                                    <ul class="lista">
+                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #8</li>
+                                    </ul>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </div>
+        </div>
+
+
+        <div id="container_status2">
+            <h2> Setor norte</h2>
+            <div class="container_bloco">
+                <div id="container_bloco_status2">
+                    <h2>estante 1</h2>
+                    <div id="estante">
+                        <div class="container_info2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 1</p>
+                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 110 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt=""> Sensor #1</li>
+                                </ul>
+
+                            </ul>
+                        </div>
+                        <div class="container_info_alerta2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 2</p>
+                                <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 270 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #2</li></ul>
+                            </ul>
+                        </div>
+                        <div class="container_info_alerta2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 3</p>
+                                <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 230 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt=""> Sensor #3</li>
+                                </ul>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="container_info2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 4</p>
+                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 122 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt=""> Sensor #4</li>
+                                </ul>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="container_bloco_status2">
+                    <h2>estante 1</h2>
+                    <div id="estante">
+                        <div class="container_info2">
+                            <div class="container_logo_status">
+                                <p class="titulo_alerta">Prateleira 1</p>
+                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 182 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #5</li>
+                                </ul>
+                                
+                            </ul>
+                        </div>
+                        <div class="container_info2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 2</p>
+                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 168 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #6</li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="container_info2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 3</p>
+                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 178 PPFD</li>
+                                <ul class="lista"><li><img src="../img/icons/relogio.svg" alt="">Sensor #7</li></ul>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="container_info2">
+                            <div class="container_logo_status">
+                                <p class="titulo">Prateleira 4</p>
+                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                            </div>
+                            <ul class="lista_info2">
+                                <li><img src="../img/icons/raio.svg" alt=""> 150 PPFD</li>
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #8</li>
+                                </ul>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+
 
     </main>
-
 </body>
-
 <script>
-    const ctx_desvio = document.getElementById('grafico_desvio').getContext('2d');
+    const grafico_pizza = document.getElementById('grafico_pizza');
 
-    const nomes_estufas = ['Estufa A', 'Estufa B', 'Estufa C'];
-    const valores_desvio = [12, 20, -4];
-
-    let cores_barras = valores_desvio.map(valor => {
-        if (valor > 15 || valor < -15) return '#DC2626';
-        if (valor > 0 && valor <= 15) return '#D97706';
-        if (valor < 0 && valor >= -15) return '#2563EB';
-        return '#10B981';
-    });
-
-    const linha_superior = [15, 15, 15];
-    const linha_zero = [0, 0, 0];
-    const linha_inferior = [-15, -15, -15];
-
-    new Chart(ctx_desvio, {
-        type: 'bar',
+    new Chart(grafico_pizza, {
+        type: 'pie',
         data: {
-            labels: nomes_estufas,
+            labels: ['Tempo com exposição à luz', 'Tempo sem exposição à luz'],
             datasets: [
                 {
-                    type: 'bar',
-                    label: 'Desvio Atual',
-                    data: valores_desvio,
-                    backgroundColor: cores_barras,
-                    borderRadius: 5,
-                    barPercentage: 0.15,
-                    order: 3
+                    type: 'pie',
+                    data: [16, 8],
+                    backgroundColor: ['#ffcc00', ' #000099']
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        pointStyle: 'circle',
+                        padding: 15,
+                        boxWidth: 10,
+                        boxHeight: 10
+                    }
+                },
+                datalabels: {
+                    color: '#333',
+                    font: {
+                        weight: 'bold',
+                        size: 18
+                    },
+                    formatter: (value) => value + 'h',
+                    anchor: 'end',
+                    align: 'end',
+                    offset: 10,
+                    clip: false
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    })
+
+    const grafico_sensor_linha = document.getElementById('grafico_sensor_linha');
+    let valores = [90, 165, 178, 192, 240, 105, 157, 91, 110, 270, 230, 122, 182, 168, 178, 150]
+    let valores_maximo = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
+    let valores_minimo = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+
+    new Chart(grafico_sensor_linha, {
+        type: 'line',
+        data: {
+            labels: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14', 's15', 's16'],
+            datasets: [
+                {
+                    label: 'PPFD',
+                    data: valores,
+                    borderColor: '#3b82f6',
+                    backgroundColor: '#3b82f6',
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderWidth: 2,
+                    order: 2
+
                 },
                 {
                     type: 'line',
-                    label: 'Limite Superior (+15)',
-                    data: linha_superior,
-                    borderColor: '#DC2626',
-                    borderDash: [4, 4],
-                    borderWidth: 1.5,
+                    label: 'Limite Máximo (200)',
+                    data: valores_maximo,
+                    borderColor: 'red',
+                    borderDash: [5, 5],
                     pointRadius: 0,
-                    fill: false,
+                    borderWidth: 2,
                     order: 1
                 },
                 {
                     type: 'line',
-                    label: 'Linha Ideal (0)',
-                    data: linha_zero,
-                    borderColor: '#10B981',
-                    borderDash: [4, 4],
-                    borderWidth: 1.5,
+                    label: 'Limite Mínimo (100)',
+                    data: valores_minimo,
+                    borderColor: 'green',
+                    borderDash: [5, 5],
                     pointRadius: 0,
-                    fill: false,
-                    order: 2
-                },
-                {
-                    type: 'line',
-                    label: 'Limite Inferior (-15)',
-                    data: linha_inferior,
-                    borderColor: '#DC2626',
-                    borderDash: [4, 4],
-                    borderWidth: 1.5,
-                    pointRadius: 0,
-                    fill: false,
+                    borderWidth: 2,
                     order: 1
                 }
             ]
@@ -273,43 +415,44 @@
         options: {
             responsive: true,
             maintainAspectRatio: false,
+
+            layout: {
+                padding: 10
+            },
+
             scales: {
                 y: {
-                    min: -30,
-                    max: 30,
+                    min: 0,
+                    max: 400,
                     ticks: {
-                        stepSize: 15
+                        stepSize: 100
                     },
                     title: {
                         display: true,
-                        text: 'Desvio PPFD',
-                        font: { weight: 'bold' }
+                        text: 'PPFD'
                     },
                     grid: {
-                        color: '#F3F4F6'
+                        borderDash: [4, 4] // 👈 pontilhado no eixo Y
                     }
                 },
+
                 x: {
-                    grid: { display: false },
-                    ticks: { font: { weight: 'bold' } }
+                    grid: {
+                        borderDash: [4, 4] // 👈 pontilhado no eixo X
+                    }
                 }
             },
+
             plugins: {
                 legend: {
                     display: false
                 }
             }
         }
-    });
-
-</script>
-
-</html>
-
-<script>
-    function carregarDadosSensor() {
+    })
+       function carregarDadosEstufa(){
         let idUsuario = sessionStorage.ID_USUARIO;
-        fetch(`/dashboard/listar/${idUsuario}`)
+        fetch(`/dashboard/obterDados/${idUsuario}/1`) 
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -317,5 +460,8 @@
             .catch(error => {
                 console.error("Erro ao carregar dados do sensor:", error);
             });
-    }
+    };
+
 </script>
+
+</html>

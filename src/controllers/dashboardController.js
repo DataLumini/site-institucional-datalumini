@@ -18,12 +18,13 @@ function listar(req, res) {
 }
 function obter_dados(req, res) {
     var idUsuario = req.params.idUsuario;
+    var idEstufa = req.params.idEstufa;
 
-    if (idUsuario == undefined) {
-        res.status(400).send("O ID do usuário está undefined!");
+    if (idUsuario == undefined || idEstufa == undefined) {
+        res.status(400).send("Os IDs do usuário e da estufa estão undefined!");
     } else {
 
-        dashboardModel.listar(idUsuario)
+        dashboardModel.obter_dados(idUsuario, idEstufa)
             .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {

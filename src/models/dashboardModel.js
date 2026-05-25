@@ -10,12 +10,12 @@ function listar(idUsuario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function obter_dados(idUsuario) {
-    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idUsuario);
+function obter_dados(idUsuario, idEstufa) {
+    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idUsuario, idEstufa);
     var instrucaoSql = `
           SELECT * 
         FROM vw_leituras_por_estufa 
-        WHERE idUsuario = ${idUsuario};
+        WHERE idUsuario = ${idUsuario} AND idEstufa = ${idEstufa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
