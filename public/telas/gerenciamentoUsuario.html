@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/gerenciamentoUsuario.css">
     <link rel="stylesheet" href="../styles/menu.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <title>Gerenciamento de Usuários</title>
 </head>
+
 <body>
     <header id="menu">
         <ul>
@@ -22,5 +25,93 @@
             <li><a href="./gerenciamentoUsuario.html">Gerenciamento de Usuários</a></li>
         </ul>
     </header>
+    <main>
+        <section id="secao_gerenciamento_usuarios">
+
+            <div id="titulo_secao">
+                <h1>Gerenciamento de Usuários</h1>
+                <p>Vincule funcionários às estufas que eles devem monitorar</p>
+            </div>
+            <div id="form_vinculo">
+                <div id="funcionario_estufa">
+                    <div>
+                        <p id="funcionario_estufa_titulo_numero">
+                            Funcionários (5)
+                        </p>
+                    </div>
+
+                    <div id="funcionario_estufa_lista">
+                        <button class="funcionario_estufa_item">Gabriel Farina</button>
+                        <button class="funcionario_estufa_item">Guilherme Silva</button>
+                        <button class="funcionario_estufa_item">Kaue Tamura</button>
+                        <button class="funcionario_estufa_item">Maria Silva</button>
+                        <button class="funcionario_estufa_item">João Pereira</button>
+                        
+                    </div>
+                </div>
+                <div id="estufa_div">
+                    <div>
+                        <p id="estufa_titulo_numero">
+                            Estufas (3)
+                        </p>
+                    </div>
+
+                    <div id="estufa_lista">
+                        <button class="estufa_item">Estufa A</button>
+                        <button class="estufa_item">Estufa B</button>
+                        <button class="estufa_item">Estufa C</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="secao_resumo_vinculos">
+            <div id="titulo_vinculos">
+                <p> Resumo de Vínculos</p>
+            </div>
+
+            <div id="container_cards_estufas">
+
+                <div class="card_estufa">
+                    <div>
+                        <p class="card_titulo">Estufa A</p>
+                    </div>
+                    <p class="num_funcionarios">3 funcionarios</p>
+                    <ul class="lista_funcionarios">
+                        <li class="funcionario">Gabriel Farina</li>
+                        <li class="funcionario">Guilherme silva</li>
+                        <li class="funcionario">Kaue Tamura</li>
+                    </ul>
+                </div>
+
+                <div class="card_estufa">
+                    <div>
+                        <p class="card_titulo">Estufa A</p>
+                    </div>
+                    <p class="num_funcionarios">3 funcionarios</p>
+                    <ul class="lista_funcionarios">
+                        <li class="funcionario">Gabriel Farina</li>
+                        <li class="funcionario">Guilherme silva</li>
+                        <li class="funcionario">Kaue Tamura</li>
+                    </ul>
+                </div>
+
+                <div class="card_estufa">
+                    <div>
+                        <p class="card_titulo">Estufa A</p>
+                    </div>
+                    <p class="num_funcionarios">3 funcionarios</p>
+                    <ul class="lista_funcionarios">
+                        <li class="funcionario">Gabriel Farina</li>
+                        <li class="funcionario">Guilherme silva</li>
+                        <li class="funcionario">Kaue Tamura</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
 </body>
+
 </html>
