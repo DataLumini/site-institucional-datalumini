@@ -7,9 +7,10 @@ body {
 
 #menu {
     background-color: #f8fbfc;
-    display: flex;
+    display: block;
     justify-content: center;
-    height: 100vh;
+    height: 150dvh;
+    min-width: 250px;
     width: 250px;
 }
 

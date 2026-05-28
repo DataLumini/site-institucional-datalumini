@@ -2,22 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
     width: 80dvw;
-    height: 60dvh;
-    background-color: #5eac15;
+    padding-left: 20px;
+    height: max-content;
 }
 
 #secao_resumo_vinculos {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    padding: 20px;
     width: 80dvw;
-    height: 60dvh;
-    background-color: #812c2c;
+    padding-left: 20px;
+    height: max-content;
 }
 
 #form_vinculo {
@@ -30,7 +26,12 @@
     gap: 20px;
     width: 80dvw;
     height: 60dvh;
-    background-color: #230e97;
+}
+
+.funcionario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 #funcionario_estufa {
@@ -39,16 +40,49 @@
     padding: 20px;
     height: 90%;
     width: 50%;
-    background-color: #07ffc9;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
 }
 
 #funcionario_estufa_lista {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    height: 80%;
     gap: 10px;
-    background-color: #f3e3e3;
+    padding: 20px;
+    min-height: 70%;
+    max-height: 70%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #bbbcbe #ffffff00;
+}
+
+
+.funcionario_estufa_item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    height: max-content;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+    border-radius: 10px;
+}
+
+.funcionario_estufa_item:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+    cursor: pointer;
+}
+
+.funcionarioSelecionado {
+    background-color: #EFF6FF;
+    border-color: #2B7FFF;
+}
+
+.funcionarioSelecionado:hover {
+    background-color: #EFF6FF;
+    border-color: #2B7FFF;
 }
 
 #estufa_div {
@@ -57,35 +91,48 @@
     padding: 20px;
     width: 50%;
     height: 90%;
-    background-color: #c80d0d;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
 }
 
 #estufa_lista {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 80%;
     gap: 10px;
     padding: 20px;
-    background-color: #ffff;
+    min-height: 70%;
+    max-height: 70%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #bbbcbe #ffffff00;
 }
 
-.estufa_item{
+.estufa_item {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 20px;
     height: max-content;
-    background-color: #c8c8c8;
+    background-color: #F0FDF4;
+    border: 1px solid #00C950;
+    border-radius: 10px;
 }
 
-.funcionario_estufa_item{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: max-content;
-    background-color: #c8c8c8;
+.estufa_item:hover {
+    background-color: #F0FDF4;
+    border: 1px solid #00C950;
+    cursor: pointer;
+}
+
+.estufaIndisponivel {
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+}
+
+.estufaIndisponivel:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
 }
 
 #card_estufa {
@@ -97,7 +144,8 @@
     padding: 20px;
     width: 30dvw;
     height: max-content;
-    background-color: #ff0000;
+    border: 1px solid #bbbcbe;
+
 }
 
 #titulo_vinculos {
@@ -106,11 +154,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding: 20px;
     width: 80dvw;
     height: max-content;
     font-size: 24px;
-    background-color: #c815b0;
 }
 
 #funcionario_estufa_titulo_numero {
@@ -127,11 +173,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding: 20px;
     gap: 20px;
     width: 80dvw;
     height: max-content;
-    background-color: #c8b80d;
+    padding: 20px;
+
 }
 
 .card_estufa {
@@ -139,8 +185,33 @@
     flex-direction: column;
     padding: 20px;
     width: 20dvw;
-    height: max-content;
+    min-height: 40dvh;
     border-radius: 10px;
-    border: 1px solid #000;
-    background-color: #ff0000;
+    border: 1px solid #bbbcbe;
+    background-color: #fbf5f5;
+}
+
+.lista_funcionarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    height: 30dvh;
+    padding: 0;
+    margin-top: 0;  
+}
+
+.lista_funcionarios li {
+    padding: 0;
+    margin: 5px;
+}
+
+
+.listaFuncionarioEstufa button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+    border-radius: 5px;
 }
