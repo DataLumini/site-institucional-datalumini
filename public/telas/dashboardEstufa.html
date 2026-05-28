@@ -29,37 +29,47 @@
     <main>
         <header>
             <div><button>Ativo</button> <span><img src="../img/icons/moritoramento.png"></span></div>
-            <h1>Estufa C - Monitoramento de Luminosidade</h1>
+            <h1>Dashboard - Estufa C</h1>
             <h2>Última atualização 22/04 às 13:09</h2>
         </header>
         <div id="container_kpi">
 
             <div id="container_estufas">
-                <img src="../img/icons/monitoramento-icon.png" alt="">
+                <img src="../img/aviso1.png" alt="">
                 <p>5</p>
                 <span>Alertas críticos</span>
             </div>
             <div id="container_lum_media">
-                <img src="../img/icons/raio.svg" alt="">
-                <p>7,6% de coef. variação</p>
-                <span></span>
-                <span id="medida">variação ideal</span>
+                <img src="../img/aviso2.png" alt="">
+                <p>4</p>
+                <span>Sensores em estado de atenção</span>
+                
+                
             </div>
             <div id="container_potencia_media">
                 <img src="../img/icons/relogio.png" alt="">
-                <p>4</p>
-                <span>sensores que precisam de atenção</span>
+
+                <p>7,6%</p>
+                <span id="medida">Variação ideal</span>
             </div>
         </div>
         <div class="graficos_sensor">
             <div class="box_grafico">
-                <h3>Distribuição do Tempo Luz no Dia</h3>
-                <canvas id="grafico_pizza"></canvas>
+                <h3>Distribuição de prioridade</h3>
+                <canvas id="grafico_donut"></canvas>
             </div>
             <div class="box_grafico">
                 <h3>Sensores da estufa</h3>
                 <canvas id="grafico_sensor_linha"></canvas>
             </div>
+
+  <div class="card">
+      <div class="alertas-header">
+        <div class="card-titulo">Prateleiras com Alertas (<span id="alertas-count">6</span>)</div>
+        <div class="alertas-order">Ordenado por prioridade</div>
+      </div>
+      <div id="alertas-list"></div>
+    </div>            
         </div>
 
 
@@ -69,7 +79,7 @@
 
                 <div class="container_bloco">
                     <div id="container_bloco_status2">
-                        <h2>estante 1</h2>
+                        <h2>Estante 1</h2>
                         <div id="estante">
                             <div class="container_info_alerta2">
                                 <div class="container_logo_status">
@@ -111,10 +121,10 @@
                                 </ul>
                             </div>
 
-                            <div class="container_info2">
+                            <div class="container_infoQA2">
                                 <div class="container_logo_status">
-                                    <p class="titulo">prateleira 4</p>
-                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                    <p class="titulo">Prateleira 4</p>
+                                    <img src="../img/icons/alerta-triangular.png" alt="" class="logo_correto">
                                 </div>
                                 <ul class="lista_info2">
                                     <li><img src="../img/icons/raio.png" alt=""> 192 PPFD</li>
@@ -130,7 +140,7 @@
 
 
                     <div id="container_bloco_status2">
-                        <h2>estante 2</h2>
+                        <h2>Estante 2</h2>
                         <div id="estante">
                             <div class="container_info_alerta2">
                                 <div class="container_logo_status">
@@ -148,7 +158,7 @@
                             <div class="container_infoQA2">
                                 <div class="container_logo_status">
                                     <p class="titulo">Prateleira 2</p>
-                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                    <img src="../img/icons/alerta-triangular.png" alt="" class="logo_correto">
                                 </div>
                                 <ul class="lista_infoB2">
                                     <li><img src="../img/icons/raio.png" alt=""> 105 PPFD</li>
@@ -195,15 +205,15 @@
 
 
         <div id="container_status2">
-            <h2> Setor norte</h2>
+            <h2> Setor Norte</h2>
             <div class="container_bloco">
                 <div id="container_bloco_status2">
-                    <h2>estante 1</h2>
+                    <h2>Estante 1</h2>
                     <div id="estante">
                         <div class="container_infoQA2">
                             <div class="container_logo_status">
                                 <p class="titulo">Prateleira 1</p>
-                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
+                                <img src="../img/icons/alerta-triangular.png" alt="" class="logo_correto">
                             </div>
                             <ul class="lista_infoB2">
                                 <li><img src="../img/icons/raio.png" alt=""> 110 PPFD</li>
@@ -255,7 +265,7 @@
                 </div>
 
                 <div id="container_bloco_status2">
-                    <h2>estante 1</h2>
+                    <h2>Estante 2</h2>
                     <div id="estante">
                         <div class="container_info2">
                             <div class="container_logo_status">
@@ -321,30 +331,33 @@
     </main>
 </body>
 <script>
-    const grafico_pizza = document.getElementById('grafico_pizza');
+    const grafico_donut = document.getElementById('grafico_donut');
 
-    new Chart(grafico_pizza, {
-        type: 'pie',
+    new Chart(grafico_donut, {
+        type: 'doughnut',
         data: {
-            labels: ['Tempo com exposição à luz', 'Tempo sem exposição à luz'],
+            labels: ['Normal', 'Atenção', 'Crítico'],
             datasets: [
                 {
-                    type: 'pie',
-                    data: [16, 8],
-                    backgroundColor: ['#ffcc00', ' #000099']
+                    type: 'doughnut',
+                    data: [7, 4, 5],
+                    backgroundColor: [ '#16f740','#FE9A00','#e00c0c'],
+                    hoverOffset : 6,
                 }
             ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            cutout: "75%",
             plugins: {
                 legend: {
+
                     position: 'bottom',
                     labels: {
                         usePointStyle: true,
                         pointStyle: 'circle',
-                        padding: 15,
+                        padding: 20,
                         boxWidth: 10,
                         boxHeight: 10
                     }
@@ -353,9 +366,9 @@
                     color: '#333',
                     font: {
                         weight: 'bold',
-                        size: 18
+                        size: 15
                     },
-                    formatter: (value) => value + 'h',
+                    formatter: (value) => value ,
                     anchor: 'end',
                     align: 'end',
                     offset: 10,
