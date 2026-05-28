@@ -1,0 +1,217 @@
+#secao_gerenciamento_usuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80dvw;
+    padding-left: 20px;
+    height: max-content;
+}
+
+#secao_resumo_vinculos {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    width: 80dvw;
+    padding-left: 20px;
+    height: max-content;
+}
+
+#form_vinculo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+    width: 80dvw;
+    height: 60dvh;
+}
+
+.funcionario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#funcionario_estufa {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 90%;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+}
+
+#funcionario_estufa_lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    min-height: 70%;
+    max-height: 70%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #bbbcbe #ffffff00;
+}
+
+
+.funcionario_estufa_item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    height: max-content;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+    border-radius: 10px;
+}
+
+.funcionario_estufa_item:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+    cursor: pointer;
+}
+
+.funcionarioSelecionado {
+    background-color: #EFF6FF;
+    border-color: #2B7FFF;
+}
+
+.funcionarioSelecionado:hover {
+    background-color: #EFF6FF;
+    border-color: #2B7FFF;
+}
+
+#estufa_div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 50%;
+    height: 90%;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+}
+
+#estufa_lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    min-height: 70%;
+    max-height: 70%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #bbbcbe #ffffff00;
+}
+
+.estufa_item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    height: max-content;
+    background-color: #F0FDF4;
+    border: 1px solid #00C950;
+    border-radius: 10px;
+}
+
+.estufa_item:hover {
+    background-color: #F0FDF4;
+    border: 1px solid #00C950;
+    cursor: pointer;
+}
+
+.estufaIndisponivel {
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+}
+
+.estufaIndisponivel:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+#card_estufa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 20px;
+    width: 30dvw;
+    height: max-content;
+    border: 1px solid #bbbcbe;
+
+}
+
+#titulo_vinculos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 80dvw;
+    height: max-content;
+    font-size: 24px;
+}
+
+#funcionario_estufa_titulo_numero {
+    font-size: 24px;
+}
+
+#estufa_titulo_numero {
+    font-size: 24px;
+}
+
+#container_cards_estufas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 80dvw;
+    height: max-content;
+    padding: 20px;
+
+}
+
+.card_estufa {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 20dvw;
+    min-height: 40dvh;
+    border-radius: 10px;
+    border: 1px solid #bbbcbe;
+    background-color: #fbf5f5;
+}
+
+.lista_funcionarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    height: 30dvh;
+    padding: 0;
+    margin-top: 0;  
+}
+
+.lista_funcionarios li {
+    padding: 0;
+    margin: 5px;
+}
+
+
+.listaFuncionarioEstufa button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbbcbe;
+    border-radius: 5px;
+}
