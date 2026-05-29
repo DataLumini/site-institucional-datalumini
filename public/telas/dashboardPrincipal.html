@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/dashboardPrincipal.css">
+    <link rel="stylesheet" href="../styles/menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <title>Controle Estufas</title>
@@ -13,18 +14,32 @@
 </head>
 
 <body onload="validarSessao(), carregarDadosSensor()">
-    <div id="menu">
+  <header id="menu">
+        <div id="container_header">
+            <a href="" id="logo_header">
+                <img src="../img/logo.png" alt="Logo Datalumini" style="width: 50px; height: 50px;">
+                <span id="nome_header">Datalumini</span>
+            </a>
+        </div>
+
         <ul>
             <li>
-                <a href="#">
-                    <img src="../img/logoVerde.png" alt="" id="logo">
+                <a href="./dashboardPrincipal.html">
+                    <span class="texto_selecao">Visão Geral</span>
                 </a>
             </li>
-            <li><a href="./dashboardPrincipal.html">Visão Geral</a></li>
-            <li><a href="./dashboardEstufa.html">Estufa</a></li>
-            <li><a href="./index.html">Sair</a></li>
+            <li>
+                <a href="../telas/centralSuporte.html">
+                    <span class="texto_selecao">Suporte</span>
+                </a>
+            </li>
+            <li>
+                <a href="./gerenciamentoUsuario.html">
+                    <span class="texto_selecao">Gerenciamento de Usuários</span>
+                </a>
+            </li>
         </ul>
-    </div>
+    </header>
     <main>
         <header class="cabecalho-principal">
             <div class="status-sistema">
@@ -148,7 +163,7 @@
         </div>
         </div>
 
-  
+
 
     </main>
 

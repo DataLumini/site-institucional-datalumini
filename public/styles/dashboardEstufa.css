@@ -7,15 +7,6 @@ body {
     padding-bottom: 40px;
 }
 
-#menu {
-    background-color: #EEEEEE;
-    position: fixed;
-    height: 100dvh;
-    width: 12dvw;
-    display: flex;
-    flex-direction: column;
-}
-
 ul {
     list-style: none;
     display: flex;
@@ -47,26 +38,25 @@ li a:hover {
     width: 80px;
 }
 
-header{
+#cabecario_principal{
     width: 100%;
     height: 150px;
-    background-color: #FFF;
     margin-left: 23px;
 }
 
-header h1{
+#cabecario_principal h1{
     margin-top: 8px;
     font-weight: bolder;
     margin-bottom: 0;
 }
 
-header h2{
+#cabecario_principal h2{
     margin-top: 6px;
     font-weight: 100;
     color: #334d4d ;
 }
 
-header button{
+#cabecario_principal button{
     background-color: #00C950;
     color: #FFF;
     width: 4vw;
@@ -123,18 +113,18 @@ header button{
 }
 
 main {
-    margin-left: 12dvw;
     width: 80%;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
 }
 
 #container_kpi {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: row;
     width: 85dvw;
 }
@@ -145,6 +135,7 @@ main {
 #container_potencia_media,
 #container_icon_alerta,
 #container_lum_media {
+    background-color: #FFFFFF;
     width: 20%;
     height: 150px;
     display: flex;
