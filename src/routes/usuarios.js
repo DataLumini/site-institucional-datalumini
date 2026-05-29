@@ -12,7 +12,7 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.get("/listar-usuarios-empresa/:empresaid", function(req, res){
+router.get("/listar-usuarios-empresa/:empresaId", function(req, res){
     usuarioController.listarUsuariosPorEmpresa(req, res);
 });
 
