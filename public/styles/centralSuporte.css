@@ -19,7 +19,7 @@ a{
 body {
     background-color: #f4f4f4;
 }
-
+/* 
 header {
     display: flex;
     padding: 15px 10%;
@@ -27,8 +27,8 @@ header {
     justify-content: space-between;
     background-color: var(--botao-sem-usar);
     border-bottom: 2px rgba(0, 0, 0, 0.103) solid;
-}
-
+} */
+/* 
 .logo_suporte {
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ header {
     display: flex;
     gap: 10px;
     align-items: center;
-}
+} */
 
 main{
     display: flex;

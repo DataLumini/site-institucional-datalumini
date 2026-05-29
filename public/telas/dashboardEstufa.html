@@ -7,27 +7,41 @@
     <title>Controle Sensor</title>
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="../styles/dashboardEstufa.css">
+    <link rel="stylesheet" href="../styles/menu.css">
     <script src="../js/validacao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 
-<body onload="validarSessao(), carregarDadosEstufa()">
-    <div id="menu">
+<body onload=" carregarDadosEstufa()">
+    <header id="menu">
+        <div id="container_header">
+            <a href="" id="logo_header">
+                <img src="../img/logo.png" alt="Logo Datalumini" style="width: 50px; height: 50px;">
+                <span id="nome_header">Datalumini</span>
+            </a>
+        </div>
+
         <ul>
             <li>
-                <a href="#">
-                    <img src="../img/logoVerde.png" alt="" id="logo">
-                    <img src="../img/logoverde2.svg" alt="" id="texto_logo">
+                <a href="./dashboardPrincipal.html">
+                    <span class="texto_selecao">Visão Geral</span>
                 </a>
             </li>
-            <li><a href="./dashboardPrincipal.html">Visão Geral</a></li>
-            <li><a href="./dashboardEstufa.html">Estufa</a></li>
-            <li><a href="./index.html">Sair</a></li>
+            <li>
+                <a href="../telas/centralSuporte.html">
+                    <span class="texto_selecao">Suporte</span>
+                </a>
+            </li>
+            <li>
+                <a href="./gerenciamentoUsuario.html">
+                    <span class="texto_selecao">Gerenciamento de Usuários</span>
+                </a>
+            </li>
         </ul>
-    </div>
+    </header>
     <main>
-        <header>
+        <header id="cabecario_principal">
             <div><button>Ativo</button> <span><img src="../img/icons/moritoramento.png"></span></div>
             <h1>Dashboard - Estufa C</h1>
             <h2>Última atualização 22/04 às 13:09</h2>
@@ -43,8 +57,8 @@
                 <img src="../img/aviso2.png" alt="">
                 <p>4</p>
                 <span>Sensores em estado de atenção</span>
-                
-                
+
+
             </div>
             <div id="container_potencia_media">
                 <img src="../img/icons/relogio.png" alt="">
@@ -63,13 +77,13 @@
                 <canvas id="grafico_sensor_linha"></canvas>
             </div>
 
-  <div class="card">
-      <div class="alertas-header">
-        <div class="card-titulo">Prateleiras com Alertas (<span id="alertas-count">6</span>)</div>
-        <div class="alertas-order">Ordenado por prioridade</div>
-      </div>
-      <div id="alertas-list"></div>
-    </div>            
+            <div class="card">
+                <div class="alertas-header">
+                    <div class="card-titulo">Prateleiras com Alertas (<span id="alertas-count">6</span>)</div>
+                    <div class="alertas-order">Ordenado por prioridade</div>
+                </div>
+                <div id="alertas-list"></div>
+            </div>
         </div>
 
 
@@ -117,7 +131,7 @@
                                     <ul class="lista">
                                         <li><img src="../img/icons/relogio.svg" alt=""> Sensor #3</li>
                                     </ul>
-                                    
+
                                 </ul>
                             </div>
 
@@ -131,7 +145,7 @@
                                     <ul class="lista">
                                         <li><img src="../img/icons/relogio.svg" alt="">Sensor #4</li>
                                     </ul>
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -152,7 +166,7 @@
                                     <ul class="lista">
                                         <li><img src="../img/icons/relogio.svg" alt=""> Sensor #1</li>
                                     </ul>
-                                    
+
                                 </ul>
                             </div>
                             <div class="container_infoQA2">
@@ -165,7 +179,7 @@
                                     <ul class="lista">
                                         <li><img src="../img/icons/relogio.svg" alt=""> Sensor #6</li>
                                     </ul>
-                                    
+
                                 </ul>
                             </div>
                             <div class="container_info2">
@@ -231,7 +245,8 @@
                             <ul class="lista_infoA2">
                                 <li><img src="../img/icons/raio.png" alt=""> 270 PPFD</li>
                                 <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #2</li></ul>
+                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #2</li>
+                                </ul>
                             </ul>
                         </div>
                         <div class="container_info_alerta2">
@@ -244,7 +259,7 @@
                                 <ul class="lista">
                                     <li><img src="../img/icons/relogio.svg" alt=""> Sensor #3</li>
                                 </ul>
-                                
+
                             </ul>
                         </div>
 
@@ -258,7 +273,7 @@
                                 <ul class="lista">
                                     <li><img src="../img/icons/relogio.svg" alt=""> Sensor #4</li>
                                 </ul>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -277,7 +292,7 @@
                                 <ul class="lista">
                                     <li><img src="../img/icons/relogio.svg" alt="">Sensor #5</li>
                                 </ul>
-                                
+
                             </ul>
                         </div>
                         <div class="container_info2">
@@ -299,8 +314,10 @@
                             </div>
                             <ul class="lista_info2">
                                 <li><img src="../img/icons/raio.png" alt=""> 178 PPFD</li>
-                                <ul class="lista"><li><img src="../img/icons/relogio.svg" alt="">Sensor #7</li></ul>
-                                
+                                <ul class="lista">
+                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #7</li>
+                                </ul>
+
                             </ul>
                         </div>
 
@@ -314,7 +331,7 @@
                                 <ul class="lista">
                                     <li><img src="../img/icons/relogio.svg" alt="">Sensor #8</li>
                                 </ul>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -341,8 +358,8 @@
                 {
                     type: 'doughnut',
                     data: [7, 4, 5],
-                    backgroundColor: [ '#16f740','#FE9A00','#e00c0c'],
-                    hoverOffset : 6,
+                    backgroundColor: ['#16f740', '#FE9A00', '#e00c0c'],
+                    hoverOffset: 6,
                 }
             ]
         },
@@ -368,7 +385,7 @@
                         weight: 'bold',
                         size: 15
                     },
-                    formatter: (value) => value ,
+                    formatter: (value) => value,
                     anchor: 'end',
                     align: 'end',
                     offset: 10,
@@ -463,9 +480,9 @@
             }
         }
     })
-       function carregarDadosEstufa(){
+    function carregarDadosEstufa() {
         let idUsuario = sessionStorage.ID_USUARIO;
-        fetch(`/dashboard/obterDados/${idUsuario}/1`) 
+        fetch(`/dashboard/obterDados/${idUsuario}/1`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);

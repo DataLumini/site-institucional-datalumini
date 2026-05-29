@@ -7,15 +7,6 @@ body {
     padding-bottom: 40px;
 }
 
-#menu {
-    background-color: #EEEEEE;
-    position: fixed;
-    height: 100dvh;
-    width: 12dvw;
-    display: flex;
-    flex-direction: column;
-}
-
 ul {
     list-style: none;
     display: flex;
@@ -136,11 +127,11 @@ li a:hover {
 }
 
 main {
-    margin-left: 12dvw;
     width: 80%;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
 }
 

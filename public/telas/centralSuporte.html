@@ -4,43 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../styles/centralSuporte.css">
+    <title>Central de Suporte</title>
+    <link rel="stylesheet" href="../styles/centralSuporte.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <script src="../js/validacao.js"></script>
+    <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
 </head>
 
-<body>
-    <header>
-        <div class="logo_suporte">
-            <img src="../../img/logoVerde.png" width="30px">
-            <span>Central de Suporte</span>
+<body onload="validarSessao()">
+    <header id="menu">
+        <div id="container_header">
+            <a href="" id="logo_header">
+                <img src="../img/logo.png" alt="Logo Datalumini" style="width: 50px; height: 50px;">
+                <span id="nome_header">Datalumini</span>
+            </a>
         </div>
 
-
-        <div class="niveis_acesso">
-            <span>Nivel de acesso:</span>
-            <div class="botao_nivel">
-                <input type="radio" name="payment" id="nivel1" checked="checked" />
-                <label for="nivel1">Nivel1</label>
-            </div>
-            <div class="botao_nivel">
-                <input type="radio" name="payment" id="nivel2" />
-                <label for="nivel2">Nivel2</label>
-            </div>
-            <div class="botao_nivel">
-                <input type="radio" name="payment" id="nivel3" />
-                <label for="nivel3">Nivel3</label>
-            </div>
-            <!-- <button class="botao_nivel">
-                Nivel 1
-            </button>
-            <button class="botao_nivel">
-                Nivel 2
-            </button>
-            <button class="botao_nivel">
-                Nivel 3
-            </button>
-        </div> -->
+        <ul>
+            <li>
+                <a href="./dashboardPrincipal.html">
+                    <span class="texto_selecao">Visão Geral</span>
+                </a>
+            </li>
+            <li>
+                <a href="../telas/centralSuporte.html">
+                    <span class="texto_selecao">Suporte</span>
+                </a>
+            </li>
+            <li>
+                <a href="./gerenciamentoUsuario.html">
+                    <span class="texto_selecao">Gerenciamento de Usuários</span>
+                </a>
+            </li>
+        </ul>
     </header>
     <main>
         <div class="funcionalidades">
@@ -97,63 +94,90 @@
                 ChatBot BobIA</a>
         </div>
 
-        <div class="chatbot_menu">
-            <div class="container_chat">
+        <div class="container_jira">
+            <div class="superior_jira">
 
-                <div class="superior_chat">
+                <div class="conteudos_superior_jira">
 
-                    <div class="conteudo_superior_chat">
+                    <div class="container_titulo_superior">
 
-                        <div class="svg_chat">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                        <div class="svg_top">
+                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.0003 10.6668V5.3335H10.667" stroke="white" stroke-width="2.66667"
-                                    stroke-linecap="round" stroke-linejoin="round" />
                                 <path
-                                    d="M23.9997 10.6665H7.99967C6.52692 10.6665 5.33301 11.8604 5.33301 13.3332V23.9998C5.33301 25.4726 6.52692 26.6665 7.99967 26.6665H23.9997C25.4724 26.6665 26.6663 25.4726 26.6663 23.9998V13.3332C26.6663 11.8604 25.4724 10.6665 23.9997 10.6665Z"
-                                    stroke="white" stroke-width="2.66667" stroke-linecap="round"
+                                    d="M2.33301 10.5002C3.26127 10.5002 4.1515 10.8689 4.80788 11.5253C5.46426 12.1817 5.83301 13.0719 5.83301 14.0002C5.83301 14.9284 5.46426 15.8187 4.80788 16.475C4.1515 17.1314 3.26127 17.5002 2.33301 17.5002V19.8335C2.33301 20.4523 2.57884 21.0458 3.01643 21.4834C3.45401 21.921 4.0475 22.1668 4.66634 22.1668H23.333C23.9518 22.1668 24.5453 21.921 24.9829 21.4834C25.4205 21.0458 25.6663 20.4523 25.6663 19.8335V17.5002C24.7381 17.5002 23.8478 17.1314 23.1915 16.475C22.5351 15.8187 22.1663 14.9284 22.1663 14.0002C22.1663 13.0719 22.5351 12.1817 23.1915 11.5253C23.8478 10.8689 24.7381 10.5002 25.6663 10.5002V8.16683C25.6663 7.54799 25.4205 6.9545 24.9829 6.51691C24.5453 6.07933 23.9518 5.8335 23.333 5.8335H4.66634C4.0475 5.8335 3.45401 6.07933 3.01643 6.51691C2.57884 6.9545 2.33301 7.54799 2.33301 8.16683V10.5002Z"
+                                    stroke="white       " stroke-width="2.33333" stroke-linecap="round"
                                     stroke-linejoin="round" />
-                                <path d="M2.66699 18.6665H5.33366" stroke="white" stroke-width="2.66667"
+                                <path d="M15.167 5.8335V8.16683" stroke="white" stroke-width="2.33333"
                                     stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M26.667 18.6665H29.3337" stroke="white" stroke-width="2.66667"
+                                <path d="M15.167 19.8335V22.1668" stroke="white" stroke-width="2.33333"
                                     stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M20 17.3335V20.0002" stroke="white" stroke-width="2.66667"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M12 17.3335V20.0002" stroke="white" stroke-width="2.66667"
+                                <path d="M15.167 12.8335V15.1668" stroke="white" stroke-width="2.33333"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
 
                         <div>
-                            <h1>Chatbot BobIA</h1>
-                            <p>Assistente Inteligente - Acesso Exclusivo Nível 3</p>
+                            <h1>Central de Suporte</h1>
+                            <span>Atendimento via Jira Service Management</span>
                         </div>
-
-
 
                     </div>
 
-                </div>
+                    <div>
+                        Todo o nosso atendimento é centralizado no Jira. Ao clicar no botão abaixo você será
+                        redirecionado
+                        para o portal onde poderá abrir, acompanhar e gerenciar seus tickets de suporte.
+                    </div>
 
-                <div class="chat">
-
-                </div>
-
-                <div class="escrever_chat">
-                    <form class="chat-form" onsubmit="return false;">
-                        <input type="text" class="chat-input" placeholder="Digite sua mensagem para Bobia...">
-                        <button class="botao_enviar" type="submit">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <div>
+                        <a href="#" class="botao_jira"> Acessar o Jira
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 2H14V6" stroke="#22B141" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6.66699 9.33333L14.0003 2" stroke="#22B141" stroke-width="1.33333"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333"
+                                    stroke="#22B141" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
-                            <span>Enviar</span>
-                        </button>
-                    </form>
+
+                        </a>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div class="inferior_jira">
+                <div class="infos_jira">
+
+                    <div class="infos_jura_number">1</div>
+                    <div>
+                        <h1>Acesse o Jira</h1>
+                        <p>Clique no botão acima para abrir o portal de suporte.</p>
+                    </div>
                 </div>
 
+                <div class="infos_jira">
+                    <div class="infos_jura_number">2</div>
+                    <div>
+                        <h1>Abra um Ticket</h1>
+                        <p>Escolha a categoria e descreva seu problema com detalhes.</p>
+                    </div>
+                </div>
+
+                <div class="infos_jira">
+                    <div class="infos_jura_number">3</div>
+                    <div>
+                        <h1>Acompanhe</h1>
+                        <p>Receba atualizações por e-mail e acompanhe o status em tempo real.</p>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
     </main>
 </body>

@@ -123,7 +123,7 @@ function entrar() {
 }
 
 function sumirMensagem() {
-    cardErro.style.display = "none"
+    divErros.style.display = "none"
 }
 
 function mostrarSenha() {
