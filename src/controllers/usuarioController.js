@@ -126,17 +126,37 @@ function cadastrar(req, res) {
 function listarUsuariosPorEmpresa(req, res) {
     var empresaId = req.params.empresaId;
 
-    usuarioModel.buscarPorId(empresaId).then((resultado) => {
-        res.status(200).json(resultado);
-    });
+    if (empresaId == undefined) {
+        res.status(400).send("empresaId está undefined.");
+        return;
+    }
+
+    usuarioModel.listarUsuariosPorEmpresa(empresaId)
+        .then((resultado) => {
+            res.status(200).json(resultado);
+        })
+        .catch((erro) => {
+            console.error(erro);
+            res.status(500).json(erro);
+        });
 }
 
 function listarEstufasDoUsuario(req, res) {
     var usuarioId = req.params.usuarioId;
 
-    usuarioModel.listarEstufasDoUsuario(usuarioId).then((resultado) => {
-        res.status(200).json(resultado);
-    });
+    if (usuarioId == undefined) {
+        res.status(400).send("usuarioId está undefined.");
+        return;
+    }
+
+    usuarioModel.listarEstufasDoUsuario(usuarioId)
+        .then((resultado) => {
+            res.status(200).json(resultado);
+        })
+        .catch((erro) => {
+            console.error(erro);
+            res.status(500).json(erro);
+        });
 }
 
 function adicionarEstufa(req, res) {
@@ -144,9 +164,20 @@ function adicionarEstufa(req, res) {
     var estufaId = req.body.estufaIdServer;
     var usuarioId = req.body.usuarioIdServer;
 
-    empresaModel.adicionarEstufa(idUsuario, idEstufa).then((resultado) => {
-        res.status(201).json(resultado);
-    });
+    if (usuarioId == undefined || estufaId == undefined) {
+        res.status(400).send("usuarioId ou estufaId undefined.");
+        return;
+    }
+
+
+    usuarioModel.adicionarEstufa(usuarioId, estufaId)
+        .then((resultado) => {
+            res.status(201).json(resultado);
+        })
+        .catch((erro) => {
+            console.error(erro);
+            res.status(500).json(erro);
+        });
 
 }
 
@@ -155,9 +186,19 @@ function retirarEstufa(req, res) {
     var usuarioId = req.body.usuarioIdServer;
     var estufaId = req.body.estufaIdServer;
 
-    empresaModel.ret(usuarioId, estufaId).then((resultado) => {
-        res.status(201).json(resultado);
-    });
+    if (usuarioId == undefined || estufaId == undefined) {
+        res.status(400).send("usuarioId ou estufaId undefined.");
+        return;
+    }
+
+    usuarioModel.retirarEstufa(usuarioId, estufaId)
+        .then((resultado) => {
+            res.status(200).json(resultado);
+        })
+        .catch((erro) => {
+            console.error(erro);
+            res.status(500).json(erro);
+        });
 
 }
 
@@ -166,5 +207,6 @@ module.exports = {
     cadastrar,
     listarUsuariosPorEmpresa,
     listarEstufasDoUsuario,
-    adicionarEstufa
+    adicionarEstufa,
+    retirarEstufa
 }
