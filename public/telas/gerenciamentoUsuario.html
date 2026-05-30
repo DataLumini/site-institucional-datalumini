@@ -13,7 +13,7 @@
     <title>Gerenciamento de Usuários</title>
 </head>
 
-<body onload="carregarDadosFuncionario(); listarFuncionariosPorEstufa()">
+<body onload="listarEstufasDisponiveis(); listarUsuariosEstufaPorEmpresa();">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -51,7 +51,7 @@
                 <div id="funcionario_estufa">
                     <div>
                         <p id="funcionario_estufa_titulo_numero">
-                            Funcionários (5)
+                            Funcionários (0)
                         </p>
                     </div>
 
@@ -67,11 +67,13 @@
                 <div id="estufa_div">
                     <div>
                         <p id="estufa_titulo_numero">
-                            Estufas (3)
+                            Estufas (0)
                         </p>
                     </div>
 
                     <div id="estufa_lista">
+                        <p style="text-align: center; font-weight: bold;">Selecione um Funcionario para modificar as
+                            permições</p>
                     </div>
                 </div>
             </div>
@@ -84,41 +86,6 @@
 
             <div id="container_cards_estufas">
 
-                <div class="card_estufa">
-                    <div>
-                        <p class="card_titulo">Estufa A</p>
-                    </div>
-                    <p class="num_funcionarios">3 funcionarios</p>
-                    <ul class="lista_funcionarios">
-                        <li class="funcionario"><button> Gabriel Farina</button></li>
-                        <li class="funcionario"><button> Guilherme silva</button></li>
-                        <li class="funcionario"><button> Kaue Tamura</button></li>
-                    </ul>
-                </div>
-
-                <div class="card_estufa">
-                    <div>
-                        <p class="card_titulo">Estufa A</p>
-                    </div>
-                    <p class="num_funcionarios">3 funcionarios</p>
-                    <ul class="lista_funcionarios">
-                        <li class="funcionario"><button> Gabriel Farina</button></li>
-                        <li class="funcionario"><button> Guilherme silva</button></li>
-                        <li class="funcionario"><button> Kaue Tamura</button></li>
-                    </ul>
-                </div>
-
-                <div class="card_estufa">
-                    <div>
-                        <p class="card_titulo">Estufa A</p>
-                    </div>
-                    <p class="num_funcionarios">3 funcionarios</p>
-                    <ul class="lista_funcionarios">
-                        <li class="funcionario"><button> Gabriel Farina</button></li>
-                        <li class="funcionario"><button> Guilherme silva</button></li>
-                        <li class="funcionario"><button> Kaue Tamura</button></li>
-                    </ul>
-                </div>
             </div>
 
         </section>
@@ -128,44 +95,64 @@
 
 </html>
 <script>
-    let jsonFuncionario = [
-        {
-            nome: "Gabriel Farina",
-            estufas: ["Estufa A", "Estufa B"]
-        },
-        {
-            nome: "Guilherme Silva",
-            estufas: ["Estufa A", "Estufa C"]
-        },
-        {
-            nome: "Kaue Tamura",
-            estufas: ["Estufa B", "Estufa C"]
-        },
-        {
-            nome: "Maria Silva",
-            estufas: ["Estufa A"]
-        },
-        {
-            nome: "João Pereira",
-            estufas: ["Estufa C"]
-        },
-        {
-            nome: "Livia Santos",
-            estufas: []
-        }
-    ]
+    let jsonFuncionario = [];
+    let jsonEstufasDisponiveis = [];
 
-    let jsonEstufasDisponiveis = [
-        {
-            nome: "Estufa A"
-        },
-        {
-            nome: "Estufa B"
-        },
-        {
-            nome: "Estufa C"
-        }
-    ]
+    function listarEstufasDisponiveis() {
+        let idEmpresa = sessionStorage.ID_EMPRESA;
+
+        fetch(`/usuarios/listar/estufas/empresa/${idEmpresa}`)
+            .then(response => response.json())
+            .then(data => {
+                jsonEstufasDisponiveis = data;
+                estufa_titulo_numero.innerHTML = `Estufas (${data.length})`;
+
+            })
+            .catch(error => console.error("Erro ao listar estufas disponíveis:", error));
+    }
+
+    function listarUsuariosEstufaPorEmpresa() {
+        let idEmpresa = sessionStorage.ID_EMPRESA;
+
+        fetch(`/usuarios/listar/estufas/usuario/${idEmpresa}`)
+            .then(response => response.json())
+            .then(data => {
+
+                for (let i = 0; i < data.length; i++) {
+                    let usuarioJaExiste = false;
+                    let indexDoUsuario = -1;
+
+                    for (let j = 0; j < jsonFuncionario.length; j++) {
+                        if (jsonFuncionario[j].idUsuario == data[i].idUsuario) {
+                            usuarioJaExiste = true;
+                            indexDoUsuario = j;
+                            break;
+                        }
+                    }
+
+                    if (!usuarioJaExiste) {
+                        jsonFuncionario.push({
+                            "idUsuario": data[i].idUsuario,
+                            "nome": data[i].nome,
+                            "estufas": []
+                        });
+
+                        indexDoUsuario = jsonFuncionario.length - 1;
+                    }
+
+                    if (data[i].idEstufa != null) {
+                        jsonFuncionario[indexDoUsuario].estufas.push({
+                            "idEstufa": data[i].idEstufa,
+                            "nome": data[i].nomeEstufa
+                        });
+                    }
+                }
+
+                carregarDadosFuncionario();
+                carregarFuncionariosPorEstufa();
+            })
+            .catch(error => console.error("Erro ao listar usuários por estufa:", error));
+    }
 
     function carregarDadosFuncionario() {
         funcionario_estufa_lista.innerHTML = "";
@@ -173,28 +160,31 @@
 
         for (let i = 0; i < jsonFuncionario.length; i++) {
             htmlListaFuncionarios += `
-            <li class="funcionario">
-            <button class="funcionario_estufa_item" onclick="carregarDadosEstufaPorFuncionario(this, ${i})">
-                ${jsonFuncionario[i].nome}
+            <li class="funcionario" style="list-style-type: none;">
+                <button class="funcionario_estufa_item" onclick="carregarDadosEstufaPorFuncionario(this, ${i})">
+                    ${jsonFuncionario[i].nome}
                 </button>
             </li>`;
         }
+
+        funcionario_estufa_titulo_numero.innerHTML = `Funcionários (${jsonFuncionario.length})`;
+
         funcionario_estufa_lista.innerHTML = htmlListaFuncionarios;
     }
 
     function carregarDadosEstufaPorFuncionario(nomeBotao, indexFuncionario) {
-        selecionarFuncionario(nomeBotao, indexFuncionario);
-        estufa_lista.innerHTML = "";
-        let htmlListaEstufas = "";
+        selecionarFuncionario(nomeBotao);
 
-        let estufasDoFuncionario = jsonFuncionario[indexFuncionario].estufas;
+        let estufasDoFuncionarioSelecionado = jsonFuncionario[indexFuncionario].estufas;
+
+        let htmlListaEstufas = "";
 
         for (let i = 0; i < jsonEstufasDisponiveis.length; i++) {
             let nomeEstufaDoSistema = jsonEstufasDisponiveis[i].nome;
             let achouEstufa = false;
 
-            for (let j = 0; j < estufasDoFuncionario.length; j++) {
-                if (nomeEstufaDoSistema == estufasDoFuncionario[j]) {
+            for (let j = 0; j < estufasDoFuncionarioSelecionado.length; j++) {
+                if (nomeEstufaDoSistema == estufasDoFuncionarioSelecionado[j].nome) {
                     achouEstufa = true;
                     break;
                 }
@@ -202,21 +192,21 @@
 
             if (achouEstufa) {
                 htmlListaEstufas += `
-            <button class="estufa_item" onclick="selecionarEstufa(this, ${indexFuncionario})">
-                 ${nomeEstufaDoSistema}
-            </button>`;
+                <button class="estufa_item" onclick="selecionarEstufa(this, ${indexFuncionario})">
+                     ${nomeEstufaDoSistema}
+                </button>`;
             } else {
                 htmlListaEstufas += `
-            <button class="estufa_item estufaIndisponivel" onclick="selecionarEstufa(this, ${indexFuncionario})">
-                 ${nomeEstufaDoSistema}
-            </button>`;
+                <button class="estufa_item estufaIndisponivel" onclick="selecionarEstufa(this, ${indexFuncionario})">
+                     ${nomeEstufaDoSistema}
+                </button>`;
             }
         }
 
         estufa_lista.innerHTML = htmlListaEstufas;
     }
 
-    function selecionarFuncionario(nomeBotao, indexFuncionario) {
+    function selecionarFuncionario(nomeBotao) {
         let botoesFuncionarios = document.getElementsByClassName("funcionario_estufa_item");
 
         for (let i = 0; i < botoesFuncionarios.length; i++) {
@@ -228,33 +218,72 @@
 
     function selecionarEstufa(nomeBotao, indexFuncionario) {
         let nomeEstufaSelecionada = nomeBotao.innerText;
+        let idEstufaSelecionada = -1;
+
+        for (let i = 0; i < jsonEstufasDisponiveis.length; i++) {
+            if (jsonEstufasDisponiveis[i].nome == nomeEstufaSelecionada) {
+                idEstufaSelecionada = jsonEstufasDisponiveis[i].idEstufa;
+                break;
+            }
+        }
+
         if (nomeBotao.classList.contains("estufaIndisponivel")) {
-            jsonFuncionario[indexFuncionario].estufas.push(nomeEstufaSelecionada);
+
+            fetch(`/usuarios/adicionar/estufa`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    usuarioIdServer: jsonFuncionario[indexFuncionario].idUsuario,
+                    estufaIdServer: idEstufaSelecionada
+                })
+            }).catch(error => console.error("Erro ao adicionar estufa ao usuário:", error));
+
+            jsonFuncionario[indexFuncionario].estufas.push({
+                idEstufa: idEstufaSelecionada,
+                nome: nomeEstufaSelecionada
+            });
             nomeBotao.classList.remove("estufaIndisponivel");
 
         } else {
-            let indexEstufa = jsonFuncionario[indexFuncionario].estufas.indexOf(nomeEstufaSelecionada);
+
+            fetch(`/usuarios/retirar/estufa`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    usuarioIdServer: jsonFuncionario[indexFuncionario].idUsuario,
+                    estufaIdServer: idEstufaSelecionada
+                })
+            }).catch(error => console.error("Erro ao retirar estufa do usuário:", error));
+
+            let indexEstufa = -1;
+            for (let i = 0; i < jsonFuncionario[indexFuncionario].estufas.length; i++) {
+                if (jsonFuncionario[indexFuncionario].estufas[i].idEstufa == idEstufaSelecionada) {
+                    indexEstufa = i;
+                    break;
+                }
+            }
+
             jsonFuncionario[indexFuncionario].estufas.splice(indexEstufa, 1);
             nomeBotao.classList.add("estufaIndisponivel");
-
         }
 
-        listarFuncionariosPorEstufa();
-
+        carregarFuncionariosPorEstufa();
     }
 
-    function listarFuncionariosPorEstufa() {
+    function carregarFuncionariosPorEstufa() {
         let htmlEstufas = "";
 
         for (let i = 0; i < jsonEstufasDisponiveis.length; i++) {
+
             let nomeEstufa = jsonEstufasDisponiveis[i].nome;
+            let idEstufaSistema = jsonEstufasDisponiveis[i].idEstufa;
             let funcionariosDaEstufa = [];
 
             for (let j = 0; j < jsonFuncionario.length; j++) {
                 let estufasDoFuncionario = jsonFuncionario[j].estufas;
 
                 for (let k = 0; k < estufasDoFuncionario.length; k++) {
-                    if (nomeEstufa == estufasDoFuncionario[k]) {
+                    if (idEstufaSistema == estufasDoFuncionario[k].idEstufa) {
                         funcionariosDaEstufa.push(jsonFuncionario[j].nome);
                         break;
                     }
@@ -272,14 +301,13 @@
             for (let l = 0; l < funcionariosDaEstufa.length; l++) {
                 htmlEstufas += `
                         <li class="listaFuncionarioEstufa"><button> ${funcionariosDaEstufa[l]}</button></li>`;
-
-
             }
             htmlEstufas += `
                     </ul>
                 </div>
             `;
         }
+        
         container_cards_estufas.innerHTML = htmlEstufas;
     }
 </script>
