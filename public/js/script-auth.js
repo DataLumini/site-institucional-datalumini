@@ -96,6 +96,7 @@ function entrar() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
                 sessionStorage.ID_EMPRESA = json.empresaId;
+                sessionStorage.REGRA_USUARIO = json.regra;
 
                 setTimeout(function () {
                     window.location = "./dashboardPrincipal.html";

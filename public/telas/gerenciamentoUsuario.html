@@ -13,7 +13,7 @@
     <title>Gerenciamento de Usuários</title>
 </head>
 
-<body onload="listarEstufasDisponiveis(); listarUsuariosEstufaPorEmpresa(); validarSessao()">
+<body onload="listarEstufasDisponiveis(); listarUsuariosEstufaPorEmpresa(); validarSessao(); verificarRegraUsuario()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -28,12 +28,12 @@
                     <span class="texto_selecao">Visão Geral</span>
                 </a>
             </li>
-            <li>
+            <li id="suporteBotaoContainer">
                 <a href="../telas/centralSuporte.html">
                     <span class="texto_selecao">Suporte</span>
                 </a>
             </li>
-            <li>
+            <li id="gerenciamentoBotaoContainer">
                 <a href="./gerenciamentoUsuario.html">
                     <span class="texto_selecao">Gerenciamento de Usuários</span>
                 </a>
