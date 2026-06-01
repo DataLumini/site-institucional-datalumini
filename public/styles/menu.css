@@ -102,3 +102,39 @@ ul li {
     text-decoration: none;
     font-size: 16px;
 }
+
+#menu_estufa{
+    background-color: #f8fbfc;
+    display: block;
+    justify-content: center;
+    height: 480dvh;
+    min-width: 250px;
+    width: 250px;
+}
+
+
+#menu_estufa ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+    width: 250px;
+}
+
+#menu_estufa ul li a {
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #00BC7D;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(4, 151, 41, 0.953);
+}

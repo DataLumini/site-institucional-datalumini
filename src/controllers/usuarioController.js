@@ -15,14 +15,12 @@ function autenticar(req, res) {
                 console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
 
                 if (resultadoAutenticar.length == 1) {
-                    console.log(resultadoAutenticar);
-                    // RESPOSTA MOCKADA SÓ PARA LIBERAR O ACESSO:
                     res.json({
                         id: resultadoAutenticar[0].id,
                         email: resultadoAutenticar[0].email,
                         nome: resultadoAutenticar[0].nome,
                         empresaId: resultadoAutenticar[0].empresaId,
-                        aquarios: []
+                        regra: resultadoAutenticar[0].regra
                     });
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
@@ -163,5 +161,5 @@ module.exports = {
     listarEstufasPorEmpresa,
     listarUsuariosEstufaPorEmpresa,
     adicionarEstufa,
-    retirarEstufa
+    retirarEstufa,
 };
