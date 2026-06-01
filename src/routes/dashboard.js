@@ -17,4 +17,8 @@ router.get("/obterUltimoAviso/Principal/:idUsuario", function(req, res){
     dashboardController.obterUltimoAvisoPrincipal(req, res)
 })
 
+router.get("/obterUltimoAviso/Especifica/:idUsuario/:idEstufa", function(req, res){
+    dashboardController.obterUltimoAvisoEspecifica(req, res)
+})
+
 module.exports = router;
