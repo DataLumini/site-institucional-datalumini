@@ -13,7 +13,7 @@
     <title>Gerenciamento de Usuários</title>
 </head>
 
-<body onload="listarEstufasDisponiveis(); listarUsuariosEstufaPorEmpresa();">
+<body onload="listarEstufasDisponiveis(); listarUsuariosEstufaPorEmpresa(); validarSessao()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -36,6 +36,11 @@
             <li>
                 <a href="./gerenciamentoUsuario.html">
                     <span class="texto_selecao">Gerenciamento de Usuários</span>
+                </a>
+            </li>
+            <li>
+                <a href="./index.html" onclick="sessionStorage.clear()">
+                <span class="texto_selecao">Sair</span>
                 </a>
             </li>
         </ul>
@@ -149,7 +154,7 @@
                 }
 
                 carregarDadosFuncionario();
-                carregarFuncionariosPorEstufa();
+                setTimeout(carregarFuncionariosPorEstufa, 1000);
             })
             .catch(error => console.error("Erro ao listar usuários por estufa:", error));
     }
@@ -270,7 +275,7 @@
         carregarFuncionariosPorEstufa();
     }
 
-    function carregarFuncionariosPorEstufa() {
+    function carregarFuncionariosPorEstufa() {        
         let htmlEstufas = "";
 
         for (let i = 0; i < jsonEstufasDisponiveis.length; i++) {

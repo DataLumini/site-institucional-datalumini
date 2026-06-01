@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 
-<body onload=" carregarDadosEstufa()">
+<body onload=" carregarDadosEstufa(); validarSessao()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -36,6 +36,11 @@
             <li>
                 <a href="./gerenciamentoUsuario.html">
                     <span class="texto_selecao">Gerenciamento de Usuários</span>
+                </a>
+            </li>
+            <li>
+                <a href="./index.html" onclick="sessionStorage.clear()">
+                    <span class="texto_selecao">Sair</span>
                 </a>
             </li>
         </ul>

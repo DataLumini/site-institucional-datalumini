@@ -14,7 +14,7 @@
 </head>
 
 <body onload="validarSessao(), carregarDadosSensor()">
-  <header id="menu">
+    <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
                 <img src="../img/logo.png" alt="Logo Datalumini" style="width: 50px; height: 50px;">
@@ -36,6 +36,11 @@
             <li>
                 <a href="./gerenciamentoUsuario.html">
                     <span class="texto_selecao">Gerenciamento de Usuários</span>
+                </a>
+            </li>
+            <li>
+                <a href="./index.html" onclick="sessionStorage.clear()">
+                    <span class="texto_selecao">Sair</span>
                 </a>
             </li>
         </ul>
@@ -100,7 +105,7 @@
                     </div>
                     <div class="card-footer">
                         <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="#">Ver detalhes</a>
+                        <a href="./dashboardEstufa.html">Ver detalhes</a>
                     </div>
                 </div>
 
@@ -128,7 +133,7 @@
                     </div>
                     <div class="card-footer">
                         <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="#">Ver detalhes</a>
+                        <a href="./dashboardEstufa.html">Ver detalhes</a>
                     </div>
                 </div>
 
@@ -156,7 +161,7 @@
                     </div>
                     <div class="card-footer">
                         <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="#">Ver detalhes</a>
+                        <a href="./dashboardEstufa.html">Ver detalhes</a>
                     </div>
                 </div>
             </div>
