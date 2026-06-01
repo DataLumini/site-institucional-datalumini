@@ -1,15 +1,17 @@
 {
-  "name": "web-data-viz",
+  "name": "web-data-viz-bobia",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicação de visualização de dados integrada com a BobIA para auxílio dos alunos.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon --exec node app.js"
+    "dev": "nodemon --exec node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Feito pelos desenvolvedores @ São Paulo Tech School / Bandtec Digital School",
+  "author": "São Paulo Tech School / Bandtec Digital School | @MatheusFerreiraMatos @gfalexander @miranda500",
   "license": "MIT",
   "dependencies": {
+    "@google/genai": "^0.14.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^5.0.2",
