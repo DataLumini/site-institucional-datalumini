@@ -12,4 +12,5 @@ router.get("/listar/:idUsuario", function (req, res) {
 router.get("/obterDados/:idUsuario/:idEstufa", function (req, res) {
     dashboardController.obter_dados(req, res);
 })
+
 module.exports = router;
