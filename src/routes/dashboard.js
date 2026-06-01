@@ -13,4 +13,8 @@ router.get("/obterDados/:idUsuario/:idEstufa", function (req, res) {
     dashboardController.obter_dados(req, res);
 })
 
+router.get("/obterUltimoAviso/Principal/:idUsuario", function(req, res){
+    dashboardController.obterUltimoAvisoPrincipal(req, res)
+})
+
 module.exports = router;
