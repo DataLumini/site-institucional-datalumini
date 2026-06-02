@@ -568,19 +568,28 @@ flex-direction: column;
     width: 100%;
     display: flex;
     position: relative;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row;
     gap: 30px;
     background-color: #FFF;
     padding: 20px;
     margin-left: 20px;
     box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0 1px 6px #00000026;
 }
+.graficos{
 
-.box_grafico {
     width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.box_grafico {
+    width: 100%;
     height: 420px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px #00000026;
     border-radius: 20px;
     padding:40px;
     box-sizing: border-box;
@@ -590,8 +599,113 @@ flex-direction: column;
     height: 80% !important;
 }
 
+
+
+.alertas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.alerta-item {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    gap: 12px;
+    border-left: 5px solid transparent;
+    background-color: #fff8f0;
+    border-color: #FFEDD4;
+    border: 1px solid #FFEDD4;
+    border-left: 5px solid #e01717;
+}
+
+.alerta-medio {
+    background-color: #FFFDF0;
+    border: 1px solid #FFE97A;
+    border-left: 5px solid #FFD230;
+}
+
+.alerta-prioridade {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #e01717;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alerta-prioridade-medio {
+    background-color: #F5A623;
+}
+
+.alerta-conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.alerta-nivel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e01717;
+}
+
+.alerta-nivel-medio {
+    color: #b17a05;
+}
+
+.alerta-nivel .alerta-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.alerta-caminho {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #444;
+    font-weight: 500;
+}
+
+.alerta-caminho img {
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+}
+
+.alerta-detalhe {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.alerta-valor {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e01717;
+    min-width: 40px;
+    text-align: right;
+}
+
+.alerta-valor-medio {
+    color: #b17a05;
+}
+
  .card {
       background: #fff;
+      width: 35%;
       border-radius: 12px;
       padding: 20px 22px;
       box-shadow: 0 1px 4px rgba(0,0,0,.07);
