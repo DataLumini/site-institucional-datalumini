@@ -200,11 +200,11 @@ main {
 }
 
 #container_status2 {
-    width: 100%;
-    padding: 20px 0px;
+    width: 90%;
+    padding: 20px 40px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    margin-left: 20px;
+  margin-right: 20px;
     margin-top: 20px;
    
     background-color: #EEEEEE;
@@ -213,6 +213,7 @@ main {
 
 .container_bloco {
     display: flex;
+    
 }
 
 #container_status2 h2{
@@ -226,6 +227,8 @@ flex-direction: column;
     display: flex;
     flex-direction: row;
     gap: 30px;
+
+
 }
 
 #container_bloco_status2 {
@@ -234,11 +237,14 @@ flex-direction: column;
     display: flex;
     flex-direction:column;
     gap: 30px;
-    padding: 20px 0px;
+    justify-content: center;
+    padding: 20px 20px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
    background-color: #ffffff;
-margin-left: 30px;
+   margin-left: 10px;
+   margin-right: 20px;
+
 }
 
 #estante {
@@ -252,9 +258,8 @@ margin-left: 30px;
 }
 
 .container_info2 {
-    border: #065F46 solid 2px;
-    background-color: #1beb41;
-    width: 15%;
+    border: #01ac7b solid 2px;
+    background-color: #cef1d4;
     padding: 5px 40px;
     display: flex;
     flex-direction: column;
@@ -274,7 +279,6 @@ margin-left: 30px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    margin-left: 20px;
     margin-top: 300px;
 }
 
@@ -288,7 +292,7 @@ margin-left: 30px;
 
 .container_info {
     border: #B9F8CF solid 2px;
-    background-color: #F0FDF4;
+    background-color: #dafde5;
     width: 15%;
     padding: 20px;
     display: flex;
@@ -349,7 +353,7 @@ margin-left: 30px;
     font-size: 18px;
     font-weight:bold;
     color:rgb(0, 0, 0);
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 .lista_infoA2 {
     list-style: none;
@@ -372,7 +376,7 @@ margin-left: 30px;
     gap: 10px;
     font-size: 18px;
     font-weight:bold;
-    color:rgb(0, 0, 0);
+    color:rgb(160, 0, 0);
 }
 
 .lista_info2 {
@@ -418,9 +422,8 @@ margin-left: 30px;
 }
 
 .container_info_alerta2 {
-    background-color: #ff3535;
-    border: solid #7a0000 2px;
-    width: 15%;
+    background-color: #fcc0c0;
+    border: solid #ff4545 2px;
     padding: 5px 40px;
     display: flex;
     flex-direction: column;
@@ -431,9 +434,8 @@ margin-left: 30px;
 }
 
 .container_infoQA2 {
-    background-color: #ffed4f;
-    border: solid #ffd900 2px;
-    width: 15%;
+    background-color: #faf09b;
+    border: solid #f8e058 2px;
     padding: 5px 40px;
     display: flex;
     flex-direction: column;
@@ -441,6 +443,14 @@ margin-left: 30px;
     border-radius: 15px;
      width: 350px;
      gap:20px;
+}
+
+.container_info2,
+.container_info_alerta2,
+.container_infoQA2 {
+    width: 350px;
+    box-sizing: border-box;
+    padding: 5px 40px;
 }
 
 .titulo_alerta {
