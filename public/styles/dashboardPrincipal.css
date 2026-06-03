@@ -261,11 +261,3 @@ main {
 .card-footer a:hover {
     text-decoration: underline;
 }
-
-#suporteBotaoContainer{
-    margin-left: 50px;
-}
-
-#gerenciamentoBotaoContainer{
-    margin-left: 50px;
-}

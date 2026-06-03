@@ -5,24 +5,33 @@ function validarSessao() {
 
     if (nome == null || email == null || id == null) {
         alert("Para visualizar esta página, você precisa estar conectado à sua conta. Por favor, faça o login para continuar.")
-       window.location = "TelaLogin.html"
-   } else {
-       console.log('tudo ok!')
+        window.location = "TelaLogin.html"
+    } else {
+        console.log('tudo ok!')
     }
 }
 
 function verificarRegraUsuario() {
     let regraUsuario = sessionStorage.REGRA_USUARIO;
-    console.log("Regras do usuário:", regraUsuario);
+    const chatBotLink = document.getElementById("chatBotLink");
 
     if (regraUsuario == 2) {
-        suporteBotaoContainer.style.display = "block";
+        console.log("Regra do usuario = Suporte");
+        if (chatBotLink != undefined) {
+            chatBotLink.style.display = "flex";
+        }
         gerenciamentoBotaoContainer.style.display = "none";
     } else if (regraUsuario == 1) {
-        suporteBotaoContainer.style.display = "none";
-        gerenciamentoBotaoContainer.style.display = "block";
+        console.log("Regra do usuario = Administrador da equipe");
+        if (chatBotLink != undefined) {
+            chatBotLink.style.display = "none";
+        }
+        gerenciamentoBotaoContainer.style.display = "flex";
     } else {
-        suporteBotaoContainer.style.display = "none";
+        console.log("Regra do usuario = Funcionario");
+        if (chatBotLink != undefined) {
+            chatBotLink.style.display = "none";
+        }
         gerenciamentoBotaoContainer.style.display = "none";
     }
 }
