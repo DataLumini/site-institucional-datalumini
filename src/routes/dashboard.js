@@ -25,4 +25,12 @@ router.get("/obterDadosSensor/:idSensor", function(req, res){
     dashboardController.obterDadosAlertasSensor(req, res)
 }) 
 
+router.get("/obterTotalAlertas/principal/:idUsuario", function(req, res){
+    dashboardController.obterTotalAlertasPrincipal(req, res)
+})
+
+router.get("/obterTotalAlertas/especifica/:idUsuario/:idEstufa", function(req, res){
+    dashboardController.obterTotalAlertasEspecificas(req, res)
+})
+
 module.exports = router;

@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
 </head>
 
-<body onload="validarSessao(), carregarDadosSensor(), verificarRegraUsuario()">
+<body onload="validarSessao(), carregarDadosSensor(), verificarRegraUsuario(), obterTotalAlertasPrincipal()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -60,16 +60,16 @@
                 <div class="kpi_icon kpi_red">
                     <img src="../img/aviso1.png" alt="Crítico">
                 </div>
-                <p class="kpi_valor">1</p>
-                <span class="kpi_label">Estufas Críticas</span>
+                <p class="kpi_valor" id="alertas_criticos_id">?</p>
+                <span class="kpi_label">Total de Alertas Críticos</span>
             </div>
 
             <div class="kpi_card">
                 <div class="kpi_icon kpi_orange">
                     <img src="../img/aviso2.png" alt="Aviso">
                 </div>
-                <p class="kpi_valor">19</p>
-                <span class="kpi_label">Total de Alertas</span>
+                <p class="kpi_valor" id="alertas_medios_id">?</p>
+                <span class="kpi_label">Total de Alertas Médios</span>
             </div>
 
         </div>
@@ -188,5 +188,24 @@
             .catch(error => {
                 console.error("Erro ao carregar dados do sensor:", error);
             });
+    }
+
+    function obterTotalAlertasPrincipal() {
+        let idUsuario = sessionStorage.ID_USUARIO;
+        fetch(`/dashboard/obterTotalAlertas/principal/${idUsuario}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let alertasCriticos = data[0].TotalCriticos;
+                let alertasMedios = data[0].totalMedios;
+
+                alertas_criticos_id.innerHTML = alertasCriticos;
+                alertas_medios_id.innerHTML = alertasMedios;
+            })
+            .catch(error => {
+                console.error("Erro ao carregar dados do sensor:", error);
+            });
+
+
     }
 </script>
