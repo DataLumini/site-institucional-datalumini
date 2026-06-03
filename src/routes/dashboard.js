@@ -21,4 +21,8 @@ router.get("/obterUltimoAviso/Especifica/:idUsuario/:idEstufa", function(req, re
     dashboardController.obterUltimoAvisoEspecifica(req, res)
 })
 
+router.get("/obterDadosSensor/:idSensor", function(req, res){
+    dashboardController.obterDadosAlertasSensor(req, res)
+}) 
+
 module.exports = router;

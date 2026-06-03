@@ -68,9 +68,27 @@ function obterUltimoAvisoEspecifica(req, res){
     }
 }
 
+function obterDadosAlertasSensor(req, res){
+    var idSensor = req.params.idSensor;
+
+    if(idSensor == undefined){
+        res.status(400).send("O ID do usuário está undefined!");
+    } else{
+
+        dashboardModel.obterDadosAlertasSensor(idSensor)
+            .then((resultado) =>{
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
+}
+
 module.exports = {
     listar,
     obter_dados,
     obterUltimoAvisoPrincipal,
-    obterUltimoAvisoEspecifica
+    obterUltimoAvisoEspecifica,
+    obterDadosAlertasSensor
 }
