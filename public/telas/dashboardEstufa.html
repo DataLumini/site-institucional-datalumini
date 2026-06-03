@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 
-<body onload=" carregarDadosEstufa(); validarSessao(); verificarRegraUsuario()">
+<body onload=" carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(1)">
     <header id="menu_estufa">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -55,21 +55,14 @@
 
             <div id="container_estufas">
                 <img src="../img/aviso1.png" alt="">
-                <p>5</p>
-                <span>Alertas críticos</span>
+                <p id="alertas_criticos_id">0</p>
+                <span>Total de Alertas Críticos</span>
             </div>
             <div id="container_lum_media">
                 <img src="../img/aviso2.png" alt="">
-                <p>4</p>
-                <span>Sensores em estado de atenção</span>
+                <p id="alertas_medios_id">0</p>
+                <span>Total de Alertas Médios</span>
             </div>
-            <div id="container_potencia_media">
-                <img src="../img/icons/relogio.png" alt="">
-
-                <p>7,6%</p>
-                <span id="medida">Variação ideal</span>
-            </div>
-
             
         </div>
     
@@ -596,13 +589,36 @@
         let idSensor = sessionStorage.ID_SENSOR;
         fetch(`/dashboard/obterDadosSensor/${idSensor}`)
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
+            .then(data_resposta => {
+                console.log(data_resposta);
+                obterTotalAlertasEspecifica(data_resposta);
             })
             .catch(error => {
                 console.error("Erro ao carregar dados do sensor:", error);
             });
     };
+
+
+        function obterTotalAlertasEspecifica(idEstufaParametro) {
+        let idUsuario = sessionStorage.ID_USUARIO;
+        let idEstufa = idEstufaParametro;
+
+        fetch(`/dashboard/obterTotalAlertas/especifica/${idUsuario}/${idEstufa}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let alertasCriticos = data[0].TotalCriticos;
+                let alertasMedios = data[0].totalMedios;
+
+                alertas_criticos_id.innerHTML = alertasCriticos;
+                alertas_medios_id.innerHTML = alertasMedios;
+            })
+            .catch(error => {
+                console.error("Erro ao carregar dados do sensor:", error);
+            });
+
+
+    }
 </script>
 
 </html>

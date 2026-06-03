@@ -85,10 +85,46 @@ function obterDadosAlertasSensor(req, res){
     }
 }
 
+function obterTotalAlertasPrincipal(req, res){
+    var idUsuario = req.params.idUsuario;
+     if(idUsuario == undefined){
+        res.status(400).send("O ID do usuário está undefined!");
+    } else{
+
+        dashboardModel.obterTotalAlertasPrincipal(idUsuario)
+            .then((resultado) =>{
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
+}
+
+function obterTotalAlertasEspecificas(req, res){
+    var idUsuario = req.params.idUsuario;
+    var idEstufa = req.params.idEstufa;
+
+     if(idUsuario == undefined){
+        res.status(400).send("O ID do usuário está undefined!");
+    } else{
+
+        dashboardModel.obterTotalAlertasEspecificas(idUsuario, idEstufa)
+            .then((resultado) =>{
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
+}
+
 module.exports = {
     listar,
     obter_dados,
     obterUltimoAvisoPrincipal,
     obterUltimoAvisoEspecifica,
-    obterDadosAlertasSensor
+    obterDadosAlertasSensor,
+    obterTotalAlertasPrincipal,
+    obterTotalAlertasEspecificas
 }
