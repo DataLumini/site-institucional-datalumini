@@ -32,7 +32,7 @@ function cadastrar(valorNome, valorEmail, valorCpf, valorEmpresa, valorSenha, va
                 nomeServer: valorNome,
                 emailServer: valorEmail,
                 cpfServer: valorCpf,
-                nomeEmpresaServer: valorEmpresa,
+                empresaServer: valorEmpresa,
                 senhaServer: valorSenha
             })
         }).then(function (resposta) {
