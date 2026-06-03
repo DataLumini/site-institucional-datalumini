@@ -85,10 +85,27 @@ function obterDadosAlertasSensor(req, res){
     }
 }
 
+function obterTotalAlertas(req, res){
+    var idUsuario = req.params.idUsuario;
+     if(idUsuario == undefined){
+        res.status(400).send("O ID do usuário está undefined!");
+    } else{
+
+        dashboardModel.obterTotalAlertas(idUsuario)
+            .then((resultado) =>{
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
+}
+
 module.exports = {
     listar,
     obter_dados,
     obterUltimoAvisoPrincipal,
     obterUltimoAvisoEspecifica,
-    obterDadosAlertasSensor
+    obterDadosAlertasSensor,
+    obterTotalAlertas
 }
