@@ -70,6 +70,7 @@ function obterUltimoAvisoEspecifica(req, res) {
 
 function obterDadosAlertasSensor(req, res) {
     var idSensor = req.params.idSensor;
+    console.log("Entrei no controller alertas");
 
     if (idSensor == undefined) {
         res.status(400).send("O ID do usuário está undefined!");
@@ -77,10 +78,10 @@ function obterDadosAlertasSensor(req, res) {
 
         dashboardModel.obterDadosAlertasSensor(idSensor)
             .then((resultado) => {
-                res.json(resultado);
+                return res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
-                res.status(500).json(erro.sqlMessage)
+                return res.status(500).json(erro.sqlMessage)
             });
     }
 }
@@ -110,7 +111,23 @@ function obterTotalAlertasEspecificas(req, res) {
     } else {
 
         dashboardModel.obterTotalAlertasEspecificas(idUsuario, idEstufa)
-            .then((resultado) => {
+            .then((resultado) =>{
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
+}
+
+function obterRegistrosAlertas(req,res){
+    var idEstufa = req.params.idEstufa;
+
+    if(idEstufa == undefined){
+        res.status(400).send("O ID da estufa está undefined");
+    }else{
+        dashboardModel.obterRegistrosAlertas(idEstufa)
+        .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -147,5 +164,6 @@ module.exports = {
     obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
-
+,
+    obterRegistrosAlertas
 }

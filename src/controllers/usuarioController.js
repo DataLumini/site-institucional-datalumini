@@ -39,7 +39,7 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
-    var nomeEmpresa = req.body.nomeEmpresaServer;
+    var codigo_ativacao = req.body.empresaServer;
     var senha = req.body.senhaServer;
 
     if (nome == undefined) {
@@ -50,10 +50,10 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
-    } else if (nomeEmpresa == undefined) {
-        res.status(400).send("O nome da empresa está undefined!");
+    } else if (codigo_ativacao == undefined) {
+        res.status(400).send("O código da empresa está undefined!");
     } else {
-        empresaModel.buscarPorNome(nomeEmpresa)
+        empresaModel.buscarPorCodigo(codigo_ativacao)
             .then((resultadoEmpresa) => {
                 if (resultadoEmpresa.length > 0) {
                     console.log("Empresa encontrada: ", resultadoEmpresa[0]);
