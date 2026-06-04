@@ -169,16 +169,16 @@ function obterRegistrosAlertas(idEstufa) {
         e.numeroIdentificador AS estante,
         p.numeroIdentificador AS prateleira,
         l.frequenciaLuminosidade AS ppfd
-    FROM estufa es
-    JOIN setor s
+    FROM Estufa es
+    JOIN Setor s
         ON s.fkEstufa = es.idEstufa
-    JOIN estante e 
+    JOIN Estante e 
         ON e.fkSetor = s.idSetor
-    JOIN prateleira p 
+    JOIN Prateleira p 
         ON p.fkEstante = e.idEstante
-    JOIN sensor ss
+    JOIN Sensor ss
         ON ss.fkPrateleira = p.idPrateleira
-    JOIN leitura l 
+    JOIN Leitura l 
         ON l.fkSensor = ss.idSensor
     WHERE l.frequenciaLuminosidade <= 110 OR l.frequenciaLuminosidade >= 190
     AND es.idEstufa = ${idEstufa};
