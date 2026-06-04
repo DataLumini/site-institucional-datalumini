@@ -242,6 +242,20 @@ function obterAlertasCriticos24h(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function PrateleirasPorSetor(idSetor) {
+    var instrucaoSql = `
+        SELECT *
+        FROM vw_prateleiras_por_setor
+        WHERE idSetor = ${idSetor}
+        ORDER BY 
+    Estante ASC,
+    Prioridade ASC,
+    Prateleira ASC;
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     listar,
     obter_dados,
@@ -255,5 +269,6 @@ module.exports = {
     obterTotalAlertasEspecificas,
     obterRegistrosAlertas,
     obterDadosAlertasSensor,
-    obterAlertasCriticos24h
+    obterAlertasCriticos24h,
+    PrateleirasPorSetor
 };  

@@ -188,6 +188,22 @@ function obterAlertasCriticos24h(req, res){
     }
 }
 
+function PrateleirasPorSetor(req, res) {
+    var idSetor = req.params.idSetor;
+
+    if (idSetor == undefined) {
+        res.status(400).send("O ID do setor está undefined!");
+    } else {
+        dashboardModel.PrateleirasPorSetor(idSetor)
+            .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
 module.exports = {
     listar,
     obter_dados,
@@ -202,5 +218,6 @@ module.exports = {
     obterTotalAlertasEspecificas,
     obterRegistrosAlertas,
     obterDadosAlertasSensor,
-    obterAlertasCriticos24h
+    obterAlertasCriticos24h,
+    PrateleirasPorSetor
 }

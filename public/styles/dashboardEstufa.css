@@ -763,3 +763,22 @@ flex-direction: column;
     color: orange;
     font-weight: bold;
 }
+
+#setorSul,
+#setorNorte {
+    display: flex;
+    gap: 30px;
+}
+
+.box_estante {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 350px;
+}
+
+.estante_cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

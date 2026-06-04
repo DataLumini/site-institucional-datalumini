@@ -14,7 +14,7 @@
 </head>
 
 <body
-    onload=" carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(), obterRegistrosAlertas(), carregarNomeDash()">
+    onload=" carregarSetor(2, 'setorSul'); carregarSetor(1, 'setorNorte'); carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(), obterRegistrosAlertas(), carregarNomeDash()">
     
  <div id="modalAlertas" class="modal-fundo">
         <div class="modal-caixa">
@@ -194,263 +194,23 @@
 
         <div>
             <div id="container_status2">
-                <h2> Setor Sul</h2>
-
-                <div class="container_bloco">
-                    <div id="container_bloco_status2">
-                        <h2>Estante 1</h2>
-                        <div id="estante">
-                            <div class="container_info_alerta2">
-                                <div class="container_logo_status">
-                                    <p class="titulo_alerta" onclick="carregarDadosSensor(1)">Prateleira 1</p>
-                                    <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                                </div>
-                                <ul class="lista_infoA2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 90 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #1</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-                            <div class="container_infoQA2">
-                                <div class="container_logo_status">
-                                    <p class="titulo" onclick="carregarDadosSensor(4)">Prateleira 4</p>
-                                    <img src="../img/icons/alerta-triangular.png" alt="" class="logo_correto">
-                                </div>
-                                <ul class="lista_info2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 192 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #4</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-                            <div class="container_info2">
-                                <div class="container_logo_status">
-                                    <p class="titulo"onclick="carregarDadosSensor(2)">Prateleira 2</p>
-                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                                </div>
-                                <ul class="lista_info2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 165 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #2</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-                            <div class="container_info2">
-                                <div class="container_logo_status">
-                                    <p class="titulo" onclick="carregarDadosSensor(3)">Prateleira 3</p>
-                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                                </div>
-                                <ul class="lista_info2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 178 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt=""> Sensor #3</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-
-                            
-                        </div>
-
-                    </div>
-
-
-                    <div id="container_bloco_status2">
-                        <h2>Estante 2</h2>
-                        <div id="estante">
-                            <div class="container_info_alerta2">
-                                <div class="container_logo_status">
-                                    <p class="titulo_alerta" onclick="carregarDadosSensor(5)">Prateleira 1</p>
-
-                                    <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                                </div>
-                                <ul class="lista_infoA2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 240 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt=""> Sensor #1</li>
-                                    </ul>
-
-                                </ul>
-                                
-                            </div>
-                             <div class="container_info_alerta2">
-                                <div class="container_logo_status">
-                                    <p class="titulo" onclick="carregarDadosSensor(8)">Prateleira 4 </p>
-                                    <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                                </div>
-                                <ul class="lista_infoA2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 91 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #8</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-                            <div class="container_infoQA2">
-                                <div class="container_logo_status">
-                                    <p class="titulo" onclick="carregarDadosSensor(6)">Prateleira 2</p>
-                                    <img src="../img/icons/alerta-triangular.png" alt="" class="logo_correto">
-                                </div>
-                                <ul class="lista_infoB2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 105 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt=""> Sensor #6</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-                            <div class="container_info2">
-                                <div class="container_logo_status">
-                                    <p class="titulo" onclick="carregarDadosSensor(7)" >Prateleira 3</p>
-                                    <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                                </div>
-                                <ul class="lista_info2">
-                                    <li><img src="../img/icons/raio.png" alt=""> 157 PPFD</li>
-                                    <ul class="lista">
-                                        <li><img src="../img/icons/relogio.svg" alt="">Sensor #7</li>
-                                    </ul>
-
-                                </ul>
-                            </div>
-
-                           
-                        </div>
+                <h2> Setor Sul</h2> 
+                 <div id="setorSul"></div>
+               
                     </div>
 
                 </div>
-            </div>
+           
 
 
 
         <div id="container_status2">
             <h2> Setor Norte</h2>
-            <div class="container_bloco">
-                <div id="container_bloco_status2">
-                    <h2>Estante 1</h2>
-                    <div id="estante">
-                        <div class="container_info_alerta2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(10)">Prateleira 2</p>
-                                <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                            </div>
-                            <ul class="lista_infoA2">
-                                <li><img src="../img/icons/raio.png" alt=""> 270 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #2</li>
-                                </ul>
-                            </ul>
-                        </div>
-                        <div class="container_info_alerta2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(11)">Prateleira 3</p>
-                                <img src="../img/icons/aviso.svg" alt="Aviso" class="logo_aviso">
-                            </div>
-                            <ul class="lista_infoA2">
-                                <li><img src="../img/icons/raio.png" alt=""> 230 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt=""> Sensor #3</li>
-                                </ul>
-
-                            </ul>
-                        </div>
-                        <div class="container_infoQA2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(9)">Prateleira 1</p>
-                                <img src="../img/icons/alerta-triangular.png" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_infoB2">
-                                <li><img src="../img/icons/raio.png" alt=""> 110 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt=""> Sensor #1</li>
-                                </ul>
-
-                            </ul>
-                        </div>
-                        
-
-                        <div class="container_info2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(14)">Prateleira 4</p>
-                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info2">
-                                <li><img src="../img/icons/raio.png" alt=""> 122 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt=""> Sensor #4</li>
-                                </ul>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="container_bloco_status2">
-                    <h2>Estante 2</h2>
-                    <div id="estante">
-                        <div class="container_info2">
-                            <div class="container_logo_status">
-                                <p class="titulo_alerta" onclick="carregarDadosSensor(13)">Prateleira 1</p>
-                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info2">
-                                <li><img src="../img/icons/raio.png" alt=""> 182 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #5</li>
-                                </ul>
-
-                            </ul>
-                        </div>
-                        <div class="container_info2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(14)">Prateleira 2</p>
-                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info2">
-                                <li><img src="../img/icons/raio.png" alt=""> 168 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #6</li>
-                                </ul>
-                            </ul>
-                        </div>
-                        <div class="container_info2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(15)">Prateleira 3</p>
-                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info2">
-                                <li><img src="../img/icons/raio.png" alt=""> 178 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #7</li>
-                                </ul>
-
-                            </ul>
-                        </div>
-
-                        <div class="container_info2">
-                            <div class="container_logo_status">
-                                <p class="titulo" onclick="carregarDadosSensor(16)">Prateleira 4</p>
-                                <img src="../img/icons/correto.svg" alt="" class="logo_correto">
-                            </div>
-                            <ul class="lista_info2">
-                                <li><img src="../img/icons/raio.png" alt=""> 150 PPFD</li>
-                                <ul class="lista">
-                                    <li><img src="../img/icons/relogio.svg" alt="">Sensor #8</li>
-                                </ul>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+            <div id="setorNorte"></div>
+            
 
         </div>
-        </div>
+       
 
     </main>
 </body>
@@ -710,6 +470,8 @@
                     Estado: ${data[i].Estado}
                     <br>
                     horario: ${data[i].DataLeitura}
+                    <br>
+                    setor: ${data[i].Setor}
 <hr>
             `;
         }
@@ -727,6 +489,67 @@
 
 function fecharModalAlertas(){
     document.getElementById("modalAlertas").style.display = "none";
+}
+
+function carregarSetor(idSetor, idDiv) {
+    fetch(`/dashboard/prateleirasSetor/${idSetor}`)
+        .then(res => res.json())
+        .then(dados => {
+            var div = document.getElementById(idDiv);
+            div.innerHTML = "";
+
+            var estanteAtual = "";
+
+            for (var i = 0; i < dados.length; i++) {
+
+                if (estanteAtual != dados[i].Estante) {
+                    estanteAtual = dados[i].Estante;
+
+                    div.innerHTML += `
+                        <div class="box_estante">
+                            <h2>Estante ${dados[i].Estante}</h2>
+                            <div id="estante_${idSetor}_${dados[i].Estante}" class="estante_cards"></div>
+                        </div>
+                    `;
+                }
+
+                var classe = "";
+
+                if (dados[i].Estado == "CRÍTICO") {
+                    classe = "container_info_alerta2";
+                } else if (dados[i].Estado == "ATENÇÃO") {
+                    classe = "container_infoQA2";
+                } else {
+                    classe = "container_info2";
+                }
+
+                var divEstante = document.getElementById(`estante_${idSetor}_${dados[i].Estante}`);
+
+                divEstante.innerHTML += `
+                    <div class="${classe}" onclick="carregarDadosSensor(${dados[i].idSensor})">
+                        <div class="container_logo_status">
+                            <p class="titulo">Prateleira ${dados[i].Prateleira}</p>
+                        </div>
+
+                        <ul class="lista_info2">
+                            <li>
+                                <img src="../img/icons/raio.png" alt="">
+                                ${dados[i].FrequenciaLuminosa} PPFD
+                            </li>
+                            <ul class="lista">
+                                <li>
+                                    <img src="../img/icons/relogio.svg" alt="">
+                                    ${dados[i].Sensor}
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                `;
+            }
+        })
+        .catch(erro => {
+            console.log("Erro ao carregar setor:", erro);
+        });
 }
 </script>
 

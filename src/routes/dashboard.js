@@ -50,5 +50,7 @@ router.get("/obterDadosSensor/:idSensor/:idUsuario", function(req, res){
 router.get("/obterAlertasCriticos24h/:idUsuario", function(req, res){
     dashboardController.obterAlertasCriticos24h(req, res)
 })
-
+router.get("/prateleirasSetor/:idSetor", function (req, res) {
+    dashboardController.PrateleirasPorSetor(req, res);
+});
 module.exports = router;
