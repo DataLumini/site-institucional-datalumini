@@ -14,7 +14,7 @@
 </head>
 
 <body
-    onload=" carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(1), obterRegistrosAlertas()">
+    onload=" carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(), obterRegistrosAlertas(), carregarNomeDash()">
     
  <div id="modalAlertas" class="modal-fundo">
         <div class="modal-caixa">
@@ -62,7 +62,7 @@
     <main>
         <header id="cabecario_principal">
             <div><button>Ativo</button> <span><img src="../img/icons/moritoramento.png"></span></div>
-            <h1>Dashboard - Estufa C</h1>
+            <h1>Dashboard - <span id="nomeDash">Estufa ?</span></h1>
             <h2>Última atualização 22/04 às 13:09</h2>
         </header>
         <div id="container_kpi">
@@ -587,6 +587,11 @@
             }
         }
     })
+
+    function carregarNomeDash(){
+        let nomeDashboard = sessionStorage.NOME_ESTUFA;
+        nomeDash.innerHTML = nomeDashboard;
+    }
     function carregarDadosEstufa() {
         let idUsuario = sessionStorage.ID_USUARIO;
         fetch(`/dashboard/obterDados/${idUsuario}/1`)
@@ -612,9 +617,9 @@
     };
 
 
-    function obterTotalAlertasEspecifica(idEstufaParametro) {
+    function obterTotalAlertasEspecifica() {
         let idUsuario = sessionStorage.ID_USUARIO;
-        let idEstufa = idEstufaParametro;
+        let idEstufa = sessionStorage.ID_ESTUFA;
 
         fetch(`/dashboard/obterTotalAlertas/especifica/${idUsuario}/${idEstufa}`)
             .then(response => response.json())

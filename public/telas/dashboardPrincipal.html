@@ -144,6 +144,8 @@
         let corAlertasCriticos = estufa.alertas_criticos > 0 ? '#DC2626' : '#16A34A';
         let corPontosAtencao = estufa.alertas_atencao > 0 ? '#DC2626' : '#16A34A';
 
+        const nomeEscapado = (estufa.nome_estufa || '').replace(/'/g, "\\'");
+
         const cardHTML = `
         <div class="card-estufa ${classeCard}">
             <div class="card-header">
@@ -170,7 +172,7 @@
             <div class="card-footer">
                 <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> 
                     Limites: ${estufa.limiteMinimo}-${estufa.limiteMaximo} PPFD</p>
-                <button onclick="selecionarEstufa(${estufa.idEstufa})">Ver detalhes</button>
+                <button onclick="selecionarEstufa(${estufa.idEstufa}, '${nomeEscapado}')">Ver detalhes</button>
             </div>
         </div>
         `;
@@ -178,8 +180,9 @@
         container.innerHTML += cardHTML;
     }
 
-    function selecionarEstufa(idEstufa) {
+    function selecionarEstufa(idEstufa, nomeEstufa) {
         sessionStorage.ID_ESTUFA = idEstufa;
+        sessionStorage.NOME_ESTUFA = nomeEstufa;
         window.location.href = "./dashboardEstufa.html";
     }
 
