@@ -164,6 +164,5 @@ module.exports = {
     obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
-,
     obterRegistrosAlertas
 }
