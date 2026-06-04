@@ -111,7 +111,7 @@ function obterTotalAlertasEspecificas(req, res) {
     } else {
 
         dashboardModel.obterTotalAlertasEspecificas(idUsuario, idEstufa)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -120,14 +120,14 @@ function obterTotalAlertasEspecificas(req, res) {
     }
 }
 
-function obterRegistrosAlertas(req,res){
+function obterRegistrosAlertas(req, res) {
     var idEstufa = req.params.idEstufa;
 
-    if(idEstufa == undefined){
+    if (idEstufa == undefined) {
         res.status(400).send("O ID da estufa está undefined");
-    }else{
+    } else {
         dashboardModel.obterRegistrosAlertas(idEstufa)
-        .then((resultado) => {
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -151,23 +151,40 @@ function obterDadosEstufas(req, res) {
             );
     }
 }
-function obterDadosAlertasSensor(req, res){
+function obterDadosAlertasSensor(req, res) {
     var idSensor = req.params.idSensor;
     var idUsuario = req.params.idUsuario;
-    if(idSensor == undefined){
+    if (idSensor == undefined) {
         res.status(400).send("O ID do sensor está undefined!");
     }
-    else if(idUsuario == undefined){
- res.status(400).send("O ID do usuario está undefined!");
-    } else{
+    else if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuario está undefined!");
+    } else {
 
         dashboardModel.obterDadosAlertasSensor(idSensor, idUsuario)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
                 res.status(500).json(erro.sqlMessage)
             });
+    }
+}
+
+function obterAlertasCriticos24h(req, res){
+    var idUsuario = req.params.idUsuario;
+    if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuario está undefined!");
+    } else {
+
+        dashboardModel.obterAlertasCriticos24h(idUsuario)
+            .then((resultado) => {
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            }
+            );
     }
 }
 
@@ -184,5 +201,6 @@ module.exports = {
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
     obterRegistrosAlertas,
-    obterDadosAlertasSensor
+    obterDadosAlertasSensor,
+    obterAlertasCriticos24h
 }

@@ -13,7 +13,8 @@
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
 </head>
 
-<body onload="validarSessao(), verificarRegraUsuario(), obterDadosEstufas(), obterTotalAlertasPrincipal()">
+<body
+    onload="validarSessao(), verificarRegraUsuario(), obterDadosEstufas(), obterTotalAlertasPrincipal(), obterAlertasCriticos24h()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -84,26 +85,7 @@
         </div>
         </div>
 
-        <div id="containerAlertas">
-            <div class="alertaCard">
-                <div class="alertaConteudo">
-                    <div class="alertaNivel">
-                        <img src="../img/aviso1.png" class="alertaIcon"> CRÍTICO
-                    </div>
-                    <div class="alertaCaminho">
-                        Estufa UNICAMP A → Setor Sul → Estante 1 → Prateleira 1
-                    </div>
-                    <div class="alertaDetalhe">
-                        <span>
-                            PPFD: 90
-                        </span>
-                        <button id="botaoDetalhesAlerta" onclick="window.location.href='./dashboardEstufa.html'">
-                            Ver detalhes
-                        </button>
-                    </div>
-                </div>
-            </div>            
-        </div>
+        <div id="containerAlertas"></div>
 
     </main>
 
@@ -223,4 +205,44 @@
 
 
     }
+
+    function obterAlertasCriticos24h() {
+        let idUsuario = sessionStorage.ID_USUARIO;
+        fetch(`/dashboard/obterAlertasCriticos24h/${idUsuario}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Alertas críticos nas últimas 24h:", data);
+                for (let i = 0; i < data.length; i++) {
+                    construirCardAlerta(data[i]);
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao carregar alertas críticos das últimas 24h:", error);
+            });
+    }
+
+    function construirCardAlerta(alerta) {
+        const cardHTML = `
+        <div class="alertaCard">
+            <div class="alertaConteudo">
+                <div class="alertaNivel">
+                    <img src="../img/aviso1.png" class="alertaIcon"> CRÍTICO
+                </div>
+                <div class="alertaCaminho">
+                    ${alerta.Estufa} → ${alerta.Setor} → ${alerta.Estante} → ${alerta.Prateleira}
+                </div>
+                <div class="alertaDetalhe">
+                    <span>
+                        PPFD: ${alerta.FrequenciaLuminosa}
+                    </span>
+                    <button id="botaoDetalhesAlerta" onclick="selecionarEstufa(${alerta.IdEstufa}, '${alerta.Estufa}')">
+                        Ver detalhes
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+        containerAlertas.innerHTML += cardHTML;
+    }
+
 </script>

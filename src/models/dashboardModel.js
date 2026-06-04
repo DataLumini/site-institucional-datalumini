@@ -207,6 +207,41 @@ SELECT *
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function obterAlertasCriticos24h(idUsuario) {
+    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Buscando alertas críticos (limites da estufa) nas últimas 24h para o usuário:", idUsuario);
+
+    var instrucaoSql = `
+        SELECT 
+            es.idEstufa as IdEstufa,
+            es.nome AS Estufa,
+            s.nome AS Setor,
+            est.numeroIdentificador AS Estante,
+            p.numeroIdentificador AS Prateleira,
+            l.frequenciaLuminosidade AS FrequenciaLuminosa
+        FROM Usuario_Estufa ue
+        JOIN Estufa es 
+            ON ue.fkEstufa = es.idEstufa
+        JOIN Setor s 
+            ON es.idEstufa = s.fkEstufa
+        JOIN Estante est 
+            ON s.idSetor = est.fkSetor
+        JOIN Prateleira p 
+            ON est.idEstante = p.fkEstante
+        JOIN Sensor sen 
+            ON p.idPrateleira = sen.fkPrateleira
+        JOIN Leitura l 
+            ON sen.idSensor = l.fkSensor
+        WHERE ue.fkUsuario = ${idUsuario}
+          AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
+          AND (l.frequenciaLuminosidade < es.limiteMinimo OR l.frequenciaLuminosidade > es.limiteMaximo)
+        ORDER BY l.dtCaptacaoDados DESC;
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     listar,
     obter_dados,
@@ -219,5 +254,6 @@ module.exports = {
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
     obterRegistrosAlertas,
-    obterDadosAlertasSensor
+    obterDadosAlertasSensor,
+    obterAlertasCriticos24h
 };  

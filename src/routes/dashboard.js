@@ -47,4 +47,8 @@ router.get("/obterDadosSensor/:idSensor/:idUsuario", function(req, res){
     dashboardController.obterDadosAlertasSensor(req, res)
 }) 
 
+router.get("/obterAlertasCriticos24h/:idUsuario", function(req, res){
+    dashboardController.obterAlertasCriticos24h(req, res)
+})
+
 module.exports = router;
