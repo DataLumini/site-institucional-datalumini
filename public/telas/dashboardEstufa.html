@@ -636,6 +636,10 @@
     function obterRegistrosAlertas() {
 
         let idEstufa = sessionStorage.ID_ESTUFA;
+        let classeAlerta;
+        let classePrioridade;
+        let contador = 1;
+        let status;
 
         let alertas_list = document.getElementById("alertas-list");
         fetch(`/dashboard/obterRegistrosAlertas/especifica/${idEstufa}`)
@@ -644,19 +648,33 @@
                 console.log("Deu certo");
                 for (let i = 0; i < data.length; i++) {
                     const registro = data[i];
-                    alertas_list.innerHTML += `<div class="alerta-item alerta-alto">
-                    <div class="alerta-prioridade alerta-prioridade-alto">#3</div>
-                    <div class="alerta-conteudo">
-                        <div class="alerta-nivel">
-                            <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> CRÍTICO
+                    if(registro.ppfd <= 100 || registro >= 200){
+                       classeAlerta = "alerta-alto";
+                       classePrioridade = "alerta-prioridade-alto";
+                       status = "CRÍTICO";
+                    }else{
+                        classeAlerta = "alerta-medio";
+                        classePrioridade = "alerta-prioridade-medio";
+                        status = "ATENÇÃO";
+                    }
+
+                    alertas_list.innerHTML += `
+                    
+                        <div class="alerta-item ${classeAlerta}">
+                        <div class="alerta-prioridade ${classePrioridade}">#${contador}</div>
+                        <div class="alerta-conteudo">
+                            <div class="alerta-nivel">
+                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> ${status}
+                            </div>
+                            <div class="alerta-caminho">
+                                ${registro.setor} → Estante ${registro.estante} → Prateleira ${registro.prateleira}
+                            </div>
+                            <div class="alerta-detalhe"> PPFD: ${registro.ppfd}</div>
                         </div>
-                        <div class="alerta-caminho">
-                            ${registro.setor} → Estante ${registro.estante} → Prateleira ${registro.prateleira}
-                        </div>
-                        <div class="alerta-detalhe"> PPFD: ${registro.ppfd}</div>
+                        <div class="alerta-valor">${registro.ppfd}</div>
                     </div>
-                    <div class="alerta-valor"></div>
-                </div>`
+                    `;
+                    contador++;
                 }
             })
             .catch(error => {

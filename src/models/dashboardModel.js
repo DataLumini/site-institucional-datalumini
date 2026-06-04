@@ -165,31 +165,38 @@ function obterRegistrosAlertas(idEstufa) {
 
     var instrucaoSql = `
     SELECT 
-        s.nome AS setor,
-        e.numeroIdentificador AS estante,
-        p.numeroIdentificador AS prateleira,
-        l.frequenciaLuminosidade AS ppfd
-    FROM Estufa es
-    JOIN Setor s
+	es.nome AS estufa,
+	s.nome AS setor,
+    e.numeroIdentificador AS estante,
+    p.numeroIdentificador AS prateleira,
+    l.frequenciaLuminosidade AS ppfd,
+    CASE 
+    WHEN l.frequenciaLuminosidade <= 100 THEN 1
+    WHEN l.frequenciaLuminosidade >= 200 THEN 1
+    ELSE 2
+    END AS status_ppfd
+    FROM estufa es
+    JOIN setor s
         ON s.fkEstufa = es.idEstufa
-    JOIN Estante e 
+    JOIN estante e 
         ON e.fkSetor = s.idSetor
-    JOIN Prateleira p 
+    JOIN prateleira p 
         ON p.fkEstante = e.idEstante
-    JOIN Sensor ss
+    JOIN sensor ss
         ON ss.fkPrateleira = p.idPrateleira
-    JOIN Leitura l 
+    JOIN leitura l 
         ON l.fkSensor = ss.idSensor
-    WHERE l.frequenciaLuminosidade <= 110 OR l.frequenciaLuminosidade >= 190
-    AND es.idEstufa = ${idEstufa};
+    WHERE (l.frequenciaLuminosidade <= 110 OR l.frequenciaLuminosidade >= 190)
+    AND es.idEstufa = ${idEstufa}
+    ORDER BY status_ppfd ASC
     `;
 
     console.log(instrucaoSql);
     return database.executar(instrucaoSql, [idEstufa]);
 }
 
-function obterDadosAlertasSensor(idSensor, idUsuario){
-     console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idSensor);
+function obterDadosAlertasSensor(idSensor, idUsuario) {
+    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idSensor);
     var instrucaoSql = `
 SELECT *
         FROM vw_alertas_leituras_24h
