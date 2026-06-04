@@ -110,6 +110,35 @@ function obterTotalAlertasEspecificas(idUsuario, idEstufa) {
     return database.executar(instrucaoSql);
 }
 
+function obterRegistrosAlertas(idEstufa) {
+
+    console.log("Entrei no model");
+
+    var instrucaoSql = `
+    SELECT 
+        s.nome AS setor,
+        e.numeroIdentificador AS estante,
+        p.numeroIdentificador AS prateleira,
+        l.frequenciaLuminosidade AS ppfd
+    FROM estufa es
+    JOIN setor s
+        ON s.fkEstufa = es.idEstufa
+    JOIN estante e 
+        ON e.fkSetor = s.idSetor
+    JOIN prateleira p 
+        ON p.fkEstante = e.idEstante
+    JOIN sensor ss
+        ON ss.fkPrateleira = p.idPrateleira
+    JOIN leitura l 
+        ON l.fkSensor = ss.idSensor
+    WHERE l.frequenciaLuminosidade <= 110 OR l.frequenciaLuminosidade >= 190
+    AND es.idEstufa = ${idEstufa};
+    `;
+
+    console.log(instrucaoSql);
+    return database.executar(instrucaoSql, [idEstufa]);
+}
+
 module.exports = {
     listar,
     obter_dados,
@@ -117,5 +146,6 @@ module.exports = {
     obterDadosAlertasSensor,
     obterUltimoEspecifica,
     obterTotalAlertasPrincipal,
-    obterTotalAlertasEspecificas
+    obterTotalAlertasEspecificas,
+    obterRegistrosAlertas
 };  

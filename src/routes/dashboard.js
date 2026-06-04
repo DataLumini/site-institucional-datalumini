@@ -33,4 +33,9 @@ router.get("/obterTotalAlertas/especifica/:idUsuario/:idEstufa", function(req, r
     dashboardController.obterTotalAlertasEspecificas(req, res)
 })
 
+router.get("/obterRegistrosAlertas/especifica/:idEstufa", function(req,res){
+    console.log("Entrei na rota registros");
+    dashboardController.obterRegistrosAlertas(req,res)
+})
+
 module.exports = router;
