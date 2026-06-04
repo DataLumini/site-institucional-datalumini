@@ -188,6 +188,18 @@ function obterRegistrosAlertas(idEstufa) {
     return database.executar(instrucaoSql, [idEstufa]);
 }
 
+function obterDadosAlertasSensor(idSensor, idUsuario){
+     console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idSensor);
+    var instrucaoSql = `
+SELECT *
+        FROM vw_alertas_leituras_24h
+        WHERE idUsuario = ${idUsuario}
+        AND idSensor = ${idSensor}
+        ORDER BY DataLeitura DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     listar,
     obter_dados,
@@ -199,5 +211,6 @@ module.exports = {
     obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
-    obterRegistrosAlertas
+    obterRegistrosAlertas,
+    obterDadosAlertasSensor
 };  
