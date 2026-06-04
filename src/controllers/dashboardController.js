@@ -151,6 +151,25 @@ function obterDadosEstufas(req, res) {
             );
     }
 }
+function obterDadosAlertasSensor(req, res){
+    var idSensor = req.params.idSensor;
+    var idUsuario = req.params.idUsuario;
+    if(idSensor == undefined){
+        res.status(400).send("O ID do sensor está undefined!");
+    }
+    else if(idUsuario == undefined){
+ res.status(400).send("O ID do usuario está undefined!");
+    } else{
+
+        dashboardModel.obterDadosAlertasSensor(idSensor, idUsuario)
+            .then((resultado) =>{
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
+}
 
 module.exports = {
     listar,
@@ -164,5 +183,6 @@ module.exports = {
     obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
-    obterRegistrosAlertas
+    obterRegistrosAlertas,
+    obterDadosAlertasSensor
 }
