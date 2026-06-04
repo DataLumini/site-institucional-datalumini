@@ -263,3 +263,101 @@ main {
 .card-footer button:hover {
     text-decoration: underline;
 }
+
+#containerAlertas {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+@keyframes subirAlerta {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.alertaCard {
+    background-color: #FEF2F2; 
+    border: 1px solid #FCA5A5;
+    border-radius: 8px;
+    padding: 15px 20px;
+    width: 250px; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: subirAlerta 0.4s;
+}
+
+.alertaPrioridadeAlto {
+    background-color: #DC2626;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alertaConteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.alertaNivel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #db2e2e;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.alertaIcon {
+    width: 13px;
+    height: 13px;
+}
+
+.alertaCaminho {
+    font-size: 12px;
+    color: #4B5563;
+    line-height: 1.4;
+}
+
+.alertaDetalhe {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    color: #111827;
+}
+
+#botaoDetalhesAlerta{
+    font-size: 12px;
+    color: #3B82F6;
+    border: none;
+    background: none;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#botaoDetalhesAlerta:hover {
+    text-decoration: underline;
+}

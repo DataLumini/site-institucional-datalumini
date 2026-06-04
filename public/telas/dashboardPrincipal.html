@@ -51,7 +51,7 @@
                 <span class="badge-ativo">Sistema Ativo</span>
                 <img src="../img/icons/Icon.png" alt="Ícone de gráfico" class="icone-tendencia">
             </div>
-            <h1>Controle Ambiental - Arabidopsis thaliana</h1>
+            <h1>Dashboard Visão Geral - Arabidopsis thaliana</h1>
             <h2>Visão Geral das Estufas</h2>
         </header>
 
@@ -84,7 +84,26 @@
         </div>
         </div>
 
-
+        <div id="containerAlertas">
+            <div class="alertaCard">
+                <div class="alertaConteudo">
+                    <div class="alertaNivel">
+                        <img src="../img/aviso1.png" class="alertaIcon"> CRÍTICO
+                    </div>
+                    <div class="alertaCaminho">
+                        Estufa UNICAMP A → Setor Sul → Estante 1 → Prateleira 1
+                    </div>
+                    <div class="alertaDetalhe">
+                        <span>
+                            PPFD: 90
+                        </span>
+                        <button id="botaoDetalhesAlerta" onclick="window.location.href='./dashboardEstufa.html'">
+                            Ver detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>            
+        </div>
 
     </main>
 
@@ -94,7 +113,7 @@
 </html>
 
 <script>
-    
+
     function obterDadosEstufas() {
         let idUsuario = sessionStorage.ID_USUARIO;
         fetch(`/dashboard/obterDadosEstufas/${idUsuario}`)
