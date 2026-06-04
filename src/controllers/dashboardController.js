@@ -34,15 +34,15 @@ function obter_dados(req, res) {
     }
 }
 
-function obterUltimoAvisoPrincipal(req, res){
+function obterUltimoAvisoPrincipal(req, res) {
     var idUsuario = req.params.idUsuario;
 
-    if(idUsuario == undefined){
+    if (idUsuario == undefined) {
         res.status(400).send("O ID do usuário está undefined!");
-    } else{
+    } else {
 
         dashboardModel.obterUltimoAvisoPrincipal(idUsuario)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -51,15 +51,15 @@ function obterUltimoAvisoPrincipal(req, res){
     }
 }
 
-function obterUltimoAvisoEspecifica(req, res){
+function obterUltimoAvisoEspecifica(req, res) {
     var idUsuario = req.params.idUsuario;
 
-    if(idUsuario == undefined){
+    if (idUsuario == undefined) {
         res.status(400).send("O ID do usuário está undefined!");
-    } else{
+    } else {
 
         dashboardModel.obterUltimoAvisoPrincipal(idUsuario)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -68,15 +68,15 @@ function obterUltimoAvisoEspecifica(req, res){
     }
 }
 
-function obterDadosAlertasSensor(req, res){
+function obterDadosAlertasSensor(req, res) {
     var idSensor = req.params.idSensor;
 
-    if(idSensor == undefined){
+    if (idSensor == undefined) {
         res.status(400).send("O ID do usuário está undefined!");
-    } else{
+    } else {
 
         dashboardModel.obterDadosAlertasSensor(idSensor)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -85,14 +85,14 @@ function obterDadosAlertasSensor(req, res){
     }
 }
 
-function obterTotalAlertasPrincipal(req, res){
+function obterTotalAlertasPrincipal(req, res) {
     var idUsuario = req.params.idUsuario;
-     if(idUsuario == undefined){
+    if (idUsuario == undefined) {
         res.status(400).send("O ID do usuário está undefined!");
-    } else{
+    } else {
 
         dashboardModel.obterTotalAlertasPrincipal(idUsuario)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
@@ -101,21 +101,37 @@ function obterTotalAlertasPrincipal(req, res){
     }
 }
 
-function obterTotalAlertasEspecificas(req, res){
+function obterTotalAlertasEspecificas(req, res) {
     var idUsuario = req.params.idUsuario;
     var idEstufa = req.params.idEstufa;
 
-     if(idUsuario == undefined){
+    if (idUsuario == undefined) {
         res.status(400).send("O ID do usuário está undefined!");
-    } else{
+    } else {
 
         dashboardModel.obterTotalAlertasEspecificas(idUsuario, idEstufa)
-            .then((resultado) =>{
+            .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
                 console.log(erro);
                 res.status(500).json(erro.sqlMessage)
             });
+    }
+}
+
+function obterDadosEstufas(req, res) {
+    var idUsuario = req.params.idUsuario;
+    if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuário está undefined!");
+    } else {
+        dashboardModel.obterDadosEstufas(idUsuario)
+            .then((resultado) => {
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            }
+            );
     }
 }
 
@@ -125,6 +141,11 @@ module.exports = {
     obterUltimoAvisoPrincipal,
     obterUltimoAvisoEspecifica,
     obterDadosAlertasSensor,
+
+
+    //novas Rotas ajustadas
+    obterDadosEstufas,
     obterTotalAlertasPrincipal,
-    obterTotalAlertasEspecificas
+    obterTotalAlertasEspecificas,
+
 }

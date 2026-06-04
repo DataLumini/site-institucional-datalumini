@@ -110,12 +110,64 @@ function obterTotalAlertasEspecificas(idUsuario, idEstufa) {
     return database.executar(instrucaoSql);
 }
 
+function obterDadosEstufas(idUsuario) {
+    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idUsuario);
+    var instrucaoSql = `
+        SELECT
+        dados.idEstufa,
+        dados.nome_estufa,
+        CASE
+            WHEN dados.alertas_criticos > 0 THEN 'Crítico'
+            WHEN dados.alertas_atencao > 0 THEN 'Atenção'
+            ELSE 'Ativo'
+        END AS status_estufa,
+        (dados.alertas_criticos + dados.alertas_atencao) AS total_alertas,
+        dados.alertas_criticos,
+        dados.alertas_atencao,
+        dados.limiteMinimo,
+        dados.limiteMaximo
+    FROM (
+        SELECT
+            e.idEstufa,
+            e.nome AS nome_estufa,
+            e.limiteMinimo,
+            e.limiteMaximo,
+            COUNT(CASE
+                WHEN l.frequenciaLuminosidade < e.limiteMinimo OR l.frequenciaLuminosidade > e.limiteMaximo
+                THEN 1
+            END) AS alertas_criticos,
+            COUNT(CASE
+                WHEN l.frequenciaLuminosidade BETWEEN e.limiteMinimo AND (e.limiteMinimo + (e.limiteMaximo - e.limiteMinimo) * 0.10)
+                OR l.frequenciaLuminosidade BETWEEN (e.limiteMaximo - (e.limiteMaximo - e.limiteMinimo) * 0.10) AND e.limiteMaximo
+                THEN 1
+            END) AS alertas_atencao
+
+        FROM Usuario_Estufa ue
+        JOIN Estufa e ON ue.fkEstufa = e.idEstufa
+        LEFT JOIN Setor s ON e.idEstufa = s.fkEstufa
+        LEFT JOIN Estante est ON s.idSetor = est.fkSetor
+        LEFT JOIN Prateleira p ON est.idEstante = p.fkEstante
+        LEFT JOIN Sensor sen ON p.idPrateleira = sen.fkPrateleira
+        LEFT JOIN Leitura l ON sen.idSensor = l.fkSensor
+            AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
+            
+        WHERE ue.fkUsuario = ${idUsuario} 
+        GROUP BY e.idEstufa, e.nome, e.limiteMinimo, e.limiteMaximo
+    ) AS dados;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     listar,
     obter_dados,
     obterUltimoAvisoPrincipal,
     obterDadosAlertasSensor,
     obterUltimoEspecifica,
+
+    //novas Rotas ajustadas
+    obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas
 };  
