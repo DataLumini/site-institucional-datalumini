@@ -620,11 +620,32 @@
 
     }
 
+
     function obterRegistrosAlertas() {
-        fetch(`/dashboard/obterRegistrosAlertas/especifica/1`)
+
+        let idEstufa = sessionStorage.ID_ESTUFA;
+
+        let alertas_list = document.getElementById("alertas-list");
+        fetch(`/dashboard/obterRegistrosAlertas/especifica/${idEstufa}`)
             .then(response => response.json())
             .then(data => {
                 console.log("Deu certo");
+                for (let i = 0; i < data.length; i++) {
+                    const registro = data[i];
+                    alertas_list.innerHTML += `<div class="alerta-item alerta-alto">
+                    <div class="alerta-prioridade alerta-prioridade-alto">#3</div>
+                    <div class="alerta-conteudo">
+                        <div class="alerta-nivel">
+                            <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> CRÍTICO
+                        </div>
+                        <div class="alerta-caminho">
+                            ${registro.setor} → Estante ${registro.estante} → Prateleira ${registro.prateleira}
+                        </div>
+                        <div class="alerta-detalhe"> PPFD: ${registro.ppfd}</div>
+                    </div>
+                    <div class="alerta-valor"></div>
+                </div>`
+                }
             })
             .catch(error => {
                 console.error("Erro ao carregar dados do sensor:", error);
