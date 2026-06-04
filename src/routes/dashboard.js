@@ -33,6 +33,11 @@ router.get("/obterTotalAlertas/especifica/:idUsuario/:idEstufa", function(req, r
     dashboardController.obterTotalAlertasEspecificas(req, res)
 })
 
+//rota para pegar todos os dados das estufas da dashboard principal com o idUsuario, para a criacao dos cards das estufas
+router.get("/obterDadosEstufas/:idUsuario", function(req, res){
+    dashboardController.obterDadosEstufas(req, res)
+})
+
 router.get("/obterRegistrosAlertas/especifica/:idEstufa", function(req,res){
     console.log("Entrei na rota registros");
     dashboardController.obterRegistrosAlertas(req,res)

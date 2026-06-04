@@ -33,11 +33,10 @@ li a:hover {
     width: 50px;
 }
 
-
 .cabecalho-principal {
     width: 100%;
     height: auto;
-    background-color: transparent; 
+    background-color: transparent;
     margin-left: 20px;
     margin-bottom: 30px;
 }
@@ -59,7 +58,7 @@ li a:hover {
 }
 
 .icone-tendencia {
-    height: 15px; 
+    height: 15px;
 }
 
 .cabecalho-principal h1 {
@@ -83,18 +82,18 @@ li a:hover {
     margin-left: 20px;
     margin-bottom: 30px;
     width: 100%;
-    max-width: 1000px; 
+    max-width: 1000px;
 }
 
 .kpi_card {
     background: #FFFFFF;
     border-radius: 8px;
-    border: 1px solid #E5E7EB; 
+    border: 1px solid #E5E7EB;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex: 1; 
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05); 
+    flex: 1;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .kpi_icon {
@@ -135,7 +134,6 @@ main {
     gap: 20px;
 }
 
- 
 .secao-estufas-detalhe {
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
@@ -183,13 +181,18 @@ main {
 }
 
 .card-estufa.critico {
-    background-color: #FEF2F2; 
-    border: 1px solid #FCA5A5; 
+    background-color: #FEF2F2;
+    border: 1px solid #FCA5A5;
+}
+
+.card-estufa.atencao {
+    background-color: #FFFBEB;
+    border: 1px solid #FCD34D;
 }
 
 .card-estufa.ativo {
-    background-color: #F0FDF4; 
-    border: 1px solid #86EFAC; 
+    background-color: #F0FDF4;
+    border: 1px solid #86EFAC;
 }
 
 .card-header {
@@ -218,7 +221,7 @@ main {
 .card-body {
     display: flex;
     flex-direction: column;
-    gap: 8px; 
+    gap: 8px;
 }
 
 .linha-dado {
@@ -232,12 +235,8 @@ main {
     color: #111827;
 }
 
-.texto-vermelho { color: #DC2626 !important; }
-.texto-laranja { color: #D97706 !important; }
-.texto-verde { color: #16A34A !important; }
-
 .card-footer {
-    border-top: 1px solid #E5E7EB; 
+    border-top: 1px solid #E5E7EB;
     padding-top: 15px;
     margin-top: 5px;
 }
@@ -251,21 +250,16 @@ main {
     gap: 5px;
 }
 
-.card-footer a {
+.card-footer button {
     font-size: 13px;
-    color: #3B82F6; 
+    color: #3B82F6;
+    border: none;
+    background: none;
     text-decoration: none;
     font-weight: 500;
+    cursor: pointer;
 }
 
-.card-footer a:hover {
+.card-footer button:hover {
     text-decoration: underline;
-}
-
-#suporteBotaoContainer{
-    margin-left: 50px;
-}
-
-#gerenciamentoBotaoContainer{
-    margin-left: 50px;
 }

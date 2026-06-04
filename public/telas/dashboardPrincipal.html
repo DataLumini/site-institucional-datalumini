@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
 </head>
 
-<body onload="validarSessao(), carregarDadosSensor(), verificarRegraUsuario(), obterTotalAlertasPrincipal()">
+<body onload="validarSessao(), verificarRegraUsuario(), obterDadosEstufas(), obterTotalAlertasPrincipal()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -80,91 +80,7 @@
                 <span>Ordenado por prioridade (críticas primeiro)</span>
             </div>
 
-            <div class="lista-cards-estufa">
-                <div class="card-estufa critico">
-                    <div class="card-header">
-                        <div class="titulos">
-                            <h3>Estufa C</h3>
-                            <p>Crítico</p>
-                        </div>
-                        <img src="../img/icons/alerta.png" alt="Alerta">
-                    </div>
-                    <div class="card-body">
-                        <div class="linha-dado">
-                            <span>Total de Alertas</span>
-                            <strong class="texto-vermelho">10</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Setores Críticos</span>
-                            <strong class="texto-vermelho">2</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Total de Setores</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="./dashboardEstufa.html">Ver detalhes</a>
-                    </div>
-                </div>
-
-                <div class="card-estufa ativo">
-                    <div class="card-header">
-                        <div class="titulos">
-                            <h3>Estufa A</h3>
-                            <p>Ativo</p>
-                        </div>
-                        <img src="../img/icons/correto.svg" alt="Correto">
-                    </div>
-                    <div class="card-body">
-                        <div class="linha-dado">
-                            <span>Total de Alertas</span>
-                            <strong class="texto-vermelho">6</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Setores Críticos</span>
-                            <strong class="texto-vermelho">1</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Total de Setores</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="./dashboardEstufa.html">Ver detalhes</a>
-                    </div>
-                </div>
-
-                <div class="card-estufa ativo">
-                    <div class="card-header">
-                        <div class="titulos">
-                            <h3>Estufa B</h3>
-                            <p>Ativo</p>
-                        </div>
-                        <img src="../img/icons/correto.svg" alt="Correto">
-                    </div>
-                    <div class="card-body">
-                        <div class="linha-dado">
-                            <span>Total de Alertas</span>
-                            <strong class="texto-laranja">3</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Setores Críticos</span>
-                            <strong class="texto-verde">0</strong>
-                        </div>
-                        <div class="linha-dado">
-                            <span>Total de Setores</span>
-                            <strong>2</strong>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> Limites: 100-200 PPFD</p>
-                        <a href="./dashboardEstufa.html">Ver detalhes</a>
-                    </div>
-                </div>
-            </div>
+            <div class="lista-cards-estufa" id="container_estufas"></div>
         </div>
         </div>
 
@@ -178,16 +94,93 @@
 </html>
 
 <script>
-    function carregarDadosSensor() {
+    
+    function obterDadosEstufas() {
         let idUsuario = sessionStorage.ID_USUARIO;
-        fetch(`/dashboard/listar/${idUsuario}`)
+        fetch(`/dashboard/obterDadosEstufas/${idUsuario}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+
+                container_estufas.innerHTML = '';
+
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].status_estufa == 'Crítico') {
+                        construirCardEstufa(data[i], container_estufas);
+                    }
+                }
+
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].status_estufa == 'Atenção') {
+                        construirCardEstufa(data[i], container_estufas);
+                    }
+                }
+
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].status_estufa == 'Ativo' || !data[i].status_estufa) {
+                        construirCardEstufa(data[i], container_estufas);
+                    }
+                }
             })
             .catch(error => {
-                console.error("Erro ao carregar dados do sensor:", error);
+                console.error("Erro ao carregar dados das estufas:", error);
             });
+    }
+
+    function construirCardEstufa(estufa, container) {
+        let classeCard = 'ativo';
+        let iconeStatus = '../img/icons/correto.svg';
+        let corTotal = '#16A34A';
+
+        if (estufa.status_estufa == 'Crítico') {
+            classeCard = 'critico';
+            iconeStatus = '../img/aviso1.png';
+            corTotal = 'red';
+        } else if (estufa.status_estufa == 'Atenção') {
+            classeCard = 'atencao';
+            iconeStatus = '../img/aviso2.png';
+            corTotal = '#DC2626';
+        }
+
+        let corAlertasCriticos = estufa.alertas_criticos > 0 ? '#DC2626' : '#16A34A';
+        let corPontosAtencao = estufa.alertas_atencao > 0 ? '#DC2626' : '#16A34A';
+
+        const cardHTML = `
+        <div class="card-estufa ${classeCard}">
+            <div class="card-header">
+                <div class="titulos">
+                    <h3>${estufa.nome_estufa}</h3>
+                    <p>${estufa.status_estufa}</p>
+                </div>
+                <img src="${iconeStatus}" alt="Status ${estufa.status_estufa}">
+            </div>
+            <div class="card-body">
+                <div class="linha-dado">
+                    <span>Total de Alertas</span>
+                    <strong style="color: ${estufa.total_alertas > 0 ? corTotal : '#16A34A'};">${estufa.total_alertas}</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Alertas Críticos</span>
+                    <strong style="color: ${corAlertasCriticos};">${estufa.alertas_criticos}</strong>
+                </div>
+                <div class="linha-dado">
+                    <span>Pontos de atenção</span>
+                    <strong style="color: ${corPontosAtencao};">${estufa.alertas_atencao}</strong>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><img src="../img/icons/raio.png" alt="raio" style="width:12px;"> 
+                    Limites: ${estufa.limiteMinimo}-${estufa.limiteMaximo} PPFD</p>
+                <button onclick="selecionarEstufa(${estufa.idEstufa})">Ver detalhes</button>
+            </div>
+        </div>
+        `;
+
+        container.innerHTML += cardHTML;
+    }
+
+    function selecionarEstufa(idEstufa) {
+        sessionStorage.ID_ESTUFA = idEstufa;
+        window.location.href = "./dashboardEstufa.html";
     }
 
     function obterTotalAlertasPrincipal() {
