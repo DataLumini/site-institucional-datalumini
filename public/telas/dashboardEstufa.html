@@ -15,8 +15,8 @@
 
 <body
     onload=" carregarSetor(2, 'setorSul'); carregarSetor(1, 'setorNorte'); carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(), obterRegistrosAlertas(), carregarNomeDash()">
-    
- <div id="modalAlertas" class="modal-fundo">
+
+    <div id="modalAlertas" class="modal-fundo">
         <div class="modal-caixa">
             <h2>Leituras em Atenção ou Crítico</h2>
 
@@ -27,7 +27,7 @@
             </button>
         </div>
     </div>
-    
+
     <header id="menu_estufa">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -194,30 +194,30 @@
 
         <div>
             <div id="container_status2">
-                <h2> Setor Sul</h2> 
-                 <div id="setorSul"></div>
-               
-                    </div>
+                <h2> Setor Sul</h2>
+                <div id="setorSul"></div>
 
-                </div>
-           
+            </div>
+
+        </div>
+
 
 
 
         <div id="container_status2">
             <h2> Setor Norte</h2>
             <div id="setorNorte"></div>
-            
+
 
         </div>
-       
+
 
     </main>
 </body>
 <script>
     const grafico_donut = document.getElementById('grafico_donut');
 
-   const chartDonut = new Chart(grafico_donut, {
+    const chartDonut = new Chart(grafico_donut, {
         type: 'doughnut',
         data: {
             labels: ['Normal', 'Atenção', 'Crítico'],
@@ -268,7 +268,7 @@
     let valores_maximo = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
     let valores_minimo = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
 
-    new Chart(grafico_sensor_linha, {
+    const chartLinha = new Chart(grafico_sensor_linha, {
         type: 'line',
         data: {
             labels: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14', 's15', 's16'],
@@ -348,16 +348,40 @@
         }
     })
 
-    function carregarNomeDash(){
+    function carregarNomeDash() {
         let nomeDashboard = sessionStorage.NOME_ESTUFA;
         nomeDash.innerHTML = nomeDashboard;
     }
     function carregarDadosEstufa() {
         let idUsuario = sessionStorage.ID_USUARIO;
+        let idEstufa = sessionStorage.ID_ESTUFA;
+
         fetch(`/dashboard/obterDados/${idUsuario}/1`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                
+                let labelsSensores = [];
+                let valoresPPFD = [];
+                let limitesMax = [];
+                let limitesMin = [];
+
+                for (let i = 0; i < data.length; i++) {
+                    labelsSensores.push(data[i].Sensor);
+                    valoresPPFD.push(data[i].FrequenciaLuminosa);
+
+
+                    limitesMax.push(200);
+                    limitesMin.push(100);
+                }
+
+                chartLinha.data.labels = labelsSensores;
+                chartLinha.data.datasets[0].data = valoresPPFD;
+                chartLinha.data.datasets[1].data = limitesMax;
+                chartLinha.data.datasets[2].data = limitesMin;
+
+                chartLinha.update();
+
             })
             .catch(error => {
                 console.error("Erro ao carregar dados do sensor:", error);
@@ -418,11 +442,11 @@
                 console.log("Deu certo");
                 for (let i = 0; i < data.length; i++) {
                     const registro = data[i];
-                    if(registro.ppfd <= 100 || registro >= 200){
-                       classeAlerta = "alerta-alto";
-                       classePrioridade = "alerta-prioridade-alto";
-                       status = "CRÍTICO";
-                    }else{
+                    if (registro.ppfd <= 100 || registro >= 200) {
+                        classeAlerta = "alerta-alto";
+                        classePrioridade = "alerta-prioridade-alto";
+                        status = "CRÍTICO";
+                    } else {
                         classeAlerta = "alerta-medio";
                         classePrioridade = "alerta-prioridade-medio";
                         status = "ATENÇÃO";
@@ -452,21 +476,21 @@
             });
 
     }
-            function carregarDadosSensor(idSensor) {
+    function carregarDadosSensor(idSensor) {
         let idUsuario = sessionStorage.ID_USUARIO;
         fetch(`/dashboard/obterDadosSensor/${idSensor}/${idUsuario}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 let conteudo =
-            document.getElementById("conteudoModalAlertas");
+                    document.getElementById("conteudoModalAlertas");
 
 
-        conteudo.innerHTML = "";
+                conteudo.innerHTML = "";
 
-        for(let i = 0; i < data.length; i++){
+                for (let i = 0; i < data.length; i++) {
 
-            conteudo.innerHTML += `
+                    conteudo.innerHTML += `
             
                     Sensor: ${data[i].Sensor}
                     <br>
@@ -479,9 +503,9 @@
                     setor: ${data[i].Setor}
 <hr>
             `;
-        }
+                }
 
-        document.getElementById("modalAlertas").style.display = "flex";
+                document.getElementById("modalAlertas").style.display = "flex";
             })
 
             .catch(error => {
@@ -489,48 +513,48 @@
             });
     };
 
-   
 
 
-function fecharModalAlertas(){
-    document.getElementById("modalAlertas").style.display = "none";
-}
 
-function carregarSetor(idSetor, idDiv) {
-    fetch(`/dashboard/prateleirasSetor/${idSetor}`)
-        .then(res => res.json())
-        .then(dados => {
-            var div = document.getElementById(idDiv);
-            div.innerHTML = "";
+    function fecharModalAlertas() {
+        document.getElementById("modalAlertas").style.display = "none";
+    }
 
-            var estanteAtual = "";
+    function carregarSetor(idSetor, idDiv) {
+        fetch(`/dashboard/prateleirasSetor/${idSetor}`)
+            .then(res => res.json())
+            .then(dados => {
+                var div = document.getElementById(idDiv);
+                div.innerHTML = "";
 
-            for (var i = 0; i < dados.length; i++) {
+                var estanteAtual = "";
 
-                if (estanteAtual != dados[i].Estante) {
-                    estanteAtual = dados[i].Estante;
+                for (var i = 0; i < dados.length; i++) {
 
-                    div.innerHTML += `
+                    if (estanteAtual != dados[i].Estante) {
+                        estanteAtual = dados[i].Estante;
+
+                        div.innerHTML += `
                         <div class="box_estante">
                             <h2>Estante ${dados[i].Estante}</h2>
                             <div id="estante_${idSetor}_${dados[i].Estante}" class="estante_cards"></div>
                         </div>
                     `;
-                }
+                    }
 
-                var classe = "";
+                    var classe = "";
 
-                if (dados[i].Estado == "CRÍTICO") {
-                    classe = "container_info_alerta2";
-                } else if (dados[i].Estado == "ATENÇÃO") {
-                    classe = "container_infoQA2";
-                } else {
-                    classe = "container_info2";
-                }
+                    if (dados[i].Estado == "CRÍTICO") {
+                        classe = "container_info_alerta2";
+                    } else if (dados[i].Estado == "ATENÇÃO") {
+                        classe = "container_infoQA2";
+                    } else {
+                        classe = "container_info2";
+                    }
 
-                var divEstante = document.getElementById(`estante_${idSetor}_${dados[i].Estante}`);
+                    var divEstante = document.getElementById(`estante_${idSetor}_${dados[i].Estante}`);
 
-                divEstante.innerHTML += `
+                    divEstante.innerHTML += `
                     <div class="${classe}" onclick="carregarDadosSensor(${dados[i].idSensor})">
                         <div class="container_logo_status">
                             <p class="titulo">Prateleira ${dados[i].Prateleira}</p>
@@ -550,12 +574,12 @@ function carregarSetor(idSetor, idDiv) {
                         </ul>
                     </div>
                 `;
-            }
-        })
-        .catch(erro => {
-            console.log("Erro ao carregar setor:", erro);
-        });
-}
+                }
+            })
+            .catch(erro => {
+                console.log("Erro ao carregar setor:", erro);
+            });
+    }
 </script>
 
 </html>
