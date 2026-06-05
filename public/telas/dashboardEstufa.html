@@ -234,6 +234,10 @@
             responsive: true,
             maintainAspectRatio: false,
             cutout: "75%",
+            layout: {
+                padding: 25 
+            },
+
             plugins: {
                 legend: {
 
@@ -314,7 +318,7 @@
             maintainAspectRatio: false,
 
             layout: {
-                padding: 10
+                padding: 30
             },
 
             scales: {
@@ -360,7 +364,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                
+
                 let labelsSensores = [];
                 let valoresPPFD = [];
                 let limitesMax = [];
