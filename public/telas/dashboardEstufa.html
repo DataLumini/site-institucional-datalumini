@@ -217,7 +217,7 @@
 <script>
     const grafico_donut = document.getElementById('grafico_donut');
 
-    new Chart(grafico_donut, {
+   const chartDonut = new Chart(grafico_donut, {
         type: 'doughnut',
         data: {
             labels: ['Normal', 'Atenção', 'Crítico'],
@@ -387,9 +387,14 @@
                 console.log(data);
                 let alertasCriticos = data[0].TotalCriticos;
                 let alertasMedios = data[0].totalMedios;
+                let alertasNormais = data[0].TotalNormais || 0;
 
                 alertas_criticos_id.innerHTML = alertasCriticos;
                 alertas_medios_id.innerHTML = alertasMedios;
+
+                chartDonut.data.datasets[0].data = [alertasNormais, alertasMedios, alertasCriticos];
+
+                chartDonut.update();
             })
             .catch(error => {
                 console.error("Erro ao carregar dados do sensor:", error);

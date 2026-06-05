@@ -90,22 +90,13 @@ function obterTotalAlertasPrincipal(idUsuario) {
 function obterTotalAlertasEspecificas(idUsuario, idEstufa) {
     console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idUsuario);
     var instrucaoSql = `
-         SELECT (
-            SELECT 
-                count(*)
-                FROM vw_obter_dados_dash_principal 
-                WHERE idUsuario = ${idUsuario} AND idEstufa = ${idEstufa}
-                AND (FrequenciaLuminosa BETWEEN 100 AND 120 OR FrequenciaLuminosa BETWEEN 180 AND 200)
-                AND DataLeitura >= NOW() - INTERVAL 24 HOUR
-            ) as 'totalMedios',
-            (
-                SELECT count(*) 
-                FROM vw_obter_dados_dash_principal 
-                WHERE idUsuario = ${idUsuario} AND idEstufa = ${idEstufa} 
-                AND FrequenciaLuminosa NOT BETWEEN 100 AND 200
-                AND DataLeitura >= NOW() - INTERVAL 24 HOUR
-            ) AS 'TotalCriticos';
-    `;
+                    SELECT 
+            SUM(CASE WHEN (FrequenciaLuminosa BETWEEN 100 AND 120) OR (FrequenciaLuminosa BETWEEN 180 AND 200) THEN 1 ELSE 0 END) AS totalMedios,
+            SUM(CASE WHEN FrequenciaLuminosa < 100 OR FrequenciaLuminosa > 200 THEN 1 ELSE 0 END) AS TotalCriticos,
+            SUM(CASE WHEN FrequenciaLuminosa > 120 AND FrequenciaLuminosa < 180 THEN 1 ELSE 0 END) AS TotalNormais
+        FROM vw_obter_dados_dash_principal 
+        WHERE idUsuario = ${idUsuario} AND idEstufa = ${idEstufa};
+        -- AND DataLeitura >= NOW() - INTERVAL 24 HOUR    `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
