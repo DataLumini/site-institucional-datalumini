@@ -326,20 +326,6 @@
             });
     };
 
-    // function carregarDadosSensor() {
-    //     let idSensor = sessionStorage.ID_SENSOR;
-    //     fetch(`/dashboard/obterDadosSensor/${idSensor}`)
-    //         .then(response => response.json())
-    //         .then(data_resposta => {
-    //             console.log(data_resposta);
-    //             obterTotalAlertasEspecifica(data_resposta);
-    //         })
-    //         .catch(error => {
-    //             console.error("Erro ao carregar dados do sensor:", error);
-    //         });
-    // };
-
-
     function obterTotalAlertasEspecifica() {
         let idUsuario = sessionStorage.ID_USUARIO;
         let idEstufa = sessionStorage.ID_ESTUFA;
@@ -385,7 +371,8 @@
 
                 for (let i = 0; i < data.length; i++) {
                     const registro = data[i];
-                    if (registro.ppfd <= 100 || registro >= 200) {
+
+                    if (registro.ppfd <= 100 || registro.ppfd >= 200) {
                         classeAlerta = "alerta-alto";
                         classePrioridade = "alerta-prioridade-alto";
                         status = "CRÍTICO";
