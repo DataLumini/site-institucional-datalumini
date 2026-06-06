@@ -94,11 +94,10 @@
             </div>
             <div class="card">
                 <div class="alertas-header">
-                    <div class="card-titulo">Prateleiras com Alertas (<span id="alertas-count">6</span>)</div>
+                    <div class="card-titulo">Prateleiras com Alertas (<span id="alertas-count">0</span>)</div>
                     <div class="alertas-order">Ordenado por prioridade</div>
                 </div>
                 <div id="alertas-list">
-
                     <!-- <div class="alerta-item alerta-alto">
                         <div class="alerta-prioridade alerta-prioridade-alto">#1</div>
                         <div class="alerta-conteudo">
@@ -459,13 +458,13 @@
                     alertas_list.innerHTML += `
                     
                         <div class="alerta-item ${classeAlerta}">
-                        <div class="alerta-prioridade ${classePrioridade}">#${contador}</div>
+                        <div class="alerta-prioridade ${classePrioridade}">${contador}</div>
                         <div class="alerta-conteudo">
                             <div class="alerta-nivel">
                                 <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> ${status}
                             </div>
                             <div class="alerta-caminho">
-                                ${registro.setor} → Estante ${registro.estante} → Prateleira ${registro.prateleira}
+                                ${registro.Setor} → Estante ${registro.Estante} → Prateleira ${registro.Prateleira}
                             </div>
                             <div class="alerta-detalhe"> PPFD: ${registro.ppfd}</div>
                         </div>

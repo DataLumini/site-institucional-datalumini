@@ -215,18 +215,42 @@
                 for (let i = 0; i < data.length; i++) {
                     construirCardAlerta(data[i]);
                 }
+                obterPontosDeAtencao24h();
             })
             .catch(error => {
                 console.error("Erro ao carregar alertas críticos das últimas 24h:", error);
             });
     }
 
+    function obterPontosDeAtencao24h() {
+        let idUsuario = sessionStorage.ID_USUARIO;
+        fetch(`/dashboard/obterPontosDeAtencao24h/${idUsuario}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Pontos de atenção nas últimas 24h:", data);
+                for (let i = 0; i < data.length; i++) {
+                    construirCardAlerta(data[i]);
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao carregar pontos de atenção das últimas 24h:", error);
+            });
+    }
+
     function construirCardAlerta(alerta) {
+        let textoImagem = '';
+        if (alerta.FrequenciaLuminosa < 100 || alerta.FrequenciaLuminosa > 200) {
+            textoImagem = 'CRÍTICO';
+        } else if ((alerta.FrequenciaLuminosa >= 100 && alerta.FrequenciaLuminosa <= 110) || (alerta.FrequenciaLuminosa >= 180 && alerta.FrequenciaLuminosa <= 200)) {
+            textoImagem = 'ATENÇÃO';
+        }
+
         const cardHTML = `
-        <div class="alertaCard">
+        <div class="alertaCard ${textoImagem == 'CRÍTICO' ? '' : 'alertaCardMedio'}">
             <div class="alertaConteudo">
-                <div class="alertaNivel">
-                    <img src="../img/aviso1.png" class="alertaIcon"> CRÍTICO
+                <div class="alertaNivel ${textoImagem == 'CRÍTICO' ? '' : 'alertaNivelMedio'}">
+                ${textoImagem == 'CRÍTICO' ? `<img src="../img/aviso1.png" class="alertaIcon">` : 
+                `<img src="../img/aviso2.png" class="alertaIcon">`} ${textoImagem}
                 </div>
                 <div class="alertaCaminho">
                     ${alerta.Estufa} → ${alerta.Setor} → ${alerta.Estante} → ${alerta.Prateleira}

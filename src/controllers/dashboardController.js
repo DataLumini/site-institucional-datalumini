@@ -171,13 +171,30 @@ function obterDadosAlertasSensor(req, res) {
     }
 }
 
-function obterAlertasCriticos24h(req, res){
+function obterAlertasCriticos24h(req, res) {
     var idUsuario = req.params.idUsuario;
     if (idUsuario == undefined) {
         res.status(400).send("O ID do usuario está undefined!");
     } else {
 
         dashboardModel.obterAlertasCriticos24h(idUsuario)
+            .then((resultado) => {
+                res.json(resultado);
+            }).catch((erro) => {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage)
+            }
+            );
+    }
+}
+
+function obterPontosDeAtencao24h(req, res) {
+    var idUsuario = req.params.idUsuario;
+    if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuario está undefined!");
+    }
+    else {
+        dashboardModel.obterPontosDeAtencao24h(idUsuario)
             .then((resultado) => {
                 res.json(resultado);
             }).catch((erro) => {
@@ -219,5 +236,6 @@ module.exports = {
     obterRegistrosAlertas,
     obterDadosAlertasSensor,
     obterAlertasCriticos24h,
+    obterPontosDeAtencao24h,
     PrateleirasPorSetor
 }

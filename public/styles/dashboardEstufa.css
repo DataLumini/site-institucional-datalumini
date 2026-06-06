@@ -619,13 +619,11 @@ flex-direction: column;
     background-color: #fff8f0;
     border-color: #FFEDD4;
     border: 1px solid #FFEDD4;
-    border-left: 5px solid #e01717;
 }
 
 .alerta-medio {
     background-color: #FFFDF0;
     border: 1px solid #FFE97A;
-    border-left: 5px solid #FFD230;
 }
 
 .alerta-prioridade {

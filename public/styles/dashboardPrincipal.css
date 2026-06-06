@@ -297,17 +297,9 @@ main {
     animation: subirAlerta 0.4s;
 }
 
-.alertaPrioridadeAlto {
-    background-color: #DC2626;
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 18px;
-    width: 35px;
-    height: 35px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.alertaCardMedio {
+    background-color: #FFFBEB; 
+    border: 1px solid #FCD34D;
 }
 
 .alertaConteudo {
@@ -325,6 +317,10 @@ main {
     color: #db2e2e;
     font-size: 12px;
     letter-spacing: 0.5px;
+}
+
+.alertaNivelMedio{
+    color: #F59E0B;
 }
 
 .alertaIcon {
