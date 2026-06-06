@@ -53,7 +53,6 @@
                 <img src="../img/icons/Icon.png" alt="Ícone de gráfico" class="icone-tendencia">
             </div>
             <h1>Dashboard Visão Geral - Arabidopsis thaliana</h1>
-            <h2>Visão Geral das Estufas</h2>
         </header>
 
         <div class="container_kpi_topo">
@@ -62,7 +61,7 @@
                     <img src="../img/aviso1.png" alt="Crítico">
                 </div>
                 <p class="kpi_valor" id="alertas_criticos_id">?</p>
-                <span class="kpi_label">Total de Alertas Críticos</span>
+                <span class="kpi_label">Total de Alertas Críticos no Período de 24 Horas</span>
             </div>
 
             <div class="kpi_card">
@@ -70,7 +69,7 @@
                     <img src="../img/aviso2.png" alt="Aviso">
                 </div>
                 <p class="kpi_valor" id="alertas_medios_id">?</p>
-                <span class="kpi_label">Total de Pontos de Atenção</span>
+                <span class="kpi_label">Total de Alertas de Atenção no Período de 24 Horas</span>
             </div>
 
         </div>
@@ -145,7 +144,7 @@
         let corAlertasCriticos = estufa.alertas_criticos > 0 ? '#DC2626' : '#16A34A';
         let corPontosAtencao = estufa.alertas_atencao > 0 ? '#DC2626' : '#16A34A';
 
-        const nomeEscapado = (estufa.nome_estufa || '').replace(/'/g, "\\'");
+        const nomeEscapado = (estufa.nome_estufa)
 
         const cardHTML = `
         <div class="card-estufa ${classeCard}">
@@ -253,7 +252,7 @@
                 `<img src="../img/aviso2.png" class="alertaIcon">`} ${textoImagem}
                 </div>
                 <div class="alertaCaminho">
-                    ${alerta.Estufa} → ${alerta.Setor} → ${alerta.Estante} → ${alerta.Prateleira}
+                    ${alerta.Estufa} → ${alerta.Setor} → Estante ${alerta.Estante} → Prateleira ${alerta.Prateleira}
                 </div>
                 <div class="alertaDetalhe">
                     <span>

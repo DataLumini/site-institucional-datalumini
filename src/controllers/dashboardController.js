@@ -205,13 +205,13 @@ function obterPontosDeAtencao24h(req, res) {
     }
 }
 
-function PrateleirasPorSetor(req, res) {
+function prateleirasPorSetor(req, res) {
     var idSetor = req.params.idSetor;
 
     if (idSetor == undefined) {
         res.status(400).send("O ID do setor está undefined!");
     } else {
-        dashboardModel.PrateleirasPorSetor(idSetor)
+        dashboardModel.prateleirasPorSetor(idSetor)
             .then(function (resultado) {
                 res.json(resultado);
             })
@@ -220,6 +220,18 @@ function PrateleirasPorSetor(req, res) {
                 res.status(500).json(erro.sqlMessage);
             });
     }
+}
+
+function ficarCiente(req, res) {
+    var idLeitura = req.params.idLeitura;
+    dashboardModel.ficarCiente(idLeitura)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 module.exports = {
     listar,
@@ -237,5 +249,6 @@ module.exports = {
     obterDadosAlertasSensor,
     obterAlertasCriticos24h,
     obterPontosDeAtencao24h,
-    PrateleirasPorSetor
+    prateleirasPorSetor,
+    ficarCiente
 }

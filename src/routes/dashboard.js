@@ -55,6 +55,11 @@ router.get("/obterPontosDeAtencao24h/:idUsuario", function(req, res){
     dashboardController.obterPontosDeAtencao24h(req, res)
 })
 router.get("/prateleirasSetor/:idSetor", function (req, res) {
-    dashboardController.PrateleirasPorSetor(req, res);
+    dashboardController.prateleirasPorSetor(req, res);
 });
+
+router.put("/ficarCiente/:idLeitura", function(req, res){
+    dashboardController.ficarCiente(req, res)
+});
+
 module.exports = router;

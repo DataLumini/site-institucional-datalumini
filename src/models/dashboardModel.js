@@ -50,40 +50,73 @@ function obterUltimoEspecifica(idUsuario, idEstufa) {
 }
 
 
-
 function obterTotalAlertasPrincipal(idUsuario) {
-    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idUsuario);
+    console.log("ACESSEI O DASHBOARD MODEL \n function obterTotalAlertasPrincipal():", idUsuario);
+
     var instrucaoSql = `
-         SELECT (
-            SELECT 
-                count(*)
-                FROM vw_obter_dados_dash_principal 
-                WHERE idUsuario = ${idUsuario} 
-                AND (FrequenciaLuminosa BETWEEN 100 AND 110 OR FrequenciaLuminosa BETWEEN 180 AND 200)
-                AND DataLeitura >= NOW() - INTERVAL 24 HOUR
-            ) as 'totalMedios',
-            (
-                SELECT count(*) 
-                FROM vw_obter_dados_dash_principal 
-                WHERE idUsuario = ${idUsuario} 
-                AND FrequenciaLuminosa NOT BETWEEN 100 AND 200
-                AND DataLeitura >= NOW() - INTERVAL 24 HOUR
-            ) AS 'TotalCriticos';
+        SELECT 
+            SUM(CASE 
+                WHEN l.frequenciaLuminosidade BETWEEN e.limiteMinimo AND (e.limiteMinimo + (e.limiteMaximo - e.limiteMinimo) * 0.10)
+                OR l.frequenciaLuminosidade BETWEEN (e.limiteMaximo - (e.limiteMaximo - e.limiteMinimo) * 0.10) AND e.limiteMaximo
+                THEN 1 ELSE 0 
+            END) AS totalMedios,
+            
+            SUM(CASE 
+                WHEN l.frequenciaLuminosidade < e.limiteMinimo OR l.frequenciaLuminosidade > e.limiteMaximo 
+                THEN 1 ELSE 0 
+            END) AS TotalCriticos
+            
+        FROM Usuario_Estufa ue
+        JOIN Estufa e ON ue.fkEstufa = e.idEstufa
+        JOIN Setor s ON e.idEstufa = s.fkEstufa
+        JOIN Estante est ON s.idSetor = est.fkSetor
+        JOIN Prateleira p ON est.idEstante = p.fkEstante
+        JOIN Sensor sen ON p.idPrateleira = sen.fkPrateleira
+        JOIN Leitura l ON sen.idSensor = l.fkSensor
+        
+        WHERE ue.fkUsuario = ${idUsuario}
+          AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function obterTotalAlertasEspecificas(idUsuario, idEstufa) {
-    console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPrateleira():", idUsuario);
+    console.log("ACESSEI O DASHBOARD MODEL \n function obterTotalAlertasEspecificas():", idUsuario, idEstufa);
+
     var instrucaoSql = `
-                    SELECT 
-            SUM(CASE WHEN (FrequenciaLuminosa BETWEEN 100 AND 110) OR (FrequenciaLuminosa BETWEEN 180 AND 200) THEN 1 ELSE 0 END) AS totalMedios,
-            SUM(CASE WHEN FrequenciaLuminosa < 100 OR FrequenciaLuminosa > 200 THEN 1 ELSE 0 END) AS TotalCriticos,
-            SUM(CASE WHEN FrequenciaLuminosa > 110 AND FrequenciaLuminosa < 180 THEN 1 ELSE 0 END) AS TotalNormais
-        FROM vw_obter_dados_dash_principal 
-        WHERE idUsuario = ${idUsuario} AND idEstufa = ${idEstufa};
-        -- AND DataLeitura >= NOW() - INTERVAL 24 HOUR    `;
+        SELECT 
+            SUM(CASE 
+                WHEN l.frequenciaLuminosidade BETWEEN e.limiteMinimo AND (e.limiteMinimo + (e.limiteMaximo - e.limiteMinimo) * 0.10)
+                OR l.frequenciaLuminosidade BETWEEN (e.limiteMaximo - (e.limiteMaximo - e.limiteMinimo) * 0.10) AND e.limiteMaximo
+                THEN 1 ELSE 0 
+            END) AS totalMedios,
+            
+            SUM(CASE 
+                WHEN l.frequenciaLuminosidade < e.limiteMinimo OR l.frequenciaLuminosidade > e.limiteMaximo 
+                THEN 1 ELSE 0 
+            END) AS TotalCriticos,
+            
+            SUM(CASE 
+                WHEN l.frequenciaLuminosidade > (e.limiteMinimo + (e.limiteMaximo - e.limiteMinimo) * 0.10) 
+                AND l.frequenciaLuminosidade < (e.limiteMaximo - (e.limiteMaximo - e.limiteMinimo) * 0.10) 
+                THEN 1 ELSE 0 
+            END) AS TotalNormais
+            
+        FROM Usuario_Estufa ue
+        JOIN Estufa e ON ue.fkEstufa = e.idEstufa
+        JOIN Setor s ON e.idEstufa = s.fkEstufa
+        JOIN Estante est ON s.idSetor = est.fkSetor
+        JOIN Prateleira p ON est.idEstante = p.fkEstante
+        JOIN Sensor sen ON p.idPrateleira = sen.fkPrateleira
+        JOIN Leitura l ON sen.idSensor = l.fkSensor
+        
+        WHERE ue.fkUsuario = ${idUsuario} 
+          AND e.idEstufa = ${idEstufa}
+          AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
+    `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -129,50 +162,60 @@ function obterDadosEstufas(idUsuario) {
         LEFT JOIN Leitura l ON sen.idSensor = l.fkSensor
             AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
             
-        WHERE ue.fkUsuario = ${idUsuario} 
+        WHERE ue.fkUsuario = ${idUsuario} and l.status = 0
         GROUP BY e.idEstufa, e.nome, e.limiteMinimo, e.limiteMaximo
     ) AS dados;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
 function obterRegistrosAlertas(idEstufa) {
-
-    console.log("Entrei no model");
+    console.log("Entrei no model - obterRegistrosAlertas");
 
     var instrucaoSql = `
     SELECT 
-	es.nome AS Estufa,
-	s.nome AS Setor,
-    e.numeroIdentificador AS Estante,
-    p.numeroIdentificador AS Prateleira,
-    l.frequenciaLuminosidade AS ppfd,
-    CASE 
-    WHEN l.frequenciaLuminosidade <= 100 THEN 1
-    WHEN l.frequenciaLuminosidade >= 200 THEN 1
-    ELSE 2
-    END AS status_ppfd
+        es.nome AS Estufa,
+        s.nome AS Setor,
+        e.numeroIdentificador AS Estante,
+        p.numeroIdentificador AS Prateleira,
+        ss.nome AS Sensor,
+        l.idLeitura,
+        l.frequenciaLuminosidade AS ppfd,
+        CASE 
+            WHEN l.frequenciaLuminosidade < es.limiteMinimo OR l.frequenciaLuminosidade > es.limiteMaximo THEN 1
+            ELSE 2
+        END AS status_ppfd,
+        l.dtCaptacaoDados AS DataLeitura
     FROM Estufa es
-    JOIN Setor s
+    JOIN Setor s 
         ON s.fkEstufa = es.idEstufa
     JOIN Estante e 
         ON e.fkSetor = s.idSetor
     JOIN Prateleira p 
         ON p.fkEstante = e.idEstante
-    JOIN Sensor ss
+    JOIN Sensor ss 
         ON ss.fkPrateleira = p.idPrateleira
     JOIN Leitura l 
         ON l.fkSensor = ss.idSensor
-    WHERE (l.frequenciaLuminosidade <= 110 OR l.frequenciaLuminosidade >= 190)
-    AND es.idEstufa = ${idEstufa}
-    ORDER BY status_ppfd ASC
+    WHERE es.idEstufa = ${idEstufa}
+      AND l.status = 0
+      AND (
+          l.frequenciaLuminosidade < es.limiteMinimo 
+          OR l.frequenciaLuminosidade > es.limiteMaximo
+          OR l.frequenciaLuminosidade BETWEEN es.limiteMinimo AND (es.limiteMinimo + (es.limiteMaximo - es.limiteMinimo) * 0.10)
+          OR l.frequenciaLuminosidade BETWEEN (es.limiteMaximo - (es.limiteMaximo - es.limiteMinimo) * 0.10) AND es.limiteMaximo
+      )
+      AND l.idLeitura IN (
+          SELECT MAX(idLeitura) 
+          FROM Leitura 
+          GROUP BY fkSensor
+      )
+    ORDER BY status_ppfd ASC, l.dtCaptacaoDados DESC;
     `;
 
     console.log(instrucaoSql);
-    return database.executar(instrucaoSql, [idEstufa]);
+    return database.executar(instrucaoSql);
 }
-
 function obterDadosAlertasSensor(idSensor, idUsuario) {
     console.log("ACESSEI O DASHBOARD MODEL \n function obterDadosAlertasSensor():", idSensor);
 
@@ -187,7 +230,7 @@ function obterDadosAlertasSensor(idSensor, idUsuario) {
         `;
     } else {
         instrucaoSql = `
-            SELECT Prateleira, Sensor, FrequenciaLuminosa, DataLeitura
+            SELECT Prateleira, Sensor, FrequenciaLuminosa, DataLeitura, idLeitura
             FROM vw_obter_dados_dash_principal
             WHERE idSensor = ${idSensor}
             AND FrequenciaLuminosa NOT BETWEEN 100 AND 200
@@ -208,7 +251,11 @@ function obterAlertasCriticos24h(idUsuario) {
             s.nome AS Setor,
             est.numeroIdentificador AS Estante,
             p.numeroIdentificador AS Prateleira,
-            l.frequenciaLuminosidade AS FrequenciaLuminosa
+            sen.nome AS Sensor,
+            sen.idSensor,
+            l.idLeitura,
+            l.frequenciaLuminosidade AS FrequenciaLuminosa,
+            l.dtCaptacaoDados AS DataLeitura
         FROM Usuario_Estufa ue
         JOIN Estufa es 
             ON ue.fkEstufa = es.idEstufa
@@ -225,6 +272,12 @@ function obterAlertasCriticos24h(idUsuario) {
         WHERE ue.fkUsuario = ${idUsuario}
           AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
           AND (l.frequenciaLuminosidade < es.limiteMinimo OR l.frequenciaLuminosidade > es.limiteMaximo)
+          AND l.status = 0
+          AND l.idLeitura IN (
+              SELECT MAX(idLeitura) 
+              FROM Leitura 
+              GROUP BY fkSensor
+          )
         ORDER BY l.dtCaptacaoDados DESC;
     `;
 
@@ -234,6 +287,7 @@ function obterAlertasCriticos24h(idUsuario) {
 
 function obterPontosDeAtencao24h(idUsuario) {
     console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Buscando pontos de atenção nas últimas 24h para o usuário:", idUsuario);
+
     var instrucaoSql = `
         SELECT 
             es.idEstufa as IdEstufa,
@@ -241,7 +295,11 @@ function obterPontosDeAtencao24h(idUsuario) {
             s.nome AS Setor,
             est.numeroIdentificador AS Estante,
             p.numeroIdentificador AS Prateleira,
-            l.frequenciaLuminosidade AS FrequenciaLuminosa
+            sen.nome AS Sensor,
+            sen.idSensor,
+            l.idLeitura,
+            l.frequenciaLuminosidade AS FrequenciaLuminosa,
+            l.dtCaptacaoDados AS DataLeitura
         FROM Usuario_Estufa ue
         JOIN Estufa es 
             ON ue.fkEstufa = es.idEstufa
@@ -256,26 +314,48 @@ function obterPontosDeAtencao24h(idUsuario) {
         JOIN Leitura l
             ON sen.idSensor = l.fkSensor
         WHERE ue.fkUsuario = ${idUsuario}
-            AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
-            AND (l.frequenciaLuminosidade BETWEEN es.limiteMinimo AND (es.limiteMinimo + (es.limiteMaximo - es.limiteMinimo) * 0.10)
-            OR l.frequenciaLuminosidade BETWEEN (es.limiteMaximo - (es.limiteMaximo - es.limiteMinimo) * 0.10) AND es.limiteMaximo)
+          AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
+          AND (
+              l.frequenciaLuminosidade BETWEEN es.limiteMinimo AND (es.limiteMinimo + (es.limiteMaximo - es.limiteMinimo) * 0.10)
+              OR 
+              l.frequenciaLuminosidade BETWEEN (es.limiteMaximo - (es.limiteMaximo - es.limiteMinimo) * 0.10) AND es.limiteMaximo
+          )
+          AND l.status = 0
+          AND l.idLeitura IN (
+              SELECT MAX(idLeitura) 
+              FROM Leitura 
+              GROUP BY fkSensor
+          )
         ORDER BY l.dtCaptacaoDados DESC;
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function PrateleirasPorSetor(idSetor) {
+function prateleirasPorSetor(idSetor) {
     var instrucaoSql = `
     SELECT *
         FROM vw_prateleiras_por_setor
-        WHERE idSetor = ${ idSetor }
+        WHERE idSetor = ${idSetor}
         ORDER BY 
     Estante ASC,
         Prioridade ASC,
             Prateleira ASC;
     `;
 
+    return database.executar(instrucaoSql);
+}
+
+function ficarCiente(idLeitura) {
+    console.log("ACESSEI O DASHBOARD MODEL \n function ficarCiente():", idLeitura);
+    var instrucaoSql = `
+        UPDATE Leitura
+        SET status = 1
+        WHERE idLeitura = ${idLeitura};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
@@ -293,5 +373,6 @@ module.exports = {
     obterDadosAlertasSensor,
     obterAlertasCriticos24h,
     obterPontosDeAtencao24h,
-    PrateleirasPorSetor
+    prateleirasPorSetor,
+    ficarCiente
 };  

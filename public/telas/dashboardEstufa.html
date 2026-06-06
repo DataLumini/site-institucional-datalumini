@@ -13,8 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 
-<body
-    onload=" carregarSetor(2, 'setorSul'); carregarSetor(1, 'setorNorte'); carregarDadosEstufa(); validarSessao(); verificarRegraUsuario(), obterTotalAlertasEspecifica(), obterRegistrosAlertas(), carregarNomeDash()">
+<body onload="
+    carregarDadosEstufa(); validarSessao(); 
+    verificarRegraUsuario(), obterTotalAlertasEspecifica(), 
+    obterRegistrosAlertas(), carregarNomeDash()">
 
     <div id="modalAlertas" class="modal-fundo">
         <div class="modal-caixa">
@@ -62,20 +64,19 @@
     <main>
         <header id="cabecario_principal">
             <div><button>Ativo</button> <span><img src="../img/icons/moritoramento.png"></span></div>
-            <h1>Dashboard - <span id="nomeDash">Estufa ?</span></h1>
-            <h2>Última atualização 22/04 às 13:09</h2>
+            <h1>Dashboard Visão Específica - <span id="nomeDash">Estufa ?</span></h1>
         </header>
         <div id="container_kpi">
 
             <div id="container_estufas">
                 <img src="../img/aviso1.png" alt="">
                 <p id="alertas_criticos_id">0</p>
-                <span>Alertas Críticos</span>
+                <span style="font-size: 16px;">Alertas Críticos em 24 Horas</span>
             </div>
             <div id="container_lum_media">
                 <img src="../img/aviso2.png" alt="">
                 <p id="alertas_medios_id">0</p>
-                <span>Pontos de Atenção</span>
+                <span style="font-size: 16px;">Pontos de Atenção em 24 Horas</span>
             </div>
 
         </div>
@@ -83,7 +84,7 @@
         <div class="graficos_sensor">
             <div class="graficos">
                 <div class="box_grafico">
-                    <h3>Distribuição de prioridade</h3>
+                    <h3>Distribuição de prioridade em 24 Horas</h3>
                     <canvas id="grafico_donut"></canvas>
                 </div>
 
@@ -94,94 +95,10 @@
             </div>
             <div class="card">
                 <div class="alertas-header">
-                    <div class="card-titulo">Prateleiras com Alertas (<span id="alertas-count">0</span>)</div>
+                    <div class="card-titulo">Prateleiras com Alertas (<span id="alertas_count">0</span>)</div>
                     <div class="alertas-order">Ordenado por prioridade</div>
                 </div>
                 <div id="alertas-list">
-                    <!-- <div class="alerta-item alerta-alto">
-                        <div class="alerta-prioridade alerta-prioridade-alto">#1</div>
-                        <div class="alerta-conteudo">
-                            <div class="alerta-nivel">
-                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> CRÍTICO
-                            </div>
-                            <div class="alerta-caminho">
-                                Setor Norte → Estante 1 → Prateleira 1
-                            </div>
-                            <div class="alerta-detalhe">PPFD: 230</div>
-                        </div>
-                        <div class="alerta-valor">230</div>
-                    </div>
-
-                    <div class="alerta-item alerta-alto">
-                        <div class="alerta-prioridade alerta-prioridade-alto">#2</div>
-                        <div class="alerta-conteudo">
-                            <div class="alerta-nivel">
-                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> CRÍTICO
-                            </div>
-                            <div class="alerta-caminho">
-                                Setor Norte → Estante 2 → Prateleira 1
-                            </div>
-                            <div class="alerta-detalhe">PPFD: 80</div>
-                        </div>
-                        <div class="alerta-valor">80</div>
-                    </div>
-
-                    <div class="alerta-item alerta-alto">
-                        <div class="alerta-prioridade alerta-prioridade-alto">#3</div>
-                        <div class="alerta-conteudo">
-                            <div class="alerta-nivel">
-                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> CRÍTICO
-                            </div>
-                            <div class="alerta-caminho">
-                                Setor Sul → Estante 1 → Prateleira 1
-                            </div>
-                            <div class="alerta-detalhe"> PPFD: 90</div>
-                        </div>
-                        <div class="alerta-valor">90</div>
-                    </div>
-
-                    <div class="alerta-item alerta-medio">
-                        <div class="alerta-prioridade alerta-prioridade-medio">#4</div>
-                        <div class="alerta-conteudo">
-                            <div class="alerta-nivel alerta-nivel-medio">
-                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> ATENÇÃO
-                            </div>
-                            <div class="alerta-caminho">
-                                Setor Norte → Estante 1 → Prateleira 2
-                            </div>
-                            <div class="alerta-detalhe">PPFD: 101</div>
-                        </div>
-                        <div class="alerta-valor alerta-valor-medio">101</div>
-                    </div>
-
-                    <div class="alerta-item alerta-medio">
-                        <div class="alerta-prioridade alerta-prioridade-medio">#5</div>
-                        <div class="alerta-conteudo">
-                            <div class="alerta-nivel alerta-nivel-medio">
-                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> ATENÇÃO
-                            </div>
-                            <div class="alerta-caminho">
-                                Setor Sul → Estante 1 → Prateleira 2
-                            </div>
-                            <div class="alerta-detalhe">PPFD: 110</div>
-                        </div>
-                        <div class="alerta-valor alerta-valor-medio">110</div>
-                    </div>
-
-                    <div class="alerta-item alerta-medio">
-                        <div class="alerta-prioridade alerta-prioridade-medio">#6</div>
-                        <div class="alerta-conteudo">
-                            <div class="alerta-nivel alerta-nivel-medio">
-                                <img src="../img/icons/alerta-triangular.png" class="alerta-icon"> ATENÇÃO
-                            </div>
-                            <div class="alerta-caminho">
-                                Setor Sul → Estante 2 → Prateleira 2
-                            </div>
-                            <div class="alerta-detalhe">PPFD: 193</div>
-                        </div>
-                        <div class="alerta-valor alerta-valor-medio">193</div>
-                    </div> -->
-
                 </div>
             </div>
         </div>
@@ -202,12 +119,13 @@
 
 
 
+        <div>
+            <div id="container_status2">
+                <h2> Setor Norte</h2>
+                <div id="setorNorte"></div>
 
-        <div id="container_status2">
-            <h2> Setor Norte</h2>
-            <div id="setorNorte"></div>
 
-
+            </div>
         </div>
 
 
@@ -234,7 +152,7 @@
             maintainAspectRatio: false,
             cutout: "75%",
             layout: {
-                padding: 25 
+                padding: 25
             },
 
             plugins: {
@@ -355,14 +273,26 @@
         let nomeDashboard = sessionStorage.NOME_ESTUFA;
         nomeDash.innerHTML = nomeDashboard;
     }
+
+    let vetorIdSetores = [];
     function carregarDadosEstufa() {
         let idUsuario = sessionStorage.ID_USUARIO;
         let idEstufa = sessionStorage.ID_ESTUFA;
 
-        fetch(`/dashboard/obterDados/${idUsuario}/1`)
+        fetch(`/dashboard/obterDados/${idUsuario}/${idEstufa}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+
+                for (let i = 0; i < data.length; i++) {
+                    if (!vetorIdSetores.includes(data[i].idSetor)) {
+                        vetorIdSetores.push(data[i].idSetor);
+                    }
+                }
+
+                for (let i = 0; i < vetorIdSetores.length; i++) {
+                    carregarSetor(vetorIdSetores[i], i == 0 ? "setorNorte" : "setorSul");
+                }
 
                 let labelsSensores = [];
                 let valoresPPFD = [];
@@ -443,6 +373,10 @@
             .then(response => response.json())
             .then(data => {
                 console.log("Deu certo");
+
+                alertas_list.innerHTML = "";
+                alertas_count.innerHTML = data.length;
+
                 for (let i = 0; i < data.length; i++) {
                     const registro = data[i];
                     if (registro.ppfd <= 100 || registro >= 200) {
@@ -479,6 +413,7 @@
             });
 
     }
+
     function carregarDadosSensor(idSensor) {
         let idUsuario = sessionStorage.ID_USUARIO;
         fetch(`/dashboard/obterDadosSensor/${idSensor}/${idUsuario}`)
@@ -493,18 +428,26 @@
 
                 for (let i = 0; i < data.length; i++) {
 
+                    let status = data[i].Status == 0 ? "Não lido" : "Ciente";
+
                     conteudo.innerHTML += `
-            
-                    Sensor: ${data[i].Sensor}
-                    <br>
-                    PPFD: ${data[i].FrequenciaLuminosa}
-                    <br>
-                    Estado: ${data[i].Estado}
-                    <br>
-                    horario: ${data[i].DataLeitura}
-                    <br>
-                    setor: ${data[i].Setor}
-<hr>
+                        <div class="alertaCard">
+                            <div class="alertaDetalhes">
+                                <strong>IdLeitura:</strong> ${data[i].idLeitura} <br>
+                                <strong>Sensor:</strong> ${data[i].Sensor} <br>
+                                <strong>PPFD:</strong> ${data[i].FrequenciaLuminosa} <br>
+                                <strong>Estado:</strong> ${data[i].Estado} <br>
+                                <strong>Horário:</strong> ${data[i].DataLeitura} <br>
+                                <strong>Setor:</strong> ${data[i].Setor}
+                            </div>
+                            
+                            <div class="alertaAcoes">
+                                <span class="statusTexto">Status: ${status}</span>
+                                ${data[i].Status == 0 ?
+                            `<button class="btnCiente" onclick="ficarCiente(${data[i].idLeitura}, ${idSensor})">Ficar Ciente</button>`
+                            : ''}
+                            </div>
+                        </div>
             `;
                 }
 
@@ -515,6 +458,22 @@
                 console.error("Erro ao carregar dados do sensor:", error);
             });
     };
+
+    function ficarCiente(idLeitura, idSensor) {
+        fetch(`/dashboard/ficarCiente/${idLeitura}`, {
+            method: 'PUT'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                carregarDadosSensor(idSensor);
+                obterRegistrosAlertas();
+
+            })
+            .catch(error => {
+                console.error("Erro ao marcar como ciente:", error);
+            });
+    }
 
 
 
