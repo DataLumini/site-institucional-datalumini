@@ -157,15 +157,15 @@
             </div>
             <div class="card-body">
                 <div class="linha-dado">
-                    <span>Total de Alertas</span>
+                    <span>Total de Alertas para Resolver</span>
                     <strong style="color: ${estufa.total_alertas > 0 ? corTotal : '#16A34A'};">${estufa.total_alertas}</strong>
                 </div>
                 <div class="linha-dado">
-                    <span>Alertas Críticos</span>
+                    <span>Alertas Críticos para Resolver</span>
                     <strong style="color: ${corAlertasCriticos};">${estufa.alertas_criticos}</strong>
                 </div>
                 <div class="linha-dado">
-                    <span>Pontos de atenção</span>
+                    <span>Pontos de atenção para Resolver</span>
                     <strong style="color: ${corPontosAtencao};">${estufa.alertas_atencao}</strong>
                 </div>
             </div>
@@ -183,6 +183,7 @@
     function selecionarEstufa(idEstufa, nomeEstufa) {
         sessionStorage.ID_ESTUFA = idEstufa;
         sessionStorage.NOME_ESTUFA = nomeEstufa;
+        sessionStorage.VER_HISTORICO = "false";
         window.location.href = "./dashboardEstufa.html";
     }
 
@@ -248,7 +249,7 @@
         <div class="alertaCard ${textoImagem == 'CRÍTICO' ? '' : 'alertaCardMedio'}">
             <div class="alertaConteudo">
                 <div class="alertaNivel ${textoImagem == 'CRÍTICO' ? '' : 'alertaNivelMedio'}">
-                ${textoImagem == 'CRÍTICO' ? `<img src="../img/aviso1.png" class="alertaIcon">` : 
+                ${textoImagem == 'CRÍTICO' ? `<img src="../img/aviso1.png" class="alertaIcon">` :
                 `<img src="../img/aviso2.png" class="alertaIcon">`} ${textoImagem}
                 </div>
                 <div class="alertaCaminho">
@@ -258,7 +259,7 @@
                     <span>
                         PPFD: ${alerta.FrequenciaLuminosa}
                     </span>
-                    <button id="botaoDetalhesAlerta" onclick="selecionarEstufa(${alerta.IdEstufa}, '${alerta.Estufa}')">
+                    <button id="botaoDetalhesAlerta" onclick="verHistorico(${alerta.IdEstufa}, '${alerta.Estufa}', ${alerta.idSensor})">
                         Ver detalhes
                     </button>
                 </div>
@@ -266,6 +267,14 @@
         </div>
         `;
         containerAlertas.innerHTML += cardHTML;
+    }
+
+    function verHistorico(idEstufa, nomeEstufa, sensor) {
+        sessionStorage.ID_ESTUFA = idEstufa;
+        sessionStorage.NOME_ESTUFA = nomeEstufa;
+        sessionStorage.VER_HISTORICO = "true";
+        sessionStorage.SENSOR_SELECIONADA = sensor;
+        window.location.href = "./dashboardEstufa.html";
     }
 
 </script>

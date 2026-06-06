@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="box_grafico">
-                    <h3>Sensores da estufa</h3>
+                    <h3>Leituras da estufa por prateleira</h3>
                     <canvas id="grafico_sensor_linha"></canvas>
                 </div>
             </div>
@@ -294,6 +294,11 @@
                     carregarSetor(vetorIdSetores[i], i == 0 ? "setorNorte" : "setorSul");
                 }
 
+                if(sessionStorage.VER_HISTORICO == "true"){
+                    carregarDadosSensor(sessionStorage.SENSOR_SELECIONADA);
+                    sessionStorage.VER_HISTORICO = false;
+                }
+
                 let labelsSensores = [];
                 let valoresPPFD = [];
                 let limitesMax = [];
@@ -320,18 +325,19 @@
                 console.error("Erro ao carregar dados do sensor:", error);
             });
     };
-    function carregarDadosSensor() {
-        let idSensor = sessionStorage.ID_SENSOR;
-        fetch(`/dashboard/obterDadosSensor/${idSensor}`)
-            .then(response => response.json())
-            .then(data_resposta => {
-                console.log(data_resposta);
-                obterTotalAlertasEspecifica(data_resposta);
-            })
-            .catch(error => {
-                console.error("Erro ao carregar dados do sensor:", error);
-            });
-    };
+
+    // function carregarDadosSensor() {
+    //     let idSensor = sessionStorage.ID_SENSOR;
+    //     fetch(`/dashboard/obterDadosSensor/${idSensor}`)
+    //         .then(response => response.json())
+    //         .then(data_resposta => {
+    //             console.log(data_resposta);
+    //             obterTotalAlertasEspecifica(data_resposta);
+    //         })
+    //         .catch(error => {
+    //             console.error("Erro ao carregar dados do sensor:", error);
+    //         });
+    // };
 
 
     function obterTotalAlertasEspecifica() {
