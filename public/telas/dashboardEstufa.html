@@ -294,7 +294,7 @@
                     carregarSetor(vetorIdSetores[i], i == 0 ? "setorNorte" : "setorSul");
                 }
 
-                if(sessionStorage.VER_HISTORICO == "true"){
+                if (sessionStorage.VER_HISTORICO == "true") {
                     carregarDadosSensor(sessionStorage.SENSOR_SELECIONADA);
                     sessionStorage.VER_HISTORICO = false;
                 }
@@ -422,16 +422,14 @@
                 for (let i = 0; i < data.length; i++) {
 
                     let status = data[i].Status == 0 ? "Não lido" : "Ciente";
+                    let dataFormatada = new Date(data[i].DataLeitura).toLocaleString('pt-BR');
 
                     conteudo.innerHTML += `
                         <div class="alertaCard">
                             <div class="alertaDetalhes">
-                                <strong>IdLeitura:</strong> ${data[i].idLeitura} <br>
-                                <strong>Sensor:</strong> ${data[i].Sensor} <br>
                                 <strong>PPFD:</strong> ${data[i].FrequenciaLuminosa} <br>
                                 <strong>Estado:</strong> ${data[i].Estado} <br>
-                                <strong>Horário:</strong> ${data[i].DataLeitura} <br>
-                                <strong>Setor:</strong> ${data[i].Setor}
+                                <strong>Horário:</strong> ${dataFormatada} <br>
                             </div>
                             
                             <div class="alertaAcoes">
@@ -518,7 +516,10 @@
                         <ul class="lista_info2">
                             <li>
                                 <img src="../img/icons/raio.png" alt="">
-                                ${dados[i].FrequenciaLuminosa} PPFD
+                                ${dados[i].FrequenciaLuminosa} PPFD ATUAL
+                            </li>
+                            <li>
+                            ${dados[i].qtdAlertas == 0 ? '<p style="color: #5d6532; font-weight: bold;">Nenhum alerta para ler</p>' : `<p style="color: #ff0000; font-weight: bold;">${dados[i].qtdAlertas} alertas não lido</p>`}
                             </li>
                             <ul class="lista">
                                 <li>

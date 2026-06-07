@@ -335,13 +335,26 @@ function obterPontosDeAtencao24h(idUsuario) {
 
 function prateleirasPorSetor(idSetor) {
     var instrucaoSql = `
-    SELECT *
-        FROM vw_prateleiras_por_setor
-        WHERE idSetor = ${idSetor}
+        SELECT 
+            v.*,
+            (
+                SELECT COUNT(l.idLeitura) 
+                FROM Leitura l
+                JOIN Estufa es ON es.idEstufa = v.idEstufa
+                WHERE l.fkSensor = v.idSensor
+                AND l.status = 0
+                AND (
+                    l.frequenciaLuminosidade <= (es.limiteMinimo + (es.limiteMaximo - es.limiteMinimo) * 0.10)
+                    OR 
+                    l.frequenciaLuminosidade >= (es.limiteMaximo - (es.limiteMaximo - es.limiteMinimo) * 0.10)
+                )
+            ) AS qtdAlertas
+        FROM vw_prateleiras_por_setor v
+        WHERE v.idSetor = ${idSetor}
         ORDER BY 
-    Estante ASC,
-        Prioridade ASC,
-            Prateleira ASC;
+            v.Estante ASC, 
+            v.Prioridade ASC, 
+            v.Prateleira ASC;
     `;
 
     return database.executar(instrucaoSql);
@@ -364,8 +377,6 @@ module.exports = {
     obter_dados,
     obterUltimoAvisoPrincipal,
     obterUltimoEspecifica,
-
-    //novas Rotas ajustadas
     obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,

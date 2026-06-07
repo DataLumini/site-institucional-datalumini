@@ -239,9 +239,6 @@ module.exports = {
     obterUltimoAvisoPrincipal,
     obterUltimoAvisoEspecifica,
     obterDadosAlertasSensor,
-
-
-    //novas Rotas ajustadas
     obterDadosEstufas,
     obterTotalAlertasPrincipal,
     obterTotalAlertasEspecificas,
