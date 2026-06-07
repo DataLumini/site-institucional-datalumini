@@ -456,6 +456,7 @@
                 console.log(data);
                 carregarDadosSensor(idSensor);
                 obterRegistrosAlertas();
+                carregarDadosEstufa()
 
             })
             .catch(error => {
@@ -544,7 +545,7 @@
         await obterRegistrosAlertas();
         await carregarNomeDash();
 
-        setTimeout(carregarPagina, 30000);
+        setTimeout(carregarPagina, 10000);
     }
 </script>
 
