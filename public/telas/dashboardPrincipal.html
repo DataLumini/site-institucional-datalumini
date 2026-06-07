@@ -14,7 +14,7 @@
 </head>
 
 <body
-    onload="validarSessao(), verificarRegraUsuario(), obterDadosEstufas(), obterTotalAlertasPrincipal(), obterAlertasCriticos24h()">
+    onload="carregarPagina()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -275,6 +275,18 @@
         sessionStorage.VER_HISTORICO = "true";
         sessionStorage.SENSOR_SELECIONADA = sensor;
         window.location.href = "./dashboardEstufa.html";
+    }
+
+   async function carregarPagina(){
+        
+        await validarSessao();
+        await verificarRegraUsuario(); 
+        
+        await obterDadosEstufas();
+        await obterTotalAlertasPrincipal();
+        await obterAlertasCriticos24h();
+        console.log("Estou carregando a página!")
+        setTimeout(carregarPagina, 30000);
     }
 
 </script>
