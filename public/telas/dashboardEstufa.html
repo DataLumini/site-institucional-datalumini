@@ -13,10 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 
-<body onload="
-    carregarDadosEstufa(); validarSessao(); 
-    verificarRegraUsuario(), obterTotalAlertasEspecifica(), 
-    obterRegistrosAlertas(), carregarNomeDash()">
+<body onload="carregarPagina()">
 
     <div id="modalAlertas" class="modal-fundo">
         <div class="modal-caixa">
@@ -535,6 +532,19 @@
             .catch(erro => {
                 console.log("Erro ao carregar setor:", erro);
             });
+    }
+
+    async function carregarPagina(){
+
+        console.log("Entrei na função carregar página!");
+        await validarSessao();
+        await verificarRegraUsuario();
+        await carregarDadosEstufa(); 
+        await obterTotalAlertasEspecifica();
+        await obterRegistrosAlertas();
+        await carregarNomeDash();
+
+        setTimeout(carregarPagina, 30000);
     }
 </script>
 
