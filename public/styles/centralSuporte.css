@@ -277,10 +277,16 @@ line-height: 19.5px;
 }
 
 
-
 .avatar-bobia {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo_bobIA {
+        width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
 }
