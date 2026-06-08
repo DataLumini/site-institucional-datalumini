@@ -75,17 +75,17 @@
                 <p id="alertas_medios_id">0</p>
                 <span style="font-size: 16px;">Pontos de Atenção em 24 Horas</span>
             </div>
-              
+
         </div>
-           <div class="card_legenda">
+        <div class="card_legenda">
             <div class="legenda_ideal">
-               🟢 Ideal 111-189
+                🟢 Ideal 111-189
             </div>
             <div class="legenda_atencao">
-               🟡 Atenção 110-100 ou 190-200
+                🟡 Atenção 110-100 ou 190-200
             </div>
             <div class="legenda_critico">
-               🔴 Crítico 200> ou >100
+                🔴 Crítico 200> ou >100
             </div>
         </div>
 
@@ -162,10 +162,8 @@
             layout: {
                 padding: 25
             },
-
             plugins: {
                 legend: {
-
                     position: 'bottom',
                     labels: {
                         usePointStyle: true,
@@ -346,10 +344,20 @@
                 let alertasMedios = data[0].totalMedios;
                 let alertasNormais = data[0].TotalNormais || 0;
 
+                let porcentagemCriticos = (alertasCriticos / 16) * 100;
+                let porcentagemMedios = (alertasMedios / 16) * 100;
+                let porcentagemNormais = (alertasNormais / 16) * 100;
+
                 alertas_criticos_id.innerHTML = alertasCriticos;
                 alertas_medios_id.innerHTML = alertasMedios;
 
-                chartDonut.data.datasets[0].data = [alertasNormais, alertasMedios, alertasCriticos];
+                chartDonut.data.datasets[0].data = [porcentagemNormais, porcentagemMedios, porcentagemCriticos];
+
+                chartDonut.data.labels = [
+                    `Normais (${porcentagemNormais}%)`,
+                    `Médios (${porcentagemMedios}%)`,
+                    `Críticos (${porcentagemCriticos}%)`
+                ];
 
                 chartDonut.update();
             })
@@ -546,12 +554,12 @@
             });
     }
 
-    async function carregarPagina(){
+    async function carregarPagina() {
 
         console.log("Entrei na função carregar página!");
         await validarSessao();
         await verificarRegraUsuario();
-        await carregarDadosEstufa(); 
+        await carregarDadosEstufa();
         await obterTotalAlertasEspecifica();
         await obterRegistrosAlertas();
         await carregarNomeDash();
