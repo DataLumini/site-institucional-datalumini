@@ -713,6 +713,9 @@ main {
     width: 35%;
     border-radius: 12px;
     padding: 20px 22px;
+    max-height: 110dvh;
+    overflow: auto;
+    scrollbar-color: #e5e7eba0 transparent;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .07);
 }
 

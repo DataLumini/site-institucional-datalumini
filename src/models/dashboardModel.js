@@ -205,11 +205,6 @@ function obterRegistrosAlertas(idEstufa) {
           OR l.frequenciaLuminosidade BETWEEN es.limiteMinimo AND (es.limiteMinimo + (es.limiteMaximo - es.limiteMinimo) * 0.10)
           OR l.frequenciaLuminosidade BETWEEN (es.limiteMaximo - (es.limiteMaximo - es.limiteMinimo) * 0.10) AND es.limiteMaximo
       )
-      AND l.idLeitura IN (
-          SELECT MAX(idLeitura) 
-          FROM Leitura 
-          GROUP BY fkSensor
-      )
     ORDER BY status_ppfd ASC, l.dtCaptacaoDados DESC;
     `;
 
@@ -273,11 +268,6 @@ function obterAlertasCriticos24h(idUsuario) {
           AND l.dtCaptacaoDados >= NOW() - INTERVAL 24 HOUR
           AND (l.frequenciaLuminosidade < es.limiteMinimo OR l.frequenciaLuminosidade > es.limiteMaximo)
           AND l.status = 0
-          AND l.idLeitura IN (
-              SELECT MAX(idLeitura) 
-              FROM Leitura 
-              GROUP BY fkSensor
-          )
         ORDER BY l.dtCaptacaoDados DESC;
     `;
 
@@ -321,11 +311,6 @@ function obterPontosDeAtencao24h(idUsuario) {
               l.frequenciaLuminosidade BETWEEN (es.limiteMaximo - (es.limiteMaximo - es.limiteMinimo) * 0.10) AND es.limiteMaximo
           )
           AND l.status = 0
-          AND l.idLeitura IN (
-              SELECT MAX(idLeitura) 
-              FROM Leitura 
-              GROUP BY fkSensor
-          )
         ORDER BY l.dtCaptacaoDados DESC;
     `;
 
