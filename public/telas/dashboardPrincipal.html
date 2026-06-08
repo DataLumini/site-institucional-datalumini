@@ -56,6 +56,15 @@
         </header>
 
         <div class="container_kpi_topo">
+
+            <div class="kpi_card">
+                <div class="kpi_icon kpi_red">
+                    <img src="../img/aviso1.png" alt="Crítico">
+                </div>
+                <p class="kpi_valor" id="total_alertas_estufas"></p>
+                <span class="kpi_label">Estufas em alerta atualmente</span>
+            </div>
+
             <div class="kpi_card">
                 <div class="kpi_icon kpi_red">
                     <img src="../img/aviso1.png" alt="Crítico">
@@ -115,16 +124,18 @@
             .then(data => {
 
                 container_estufas.innerHTML = '';
-
+                let totalEstufasEmAlerta = 0;
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].status_estufa == 'Crítico') {
                         construirCardEstufa(data[i], container_estufas);
+                        totalEstufasEmAlerta++;
                     }
                 }
 
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].status_estufa == 'Atenção') {
                         construirCardEstufa(data[i], container_estufas);
+                        totalEstufasEmAlerta++;
                     }
                 }
 
@@ -133,6 +144,8 @@
                         construirCardEstufa(data[i], container_estufas);
                     }
                 }
+
+                total_alertas_estufas.innerHTML = totalEstufasEmAlerta;
             })
             .catch(error => {
                 console.error("Erro ao carregar dados das estufas:", error);
