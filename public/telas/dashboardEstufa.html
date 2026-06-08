@@ -63,20 +63,6 @@
             <div><button>Ativo</button> <span><img src="../img/icons/moritoramento.png"></span></div>
             <h1>Dashboard Visão Específica - <span id="nomeDash">Estufa ?</span></h1>
         </header>
-        <div id="container_kpi">
-
-            <div id="container_estufas">
-                <img src="../img/aviso1.png" alt="">
-                <p id="alertas_criticos_id">0</p>
-                <span style="font-size: 16px;">Alertas Críticos em 24 Horas</span>
-            </div>
-            <div id="container_lum_media">
-                <img src="../img/aviso2.png" alt="">
-                <p id="alertas_medios_id">0</p>
-                <span style="font-size: 16px;">Pontos de Atenção em 24 Horas</span>
-            </div>
-
-        </div>
         <div class="card_legenda">
             <div class="legenda_ideal">
                 🟢 Ideal 111-189 PPFD
@@ -85,32 +71,45 @@
                 🟡 Atenção 110-100 ou 190-200 PPFD
             </div>
             <div class="legenda_critico">
-                🔴 Crítico 200 > ou < 100 PPFD
+                🔴 Crítico 200 > ou < 100 PPFD </div>
             </div>
-        </div>
+            <div id="container_kpi">
 
-        <div class="graficos_sensor">
-            <div class="graficos">
-                <div class="box_grafico">
-                    <h3>Distribuição de prioridade em 24 Horas</h3>
-                    <canvas id="grafico_donut"></canvas>
+                <div id="container_estufas">
+                    <img src="../img/aviso1.png" alt="">
+                    <p id="alertas_criticos_id">0</p>
+                    <span style="font-size: 16px;">Alertas Críticos em 24 Horas</span>
+                </div>
+                <div id="container_lum_media">
+                    <img src="../img/aviso2.png" alt="">
+                    <p id="alertas_medios_id">0</p>
+                    <span style="font-size: 16px;">Pontos de Atenção em 24 Horas</span>
                 </div>
 
-                <div class="box_grafico">
-                    <h3>Leituras da estufa por prateleira</h3>
-                    <canvas id="grafico_sensor_linha"></canvas>
+            </div>
+
+            <div class="graficos_sensor">
+                <div class="graficos">
+                    <div class="box_grafico">
+                        <h3>Distribuição de prioridade em 24 Horas</h3>
+                        <canvas id="grafico_donut"></canvas>
+                    </div>
+
+                    <div class="box_grafico">
+                        <h3>Leituras da estufa por prateleira</h3>
+                        <canvas id="grafico_sensor_linha"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="alertas-header">
+                        <div class="card-titulo">Prateleiras com Alertas (<span id="alertas_count">0</span>)</div>
+                        <div class="alertas-order">Ordenado por prioridade</div>
+                    </div>
+                    <div id="alertas-list">
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="alertas-header">
-                    <div class="card-titulo">Prateleiras com Alertas (<span id="alertas_count">0</span>)</div>
-                    <div class="alertas-order">Ordenado por prioridade</div>
-                </div>
-                <div id="alertas-list">
-                </div>
-            </div>
-        </div>
-        <div id="alertas-list"></div>
+            <div id="alertas-list"></div>
         </div>
 
         </div>
@@ -228,7 +227,7 @@
                     type: 'line',
                     label: 'Limite Mínimo (100)',
                     data: valores_minimo,
-                    borderColor: 'green',
+                    borderColor: 'red',
                     borderDash: [5, 5],
                     pointRadius: 0,
                     borderWidth: 2,
@@ -339,24 +338,28 @@
         fetch(`/dashboard/obterTotalAlertas/especifica/${idUsuario}/${idEstufa}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                let alertasCriticos = data[0].TotalCriticos;
-                let alertasMedios = data[0].totalMedios;
-                let alertasNormais = data[0].TotalNormais || 0;
+                console.log("Dados do banco:", data);
 
-                let porcentagemCriticos = (alertasCriticos / 16) * 100;
-                let porcentagemMedios = (alertasMedios / 16) * 100;
-                let porcentagemNormais = (alertasNormais / 16) * 100;
+                let alertasCriticos = Number(data[0].TotalCriticos) || 0;
+                let alertasMedios = Number(data[0].totalMedios) || 0;
+                let alertasNormais = Number(data[0].TotalNormais) || 0;
+
+                let totalAlertas = alertasCriticos + alertasMedios + alertasNormais;
+                console.log("Total de alertas calculado:", totalAlertas);
+
+                let porcentagemCriticos = totalAlertas > 0 ? Math.round((alertasCriticos / totalAlertas) * 100) : 0;
+                let porcentagemMedios = totalAlertas > 0 ? Math.round((alertasMedios / totalAlertas) * 100) : 0;
+                let porcentagemNormais = totalAlertas > 0 ? Math.round((alertasNormais / totalAlertas) * 100) : 0;
 
                 alertas_criticos_id.innerHTML = alertasCriticos;
                 alertas_medios_id.innerHTML = alertasMedios;
-
+                
                 chartDonut.data.datasets[0].data = [porcentagemNormais, porcentagemMedios, porcentagemCriticos];
 
                 chartDonut.data.labels = [
-                    `Normais (${porcentagemNormais}%)`,
-                    `Médios (${porcentagemMedios}%)`,
-                    `Críticos (${porcentagemCriticos}%)`
+                    `Normais`,
+                    `Médios`,
+                    `Críticos`
                 ];
 
                 chartDonut.update();

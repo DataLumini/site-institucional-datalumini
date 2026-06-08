@@ -13,8 +13,7 @@
     <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
 </head>
 
-<body
-    onload="carregarPagina()">
+<body onload="carregarPagina()">
     <header id="menu">
         <div id="container_header">
             <a href="" id="logo_header">
@@ -55,55 +54,54 @@
             <h1>Dashboard Visão Geral - Arabidopsis thaliana</h1>
         </header>
 
-        <div class="container_kpi_topo">
-
-            <div class="kpi_card">
-                <div class="kpi_icon kpi_red">
-                    <img src="../img/aviso1.png" alt="Crítico">
-                </div>
-                <p class="kpi_valor" id="total_alertas_estufas"></p>
-                <span class="kpi_label">Estufas em alerta atualmente</span>
-            </div>
-
-            <div class="kpi_card">
-                <div class="kpi_icon kpi_red">
-                    <img src="../img/aviso1.png" alt="Crítico">
-                </div>
-                <p class="kpi_valor" id="alertas_criticos_id">?</p>
-                <span class="kpi_label">Total de Alertas Críticos no Período de 24 Horas</span>
-            </div>
-
-            <div class="kpi_card">
-                <div class="kpi_icon kpi_orange">
-                    <img src="../img/aviso2.png" alt="Aviso">
-                </div>
-                <p class="kpi_valor" id="alertas_medios_id">?</p>
-                <span class="kpi_label">Total de Alertas de Atenção no Período de 24 Horas</span>
-            </div>
-
-        </div>
-
         <div class="card_legenda">
             <div class="legenda_ideal">
-               🟢 Ideal 111-189 PPFD
+                🟢 Ideal 111-189 PPFD
             </div>
             <div class="legenda_atencao">
-               🟡 Atenção 110-100 ou 190-200 PPFD
+                🟡 Atenção 110-100 ou 190-200 PPFD
             </div>
             <div class="legenda_critico">
-               🔴 Crítico 200 > ou < 100 PPFD
-            </div>
-          
-        </div>
+                🔴 Crítico 200 > ou < 100 PPFD </div>
 
-        <div class="secao-estufas-detalhe">
-            <div class="cabecalho-estufas">
-                <h2>Estufas</h2>
-                <span>Ordenado por prioridade (críticas primeiro)</span>
+            </div>
+            
+            <div class="container_kpi_topo">
+
+                <div class="kpi_card">
+                    <div class="kpi_icon kpi_red">
+                        <img src="../img/aviso1.png" alt="Crítico">
+                    </div>
+                    <p class="kpi_valor" id="total_alertas_estufas"></p>
+                    <span class="kpi_label">Estufas em alerta atualmente</span>
+                </div>
+
+                <div class="kpi_card">
+                    <div class="kpi_icon kpi_red">
+                        <img src="../img/aviso1.png" alt="Crítico">
+                    </div>
+                    <p class="kpi_valor" id="alertas_criticos_id">?</p>
+                    <span class="kpi_label">Total de Alertas Críticos no Período de 24 Horas</span>
+                </div>
+
+                <div class="kpi_card">
+                    <div class="kpi_icon kpi_orange">
+                        <img src="../img/aviso2.png" alt="Aviso">
+                    </div>
+                    <p class="kpi_valor" id="alertas_medios_id">?</p>
+                    <span class="kpi_label">Total de Alertas de Atenção no Período de 24 Horas</span>
+                </div>
+
             </div>
 
-            <div class="lista-cards-estufa" id="container_estufas"></div>
-        </div>
+            <div class="secao-estufas-detalhe">
+                <div class="cabecalho-estufas">
+                    <h2>Estufas</h2>
+                    <span>Ordenado por prioridade (críticas primeiro)</span>
+                </div>
+
+                <div class="lista-cards-estufa" id="container_estufas"></div>
+            </div>
         </div>
 
         <div id="containerAlertas"></div>
@@ -303,13 +301,13 @@
         window.location.href = "./dashboardEstufa.html";
     }
 
-   async function carregarPagina(){
+    async function carregarPagina() {
 
         containerAlertas.innerHTML = "";
-        
+
         await validarSessao();
-        await verificarRegraUsuario(); 
-        
+        await verificarRegraUsuario();
+
         await obterDadosEstufas();
         await obterTotalAlertasPrincipal();
         await obterAlertasCriticos24h();
