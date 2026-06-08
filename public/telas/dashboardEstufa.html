@@ -273,6 +273,12 @@
             }
         }
     })
+    function corPorPPFD(ppfd) {
+        if (ppfd < 100 || ppfd > 200) return '#e00c0c';      // crítico → vermelho
+        return '#3b82f6';                                     // normal   → azul
+    }
+
+ 
 
     function carregarNomeDash() {
         let nomeDashboard = sessionStorage.NOME_ESTUFA;
@@ -317,9 +323,13 @@
                     limitesMax.push(200);
                     limitesMin.push(100);
                 }
-
+                let coresColunas = []
                 chartLinha.data.labels = labelsSensores;
                 chartLinha.data.datasets[0].data = valoresPPFD;
+                for (let i = 0; i < valoresPPFD.length; i++) {
+                    coresColunas.push(corPorPPFD(valoresPPFD[i]))
+                }
+                chartLinha.data.datasets[0].backgroundColor = coresColunas;
                 chartLinha.data.datasets[1].data = limitesMax;
                 chartLinha.data.datasets[2].data = limitesMin;
 
