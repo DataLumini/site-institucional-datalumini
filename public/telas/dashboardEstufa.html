@@ -388,7 +388,7 @@
                 for (let i = 0; i < data.length; i++) {
                     const registro = data[i];
 
-                    if (registro.ppfd <= 100 || registro.ppfd >= 200) {
+                    if (registro.ppfd < 100 || registro.ppfd > 200) {
                         classeAlerta = "alerta-alto";
                         classePrioridade = "alerta-prioridade-alto";
                         status = "CRÍTICO";
@@ -564,7 +564,7 @@
         await obterRegistrosAlertas();
         await carregarNomeDash();
 
-        setTimeout(carregarPagina, 10000);
+        setTimeout(carregarPagina, 60000);
     }
 </script>
 
