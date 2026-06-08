@@ -5,7 +5,7 @@ function validarSessao() {
 
    if (nome == null || email == null || id == null) {
        alert("Para visualizar esta página, você precisa estar conectado à sua conta. Por favor, faça o login para continuar.")
-       window.location = "TelaLogin.html"
+       window.location = "telaLogin.html"
    } else {
        console.log('tudo ok!')
    }
